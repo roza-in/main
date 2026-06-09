@@ -7,4 +7,5 @@ export const deskStructure = (S: any) =>
       S.documentTypeListItem("author").title("Authors"),
       S.documentTypeListItem("category").title("Categories"),
       S.documentTypeListItem("case-study").title("Case Studies"),
+      S.documentTypeListItem("job").title("Job Openings"),
     ]);

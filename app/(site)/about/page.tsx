@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { Compass, Eye, Heart, Shield, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -105,9 +106,11 @@ export default function AboutPage() {
               We are constantly seeking creative designers, software engineers, and product builders passionate about simplifying operations for local service businesses.
             </p>
             <div className="pt-2">
-              <Button variant="premium" className="font-bold text-xs h-8.5 px-4.5">
-                Explore Open Positions
-              </Button>
+              <Link href="/careers">
+                <Button variant="premium" className="font-bold text-xs h-8.5 px-4.5">
+                  Explore Open Positions
+                </Button>
+              </Link>
             </div>
             <p className="text-[10px] text-muted-foreground leading-none">Currently recruiting for remote-first product, engineering, and sales roles.</p>
           </div>

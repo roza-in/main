@@ -144,22 +144,23 @@ export const ctaNavItems: NavItem[] = [
 ];
 
 export const footerNavItems = {
-  product: {
-    title: "Product",
+  compare: {
+    title: "Compare",
     items: [
-      { label: "Features", href: "/platform" },
-      { label: "Pricing", href: "/pricing" },
-      { label: "Integrations", href: "/integrations" },
-      { label: "Customers", href: "/customers" },
+      { label: "vs Fresha", href: "/compare/fresha" },
+      { label: "vs Mindbody", href: "/compare/mindbody" },
+      { label: "vs Booksy", href: "/compare/booksy" },
+      { label: "vs Vagaro", href: "/compare/vagaro" },
     ],
   },
   solutions: {
-    title: "Solutions",
+    title: "Industries",
     items: [
       { label: "Salon", href: "/industries/salon" },
       { label: "Spa", href: "/industries/spa" },
       { label: "Barbershop", href: "/industries/barbershop" },
-      { label: "Wellness Center", href: "/industries/wellness-center" },
+      { label: "Clinic", href: "/industries/clinic" },
+      { label: "Tattoo Studio", href: "/industries/tattoo-studio" },
     ],
   },
   resources: {
@@ -168,6 +169,7 @@ export const footerNavItems = {
       { label: "Blog", href: "/blog" },
       { label: "Guides", href: "/guides" },
       { label: "Help Center", href: "/help" },
+      { label: "Integrations", href: "/integrations" },
       { label: "Documentation", href: "/docs" },
     ],
   },
@@ -176,7 +178,8 @@ export const footerNavItems = {
     items: [
       { label: "About", href: "/about" },
       { label: "Contact", href: "/contact" },
-      { label: "Careers", href: "/about#careers" },
+      { label: "Careers", href: "/careers" },
+      { label: "Customers", href: "/customers" },
     ],
   },
   legal: {
