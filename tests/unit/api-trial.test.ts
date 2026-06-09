@@ -30,10 +30,10 @@ describe("/api/trial", () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        name: "Test User",
-        email: "test@example.com",
+        name: "Aarav Mehta",
+        email: "aarav@example.in",
         phone: "9876543210",
-        businessName: "Test Salon",
+        businessName: "Mehta Salon & Spa",
         plan: "growth",
       }),
     });
@@ -52,10 +52,10 @@ describe("/api/trial", () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        name: "Test",
-        email: "test@example.com",
+        name: "Aarav",
+        email: "aarav@example.in",
         phone: "abcdefghij",
-        businessName: "Salon",
+        businessName: "Mehta Salon",
         plan: "growth",
       }),
     });

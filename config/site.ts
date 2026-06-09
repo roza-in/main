@@ -1,8 +1,8 @@
 export const siteConfig = {
   name: "Rozx",
-  title: "Rozx - The Operating System for Service Businesses",
+  title: "Rozx - Booking & Billing Software for Salons, Spas & Clinics",
   description:
-    "Appointments, CRM, payments, marketing, and custom websites. Everything your service business needs to start, run, and scale on a single unified platform.",
+    "Manage your appointments, billing, staff, and customer relationships with a custom website for your brand. Start your free trial today.",
   url: "https://rozx.in",
   ogImage: "https://rozx.in/og/home.png",
   creator: "Rozx",
@@ -18,7 +18,7 @@ export const siteConfig = {
     "appointment booking",
     "service business software",
     "CRM for salons",
-    "business operating system",
+    "booking and billing software",
     "barbershop software",
     "nail studio management",
     "wellness center software",

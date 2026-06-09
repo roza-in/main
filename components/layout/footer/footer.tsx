@@ -93,8 +93,8 @@ export function Footer() {
             </Link>
 
             <p className="text-sm text-muted-foreground leading-relaxed">
-              The premium Service Business Operating System designed to automate bookings,
-              marketing, CRM, and checkout POS. Trusted by leading salons, spas, and clinics.
+              Booking and billing software with custom websites for salons, spas, and clinics.
+              Manage appointments, customer records, and daily billing in one place.
             </p>
 
             <div className="space-y-2.5 text-xs text-muted-foreground">

@@ -31,7 +31,7 @@ export function Hero() {
           transition={{ duration: 0.4, delay: 0.05 }}
           className="text-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl max-w-4xl mx-auto tracking-tight"
         >
-          The operating system for <span className="text-primary font-bold">service businesses</span>.
+          Booking & billing software for <span className="text-primary font-bold">salons, spas & clinics</span>.
         </motion.h1>
 
         {/* Sub-headline */}
@@ -41,7 +41,7 @@ export function Hero() {
           transition={{ duration: 0.4, delay: 0.1 }}
           className="mt-5 text-body-lg text-muted-foreground max-w-2xl mx-auto max-measure"
         >
-          Consolidate appointments, automated reminders, CRM data, payments, and your client booking website on a single unified platform. Built for precision.
+          Manage appointments, automated reminders, customer details, billing, and your custom booking website in one simple dashboard.
         </motion.p>
 
         {/* CTA Buttons */}

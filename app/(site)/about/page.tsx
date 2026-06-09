@@ -44,7 +44,7 @@ export default function AboutPage() {
             About Rozx.
           </h1>
           <p className="text-body text-muted-foreground leading-relaxed">
-            We build the service business operating system that simplifies appointments, customer relationships, and checkouts globally.
+            We build the booking and billing platform that simplifies appointments, customer relationships, and checkouts globally for salons, spas, and clinics.
           </p>
         </div>
 

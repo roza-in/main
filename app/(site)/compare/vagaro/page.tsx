@@ -46,7 +46,7 @@ export default function VagaroComparePage() {
   return (
     <Comparison
       competitorName="Vagaro"
-      tagline="A modern operating system. Built for speed."
+      tagline="A modern booking and billing system. Built for speed."
       description="Vagaro is feature-rich but contains a dated, complex administration menu that slows down checkouts. Rozx is built from the ground up for speed, offering aesthetic clinics and wellness retreats a unified portal with flat pricing."
       features={features}
     />

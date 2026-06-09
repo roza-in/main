@@ -7,7 +7,7 @@ import { CareersView } from "@/app/(site)/careers/careers-view";
 export const metadata: Metadata = generateMetadata({
   title: "Careers - Join the Rozx Team",
   description:
-    "Explore open positions and career opportunities at Rozx. Join us in building the operating system that empowers salons, spas, aesthetic clinics, and local service businesses globally.",
+    "Explore open positions and career opportunities at Rozx. Join us in building the booking and billing software that empowers salons, spas, and clinics globally.",
   path: "/careers",
 });
 

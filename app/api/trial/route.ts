@@ -88,7 +88,7 @@ export async function POST(request: Request) {
             html: `
               <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #eaeaea; padding: 20px; border-radius: 8px;">
                 <h2 style="color: #10b981; border-bottom: 2px solid #10b981; padding-bottom: 10px;">Welcome to Rozx, ${escapeHtml(data.name)}!</h2>
-                <p>Thank you for signing up for the 14-day free trial of the Rozx Service Business Operating System.</p>
+                <p>Thank you for signing up for the 14-day free trial of Rozx.</p>
                 <p>Our concierge onboarding team is currently provisioning your secure, isolated database and application environment for <strong>${escapeHtml(data.businessName)}</strong>.</p>
                 <p>Within 12 business hours, one of our product specialists will email you your custom workspace dashboard URL, along with your temporary credentials and a link to book a complimentary 1-on-1 setup session.</p>
                 <p>If you have any questions in the meantime, feel free to reply directly to this email or message us at <a href="mailto:hello@rozx.in">hello@rozx.in</a>.</p>

@@ -30,7 +30,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-lg font-bold text-foreground mb-3">1. Hello & Welcome</h2>
             <p className="mb-4">
-              Rozx (referred to as &quot;Rozx&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) is a Service Business Operating System. By signing up for a trial account or subscribing to our plans, you are entering into a binding agreement with us. 
+              Rozx (referred to as &quot;Rozx&quot;, &quot;we&quot;, &quot;us&quot;, or &quot;our&quot;) is booking and billing software for salons, spas, and clinics. By signing up for a trial account or subscribing to our plans, you are entering into a binding agreement with us. 
             </p>
             <p className="mb-4">
               Since our software is designed to manage scheduling, checkout terminals, and staff operations, you must be a registered business, sole proprietor, or authorized representative to set up an account.
