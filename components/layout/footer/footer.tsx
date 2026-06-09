@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Mail, MapPin, Send, Instagram, Linkedin, Twitter, Facebook, Youtube } from "lucide-react";
 import { siteConfig } from "@/config/site";
 import { footerNavItems } from "@/config/navigation";
+import { footerConfig } from "@/config/footer";
 import { Button } from "@/components/ui/button";
 
 export function Footer() {
@@ -79,7 +80,7 @@ export function Footer() {
       <div className="container py-16 md:py-20 max-w-6xl">
         <div className="grid grid-cols-1 gap-10 md:grid-cols-12">
           {/* Brand & Description */}
-          <div className="md:col-span-4 space-y-5">
+          <div className="md:col-span-6 lg:col-span-3 space-y-5">
             <Link href="/" className="flex items-center">
               <Image
                 src="/logos/logo.png"
@@ -109,40 +110,27 @@ export function Footer() {
           </div>
 
           {/* Combined Navigation Columns */}
-          <div className="grid grid-cols-2 gap-8 md:col-span-5 md:pl-8">
-            <div>
-              <h4 className="text-xs font-bold text-foreground tracking-widest uppercase mb-4">
-                Product
-              </h4>
-              <ul className="space-y-2.5 text-xs">
-                {footerNavItems.product.items.map((item) => (
-                  <li key={item.label}>
-                    <Link href={item.href} className="text-muted-foreground hover:text-foreground transition-colors">
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="text-xs font-bold text-foreground tracking-widest uppercase mb-4">
-                Resources
-              </h4>
-              <ul className="space-y-2.5 text-xs">
-                {footerNavItems.resources.items.map((item) => (
-                  <li key={item.label}>
-                    <Link href={item.href} className="text-muted-foreground hover:text-foreground transition-colors">
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-8 md:col-span-12 lg:col-span-6 lg:pl-8">
+            {footerConfig.columns.map((col) => (
+              <div key={col.title}>
+                <h4 className="text-xs font-bold text-foreground tracking-widest uppercase mb-4">
+                  {col.title}
+                </h4>
+                <ul className="space-y-2.5 text-xs">
+                  {col.links.map((item) => (
+                    <li key={item.label}>
+                      <Link href={item.href} className="text-muted-foreground hover:text-foreground transition-colors">
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
 
           {/* Newsletter Form */}
-          <div className="md:col-span-3 space-y-4">
+          <div className="md:col-span-6 lg:col-span-3 space-y-4">
             <h4 className="text-xs font-bold text-foreground tracking-widest uppercase">
               Stay Updated
             </h4>
