@@ -1,0 +1,6 @@
+#!/bin/sh
+if git diff --cached --name-only | grep -qE '\.env\.local$|\.env\.production$'; then
+  echo "❌ ERROR: Environment files with secrets must not be committed!"
+  echo "   Remove with: git reset HEAD .env.local"
+  exit 1
+fi
