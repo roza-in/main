@@ -19,15 +19,15 @@ export function CookieConsent() {
   const handleAcceptAll = () => {
     localStorage.setItem("rozx_cookie_consent", "all");
     setIsVisible(false);
-    // Reload page to initialize analytics scripts
-    window.location.reload();
+    // Dispatch custom event to initialize analytics without reload
+    window.dispatchEvent(new CustomEvent("rozx_cookie_consent_changed"));
   };
 
   const handleAcceptEssential = () => {
     localStorage.setItem("rozx_cookie_consent", "essential");
     setIsVisible(false);
-    // Reload page
-    window.location.reload();
+    // Dispatch custom event to notify listeners
+    window.dispatchEvent(new CustomEvent("rozx_cookie_consent_changed"));
   };
 
   return (

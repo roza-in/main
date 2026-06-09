@@ -99,21 +99,33 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var theme = localStorage.getItem('theme');
+                  if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                    document.documentElement.classList.add('dark');
+                  } else {
+                    document.documentElement.classList.remove('dark');
+                  }
+                } catch(e) {}
+              })();
+            `,
+          }}
+        />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://eu.i.posthog.com" />
         <link rel="dns-prefetch" href="https://www.clarity.ms" />
         <link rel="preconnect" href="https://cdn.sanity.io" crossOrigin="anonymous" />
       </head>
-      <body className="min-h-dvh font-sans antialiased" suppressHydrationWarning>
+      <body className="min-h-dvh font-sans antialiased">
         <script
           dangerouslySetInnerHTML={{
             __html: `
               window.addEventListener('unhandledrejection', function(event) {
-                if (event.reason && (
-                  (event.reason.stack && event.reason.stack.includes('chrome-extension')) ||
-                  (event.reason.message && event.reason.message.includes('Failed to fetch')) ||
-                  (event.reason.message && event.reason.message.includes('sanity'))
-                )) {
+                if (event.reason && event.reason.stack && event.reason.stack.includes('chrome-extension')) {
                   event.preventDefault();
                 }
               });

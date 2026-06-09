@@ -45,7 +45,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: "Content-Security-Policy",
-            value: "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' *.googletagmanager.com *.posthog.com eu.i.posthog.com eu-assets.i.posthog.com *.clarity.ms; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data: blob: cdn.sanity.io *.googletagmanager.com *.google-analytics.com; frame-src 'self' calendly.com; connect-src 'self' *.posthog.com eu.i.posthog.com *.google-analytics.com *.clarity.ms api.resend.com *.sanity.io registry.npmjs.org; object-src 'none'; base-uri 'self'; form-action 'self';",
+            value: `default-src 'self'; script-src 'self' 'unsafe-inline' ${process.env.NODE_ENV === "development" ? "'unsafe-eval'" : ""} *.googletagmanager.com *.posthog.com eu.i.posthog.com eu-assets.i.posthog.com *.clarity.ms; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com; img-src 'self' data: blob: cdn.sanity.io *.googletagmanager.com *.google-analytics.com; frame-src 'self' calendly.com; connect-src 'self' *.posthog.com eu.i.posthog.com *.google-analytics.com *.clarity.ms api.resend.com *.sanity.io; object-src 'none'; base-uri 'self'; form-action 'self';`.replace(/\s{2,}/g, " ").trim(),
           },
           {
             key: "Permissions-Policy",

@@ -193,7 +193,7 @@ export function Footer() {
                   key={key}
                   href={url}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="rounded-lg border border-border bg-background p-2 text-muted-foreground hover:border-primary/50 hover:text-primary transition-all duration-200"
                   aria-label={key}
                 >

@@ -1,15 +1,28 @@
 import { NextResponse } from "next/server";
 import * as z from "zod";
+import { escapeHtml } from "@/lib/security/sanitize";
 
 const trialRequestSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Invalid email address"),
-  phone: z.string().min(10, "Phone number must be at least 10 digits"),
-  businessName: z.string().min(2, "Business name is required"),
+  name: z.string().min(2, "Name must be at least 2 characters").max(100, "Name is too long"),
+  email: z.string().email("Invalid email address").max(100, "Email is too long"),
+  phone: z.string()
+    .min(10, "Phone number must be at least 10 digits")
+    .max(15, "Phone number is too long")
+    .regex(/^[+]?[\d\s\-()]+$/, "Please enter a valid phone number"),
+  businessName: z.string().min(2, "Business name is required").max(100, "Business name is too long"),
   plan: z.enum(["starter", "growth", "professional", "enterprise"]),
 });
 
 export async function POST(request: Request) {
+  // Reject oversized payloads (max 10KB for a form submission)
+  const contentLength = request.headers.get("content-length");
+  if (contentLength && parseInt(contentLength, 10) > 10_240) {
+    return NextResponse.json(
+      { success: false, error: "Request body too large" },
+      { status: 413 }
+    );
+  }
+
   try {
     const body = await request.json();
     
@@ -51,11 +64,11 @@ export async function POST(request: Request) {
             subject: `[Trial Lead] ${data.businessName} - Plan: ${data.plan}`,
             html: `
               <h2>New Free Trial Lead Created</h2>
-              <p><strong>Name:</strong> ${data.name}</p>
-              <p><strong>Email:</strong> ${data.email}</p>
-              <p><strong>Phone:</strong> ${data.phone}</p>
-              <p><strong>Business Name:</strong> ${data.businessName}</p>
-              <p><strong>Requested Plan:</strong> ${data.plan}</p>
+              <p><strong>Name:</strong> ${escapeHtml(data.name)}</p>
+              <p><strong>Email:</strong> ${escapeHtml(data.email)}</p>
+              <p><strong>Phone:</strong> ${escapeHtml(data.phone)}</p>
+              <p><strong>Business Name:</strong> ${escapeHtml(data.businessName)}</p>
+              <p><strong>Requested Plan:</strong> ${escapeHtml(data.plan)}</p>
               <p><strong>Registered At (UTC):</strong> ${new Date().toISOString()}</p>
             `,
           }),
@@ -74,9 +87,9 @@ export async function POST(request: Request) {
             subject: "Welcome to Rozx - Provisioning your Workspace",
             html: `
               <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #eaeaea; padding: 20px; border-radius: 8px;">
-                <h2 style="color: #10b981; border-bottom: 2px solid #10b981; padding-bottom: 10px;">Welcome to Rozx, ${data.name}!</h2>
+                <h2 style="color: #10b981; border-bottom: 2px solid #10b981; padding-bottom: 10px;">Welcome to Rozx, ${escapeHtml(data.name)}!</h2>
                 <p>Thank you for signing up for the 14-day free trial of the Rozx Service Business Operating System.</p>
-                <p>Our concierge onboarding team is currently provisioning your secure, isolated database and application environment for <strong>${data.businessName}</strong>.</p>
+                <p>Our concierge onboarding team is currently provisioning your secure, isolated database and application environment for <strong>${escapeHtml(data.businessName)}</strong>.</p>
                 <p>Within 12 business hours, one of our product specialists will email you your custom workspace dashboard URL, along with your temporary credentials and a link to book a complimentary 1-on-1 setup session.</p>
                 <p>If you have any questions in the meantime, feel free to reply directly to this email or message us at <a href="mailto:hello@rozx.in">hello@rozx.in</a>.</p>
                 <br />
@@ -117,3 +130,4 @@ export async function POST(request: Request) {
     );
   }
 }
+
