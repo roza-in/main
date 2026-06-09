@@ -53,7 +53,7 @@ export default function FreshaComparePage() {
     <Comparison
       competitorName="Fresha"
       tagline="Keep 100% of your earnings. Stop paying booking commissions."
-      description="While Fresha offers basic software for salons, their discovery marketplace model takes cuts of bookings for repeat clients. Rozx acts as a dedicated operating system for your brand, charging flat subscriptions and helping you map your own booking domain."
+      description="While Fresha offers basic software for salons, their discovery marketplace model takes cuts of bookings for repeat clients. Rozx is dedicated software for your brand, charging flat subscriptions and helping you map your own booking domain."
       features={features}
     />
   );

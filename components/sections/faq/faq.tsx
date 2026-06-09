@@ -12,7 +12,7 @@ interface FAQItem {
 const faqItems: FAQItem[] = [
   {
     question: "What is Rozx and who is it built for?",
-    answer: "Rozx is a complete Service Business Operating System. It is designed for client-focused, appointment-based service companies, such as hair salons, wellness spas, aesthetic clinics, barbershops, makeup studios, and wellness centers. It replaces multiple fragmented tools by consolidating online bookings, calendar, payments, automated marketing, loyalty points, customer CRM, and a custom website into one dashboard.",
+    answer: "Rozx is booking and billing software for salons, spas, and clinics. We help you manage your daily operations, including client appointments, invoices, customer records, staff schedules, and a custom website. Instead of paying for 4 or 5 different apps, you get everything you need to run your business in one simple place.",
   },
   {
     question: "Do you charge any commissions on my bookings or payments?",

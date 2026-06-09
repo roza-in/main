@@ -2,10 +2,10 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Rozx - Service Business Operating System",
+    name: "Rozx - Booking & Billing Software for Salons, Spas & Clinics",
     short_name: "Rozx",
     description:
-      "Appointments, CRM, payments, marketing, and custom websites. Everything your service business needs.",
+      "Manage your appointments, billing, staff, and customer relationships with a custom website.",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",

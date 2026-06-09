@@ -192,7 +192,7 @@ function ApplyFormContent() {
                   <input 
                     type="text" 
                     required
-                    placeholder="Jane Doe"
+                    placeholder="Aarav Mehta"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     className={`w-full text-xs h-9 px-3.5 rounded-lg border bg-background focus:outline-hidden transition-colors ${
@@ -210,7 +210,7 @@ function ApplyFormContent() {
                   <input 
                     type="email" 
                     required
-                    placeholder="jane@example.com"
+                    placeholder="aarav@example.in"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className={`w-full text-xs h-9 px-3.5 rounded-lg border bg-background focus:outline-hidden transition-colors ${
@@ -284,7 +284,7 @@ function ApplyFormContent() {
                 <textarea 
                   required
                   rows={5}
-                  placeholder="Tell us a bit about your background and why you're interested in helping build the Operating System for local commerce..."
+                  placeholder="Tell us a bit about your background and why you're interested in helping build the booking and billing platform for local commerce..."
                   value={coverLetter}
                   onChange={(e) => setCoverLetter(e.target.value)}
                   className={`w-full text-xs p-3.5 rounded-lg border bg-background focus:outline-hidden transition-colors ${

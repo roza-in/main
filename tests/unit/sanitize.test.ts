@@ -17,6 +17,6 @@ describe("escapeHtml", () => {
   });
 
   it("should not modify clean strings", () => {
-    expect(escapeHtml("John Doe")).toBe("John Doe");
+    expect(escapeHtml("Aarav Mehta")).toBe("Aarav Mehta");
   });
 });

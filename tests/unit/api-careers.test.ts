@@ -30,13 +30,13 @@ describe("/api/careers", () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        name: "John Doe",
-        email: "john@example.com",
+        name: "Aarav Mehta",
+        email: "aarav@example.in",
         phone: "9876543210",
         jobSlug: "senior-frontend-engineer",
         resumeUrl: "https://drive.google.com/file/d/123",
-        portfolioUrl: "https://linkedin.com/in/johndoe",
-        coverLetter: "I want to build the operating system for local commerce at Rozx.",
+        portfolioUrl: "https://linkedin.com/in/aaravmehta",
+        coverLetter: "I want to build the booking and billing platform for local commerce at Rozx.",
       }),
     });
 
@@ -54,12 +54,12 @@ describe("/api/careers", () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        name: "John Doe",
-        email: "john@example.com",
+        name: "Aarav Mehta",
+        email: "aarav@example.in",
         phone: "9876543210",
         jobSlug: "senior-frontend-engineer",
         resumeUrl: "not-a-url",
-        coverLetter: "I want to build the operating system for local commerce at Rozx.",
+        coverLetter: "I want to build the booking and billing platform for local commerce at Rozx.",
       }),
     });
 

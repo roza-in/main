@@ -107,7 +107,7 @@ export default function PlatformPage() {
             Platform Capabilities
           </h1>
           <p className="text-muted-foreground text-lg text-pretty">
-            Rozx consolidates your entire service business workflow into a secure, real-time operating system.
+            Rozx connects all parts of your business, from booking to billing, in a clean real-time dashboard.
             Discover how our core modules connect.
           </p>
         </div>
@@ -235,7 +235,7 @@ export default function PlatformPage() {
         {/* Final CTA */}
         <div className="rounded-3xl border border-border bg-muted/20 p-8 text-center max-w-4xl mx-auto">
           <h3 className="text-2xl font-bold text-foreground mb-3">Experience Rozx firsthand</h3>
-          <p className="text-sm text-muted-foreground max-w-lg mx-auto mb-6">Create your account in under 5 minutes and see how a unified operating system changes your business.</p>
+          <p className="text-sm text-muted-foreground max-w-lg mx-auto mb-6">Create your account in under 5 minutes and see how simple booking and billing can be.</p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <Link href="/start-trial">
               <Button variant="premium" className="font-bold text-sm">
