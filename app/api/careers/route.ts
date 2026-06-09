@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import * as z from "zod";
 import { escapeHtml } from "@/lib/security/sanitize";
+import { sanityClient } from "@/sanity/client/sanity";
 
 const careerApplicationSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters").max(100, "Name is too long"),
@@ -9,7 +10,7 @@ const careerApplicationSchema = z.object({
     .min(10, "Phone number must be at least 10 digits")
     .max(15, "Phone number is too long")
     .regex(/^[+]?[\d\s\-()]+$/, "Please enter a valid phone number"),
-  role: z.string().min(2, "Role is required").max(100, "Role name is too long"),
+  jobSlug: z.string().min(2, "Job slug is required").max(100, "Job slug is too long"),
   resumeUrl: z.string().url("Please enter a valid URL for your resume").max(500, "URL is too long"),
   portfolioUrl: z.string().max(500, "URL is too long").optional().or(z.literal("")),
   coverLetter: z.string().min(10, "Tell us a bit more about yourself (at least 10 characters)").max(2000, "Message is too long"),
@@ -46,7 +47,31 @@ export async function POST(request: Request) {
     const apiKey = process.env.RESEND_API_KEY;
     const receiver = process.env.CONTACT_LEAD_RECEIVER || "hello@rozx.in";
 
-    console.log(`[Careers Application] Processing application for ${data.name} - ${data.role}`);
+    // Resolve job title dynamically from slug
+    let roleName = "General Application";
+    if (data.jobSlug && data.jobSlug !== "general-application") {
+      // Clean fallback formatting (e.g., 'senior-frontend-engineer' -> 'Senior Frontend Engineer')
+      const fallbackTitle = data.jobSlug
+        .split("-")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ");
+      
+      roleName = fallbackTitle;
+
+      try {
+        const sanityJob = await sanityClient.fetch<any>(
+          `*[_type == "job" && slug.current == $slug][0] { title }`,
+          { slug: data.jobSlug }
+        );
+        if (sanityJob && sanityJob.title) {
+          roleName = sanityJob.title;
+        }
+      } catch (err) {
+        console.error("Sanity job title lookup failed, using formatted slug fallback:", err);
+      }
+    }
+
+    console.log(`[Careers Application] Processing application for ${data.name} - ${roleName} (${data.jobSlug})`);
 
     let emailSent = false;
     let errorDetails = null;
@@ -63,13 +88,13 @@ export async function POST(request: Request) {
           body: JSON.stringify({
             from: "Rozx Careers <noreply@rozx.in>",
             to: [receiver],
-            subject: `[Job Application] ${data.name} - ${data.role}`,
+            subject: `[Job Application] ${data.name} - ${roleName}`,
             html: `
               <h2>New Job Application Received</h2>
               <p><strong>Name:</strong> ${escapeHtml(data.name)}</p>
               <p><strong>Email:</strong> ${escapeHtml(data.email)}</p>
               <p><strong>Phone:</strong> ${escapeHtml(data.phone)}</p>
-              <p><strong>Applying For:</strong> ${escapeHtml(data.role)}</p>
+              <p><strong>Applying For:</strong> ${escapeHtml(roleName)} (${escapeHtml(data.jobSlug)})</p>
               <p><strong>Resume Link:</strong> <a href="${escapeHtml(data.resumeUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(data.resumeUrl)}</a></p>
               ${data.portfolioUrl ? `<p><strong>Portfolio/LinkedIn Link:</strong> <a href="${escapeHtml(data.portfolioUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(data.portfolioUrl)}</a></p>` : ""}
               <p><strong>Cover Letter / Note:</strong></p>
@@ -89,11 +114,11 @@ export async function POST(request: Request) {
           body: JSON.stringify({
             from: "Rozx Careers <noreply@rozx.in>",
             to: [data.email],
-            subject: `Application Received: ${data.role} at Rozx`,
+            subject: `Application Received: ${roleName} at Rozx`,
             html: `
               <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #eaeaea; padding: 20px; border-radius: 8px;">
                 <h2 style="color: #2b8c69; border-bottom: 2px solid #2b8c69; padding-bottom: 10px;">Hi ${escapeHtml(data.name)},</h2>
-                <p>Thank you for applying for the <strong>${escapeHtml(data.role)}</strong> position at Rozx.</p>
+                <p>Thank you for applying for the <strong>${escapeHtml(roleName)}</strong> position at Rozx.</p>
                 <p>We have received your application, including your resume and information. Our team is excited to review what you have built and your experience.</p>
                 <p><strong>What happens next?</strong></p>
                 <p>Our engineering and product teams review applications on a rolling basis. If your profile aligns with our needs, we will reach out to you within 3-5 business days to schedule an initial conversation.</p>
