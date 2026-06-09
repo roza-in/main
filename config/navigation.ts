@@ -176,7 +176,7 @@ export const footerNavItems = {
     items: [
       { label: "About", href: "/about" },
       { label: "Contact", href: "/contact" },
-      { label: "Careers", href: "/about#careers" },
+      { label: "Careers", href: "/careers" },
     ],
   },
   legal: {
