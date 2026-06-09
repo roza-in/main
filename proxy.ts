@@ -1,65 +1,114 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-// ─── In-Memory Rate Limiter ───────────────────────────────────
-// For production with multiple instances, replace with @upstash/ratelimit + Redis.
-// This implementation is safe for single-instance Vercel deployments (serverless edge).
-const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
+// ---------------------------------------------------------------------------
+// Sliding-window rate limiter
+// ---------------------------------------------------------------------------
+const RATE_LIMIT_WINDOW_MS = 60_000; // 1 minute
+const MAX_REQUESTS_PER_WINDOW = 5;
 
-function isRateLimited(
-  ip: string,
-  route: string,
-  maxRequests: number,
-  windowMs: number
-): boolean {
-  const key = `${ip}:${route}`;
-  const now = Date.now();
-  const entry = rateLimitMap.get(key);
-
-  if (!entry || now > entry.resetTime) {
-    rateLimitMap.set(key, { count: 1, resetTime: now + windowMs });
-    return false;
-  }
-
-  entry.count++;
-  return entry.count > maxRequests;
+interface RateLimitEntry {
+  timestamps: number[];
 }
 
-// Periodic cleanup to prevent memory leaks (runs on each request, O(n) amortized)
+const rateLimitMap = new Map<string, RateLimitEntry>();
 let lastCleanup = Date.now();
+
 function cleanupStaleEntries() {
   const now = Date.now();
-  if (now - lastCleanup < 60_000) return; // Cleanup at most once per minute
+  if (now - lastCleanup < 60_000) return; // Clean up at most once per minute
   lastCleanup = now;
   for (const [key, entry] of rateLimitMap) {
-    if (now > entry.resetTime) {
+    entry.timestamps = entry.timestamps.filter(
+      (ts) => now - ts < RATE_LIMIT_WINDOW_MS
+    );
+    if (entry.timestamps.length === 0) {
       rateLimitMap.delete(key);
     }
   }
 }
 
-// ─── Rate Limit Config ────────────────────────────────────────
-const RATE_LIMITS: Record<string, { max: number; windowMs: number }> = {
-  "/api/subscribe": { max: 5, windowMs: 60_000 },   // 5 per minute
-  "/api/trial":     { max: 3, windowMs: 60_000 },   // 3 per minute
-};
+function isRateLimited(identifier: string): boolean {
+  cleanupStaleEntries();
+  const now = Date.now();
+  const entry = rateLimitMap.get(identifier);
 
+  if (!entry) {
+    rateLimitMap.set(identifier, { timestamps: [now] });
+    return false;
+  }
+
+  // Remove timestamps outside the window
+  entry.timestamps = entry.timestamps.filter(
+    (ts) => now - ts < RATE_LIMIT_WINDOW_MS
+  );
+
+  if (entry.timestamps.length >= MAX_REQUESTS_PER_WINDOW) {
+    return true;
+  }
+
+  entry.timestamps.push(now);
+  return false;
+}
+
+// ---------------------------------------------------------------------------
+// CSRF Protection (Allowed Origins)
+// ---------------------------------------------------------------------------
+const ALLOWED_ORIGINS = new Set([
+  "https://rozx.in",
+  "https://www.rozx.in",
+]);
+
+function isOriginAllowed(origin: string): boolean {
+  if (ALLOWED_ORIGINS.has(origin)) return true;
+  
+  // Allow localhost in development
+  if (process.env.NODE_ENV === "development") {
+    if (origin.startsWith("http://localhost:") || origin.startsWith("http://127.0.0.1:")) {
+      return true;
+    }
+  }
+  
+  // Allow Vercel preview/deployment domains
+  if (origin.endsWith(".vercel.app")) {
+    return true;
+  }
+  
+  return false;
+}
+
+// ---------------------------------------------------------------------------
+// Proxy Entrypoint (replaces middleware in Next.js 16)
+// ---------------------------------------------------------------------------
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // ── Rate-limit API routes ──
-  const rateConfig = RATE_LIMITS[pathname];
-  if (rateConfig) {
-    cleanupStaleEntries();
+  // --- CSRF: Validate Origin on POST requests to API routes ---
+  if (request.method === "POST" && pathname.startsWith("/api/")) {
+    const origin = request.headers.get("origin");
 
-    const ip =
-      request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-      request.headers.get("x-real-ip") ||
-      "unknown";
-
-    if (isRateLimited(ip, pathname, rateConfig.max, rateConfig.windowMs)) {
+    if (origin && !isOriginAllowed(origin)) {
       return NextResponse.json(
-        { success: false, error: "Too many requests. Please try again later." },
+        { error: "Forbidden: Invalid origin" },
+        { status: 403 }
+      );
+    }
+  }
+
+  // --- Rate limiting on public API endpoints ---
+  if (
+    request.method === "POST" &&
+    (pathname === "/api/subscribe" || pathname === "/api/trial")
+  ) {
+    const forwarded = request.headers.get("x-forwarded-for");
+    const ip = forwarded?.split(",")[0]?.trim() || "unknown";
+    const rateLimitKey = `${ip}:${pathname}`;
+
+    if (isRateLimited(rateLimitKey)) {
+      return NextResponse.json(
+        {
+          error: "Too many requests. Please wait a minute before trying again.",
+        },
         { status: 429 }
       );
     }
@@ -69,5 +118,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/api/subscribe", "/api/trial"],
+  matcher: ["/api/subscribe", "/api/trial", "/studio/:path*"],
 };

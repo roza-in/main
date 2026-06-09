@@ -1,11 +1,21 @@
 import { NextResponse } from "next/server";
 import * as z from "zod";
+import { escapeHtml } from "@/lib/security/sanitize";
 
 const subscribeRequestSchema = z.object({
-  email: z.string().email("Invalid email address"),
+  email: z.string().email("Invalid email address").max(100, "Email is too long"),
 });
 
 export async function POST(request: Request) {
+  // Reject oversized payloads (max 10KB for a form submission)
+  const contentLength = request.headers.get("content-length");
+  if (contentLength && parseInt(contentLength, 10) > 10_240) {
+    return NextResponse.json(
+      { success: false, error: "Request body too large" },
+      { status: 413 }
+    );
+  }
+
   try {
     const body = await request.json();
     
@@ -47,7 +57,7 @@ export async function POST(request: Request) {
             subject: `[Newsletter] New Subscriber: ${email}`,
             html: `
               <h2>New Newsletter Subscriber</h2>
-              <p><strong>Email:</strong> ${email}</p>
+              <p><strong>Email:</strong> ${escapeHtml(email)}</p>
               <p><strong>Subscribed At (UTC):</strong> ${new Date().toISOString()}</p>
             `,
           }),
@@ -68,7 +78,7 @@ export async function POST(request: Request) {
               <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; border: 1px solid #eaeaea; padding: 20px; border-radius: 8px;">
                 <h2 style="color: #10b981; border-bottom: 2px solid #10b981; padding-bottom: 10px;">Thank you for subscribing!</h2>
                 <p>Hi there,</p>
-                <p>We've successfully added <strong>${email}</strong> to the Rozx newsletter list.</p>
+                <p>We've successfully added <strong>${escapeHtml(email)}</strong> to the Rozx newsletter list.</p>
                 <p>You will receive our weekly digests containing:</p>
                 <ul>
                   <li>Service industry operations blueprints</li>
@@ -115,3 +125,4 @@ export async function POST(request: Request) {
     );
   }
 }
+

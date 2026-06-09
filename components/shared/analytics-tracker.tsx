@@ -11,8 +11,7 @@ function TrackerComponent() {
   const searchParams = useSearchParams();
   const [isConsentGiven, setIsConsentGiven] = useState(false);
 
-  // 1. Initialize PostHog & Clarity once on mount if consent is granted
-  useEffect(() => {
+  const initializeAnalytics = () => {
     const consent = localStorage.getItem("rozx_cookie_consent");
     if (consent !== "all") return;
 
@@ -31,6 +30,20 @@ function TrackerComponent() {
 
     // Initialize Clarity
     initClarity();
+  };
+
+  // 1. Initialize PostHog & Clarity on mount or on consent change
+  useEffect(() => {
+    initializeAnalytics();
+
+    const handleConsentChange = () => {
+      initializeAnalytics();
+    };
+
+    window.addEventListener("rozx_cookie_consent_changed", handleConsentChange);
+    return () => {
+      window.removeEventListener("rozx_cookie_consent_changed", handleConsentChange);
+    };
   }, []);
 
   // 2. Track pageviews on pathname or search parameters changes

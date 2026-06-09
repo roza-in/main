@@ -54,14 +54,14 @@ export const siteConfig = {
     trialDays: 14,
     currency: "INR",
     currencySymbol: "₹",
-    annualDiscountPercent: 17,
+    annualDiscountPercent: 20,
     plans: [
       {
         id: "starter",
         name: "Starter",
         headline: "Everything to get started",
         monthlyPrice: 999,
-        annualPrice: 9999,
+        annualPrice: 9599,
         popular: false,
         features: [
           "1 Branch",
@@ -78,7 +78,7 @@ export const siteConfig = {
         name: "Growth",
         headline: "Scale with confidence",
         monthlyPrice: 1999,
-        annualPrice: 19999,
+        annualPrice: 19199,
         popular: true,
         features: [
           "3 Branches",
@@ -96,7 +96,7 @@ export const siteConfig = {
         name: "Professional",
         headline: "Full power, zero limits",
         monthlyPrice: 2999,
-        annualPrice: 29999,
+        annualPrice: 28799,
         popular: false,
         features: [
           "10 Branches",
