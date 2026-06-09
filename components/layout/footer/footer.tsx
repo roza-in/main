@@ -87,7 +87,7 @@ export function Footer() {
                 width={100}
                 height={28}
                 className="h-7 w-auto object-contain dark:brightness-110"
-                style={{ width: "auto" }}
+                style={{ width: "auto", height: "auto" }}
               />
             </Link>
 
