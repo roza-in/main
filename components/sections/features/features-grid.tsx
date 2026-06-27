@@ -21,7 +21,7 @@ export function FeaturesGrid() {
   };
 
   return (
-    <section id="features" className="py-20 bg-surface-1 border-y border-border/40 relative overflow-hidden">
+    <section id="features" className="py-20 md:py-24 bg-surface-1 border-y border-border/40 relative overflow-hidden">
       {/* Decorative vertical lines */}
       <div className="absolute top-[20%] left-[-10%] -z-10 h-[300px] w-[300px] rounded-full bg-primary/5 blur-3xl" />
       
@@ -55,7 +55,7 @@ export function FeaturesGrid() {
               <motion.div
                 key={item.label}
                 variants={cardVariants}
-                className={`group relative rounded-xl border border-border bg-card p-5.5 shadow-xs transition-all duration-200 hover:border-primary/50 hover:shadow-sm flex flex-col justify-between overflow-hidden ${
+                className={`group relative rounded-xl border border-border bg-card p-6 shadow-xs transition-all duration-200 hover:border-primary/50 hover:shadow-sm flex flex-col justify-between overflow-hidden ${
                   isFeatured 
                     ? "md:col-span-3 min-h-[260px] bg-gradient-to-tr from-surface-1 via-card to-card" 
                     : "md:col-span-2 min-h-[220px]"

@@ -82,7 +82,7 @@ export function AboutView() {
       <div id="journey" className="py-24 border-y border-border/40 relative bg-surface-1/40 scroll-mt-20">
         <div className="container max-w-5xl space-y-20">
           <div className="text-center max-w-2xl mx-auto space-y-3">
-            <h2 className="text-heading-2 text-3xl font-bold tracking-tight text-foreground">See Rozx journey</h2>
+            <h2 className="text-heading-2 text-foreground">See Rozx journey</h2>
             <p className="text-xs sm:text-sm text-muted-foreground">How we bootstrapped from a simple spark to an active scheduling platform in 2026.</p>
           </div>
 
@@ -204,7 +204,7 @@ export function AboutView() {
             <span className="text-[10px] font-bold uppercase tracking-widest text-primary bg-primary/10 px-2.5 py-0.5 rounded-full">
               Our Team
             </span>
-            <h2 className="text-heading-2 text-3xl font-bold tracking-tight text-foreground">
+            <h2 className="text-heading-2 text-foreground">
               Adding Flow to Rozx
             </h2>
             <p className="text-xs sm:text-sm text-muted-foreground">
@@ -284,7 +284,7 @@ export function AboutView() {
             <span className="text-[10px] font-bold uppercase tracking-widest text-primary bg-primary/10 px-2.5 py-0.5 rounded-full">
               Media & Community
             </span>
-            <h2 className="text-heading-2 text-2xl font-bold tracking-tight text-foreground">Rozx in the Press</h2>
+            <h2 className="text-heading-2 text-foreground">Rozx in the Press</h2>
             <p className="text-xs sm:text-sm text-muted-foreground">What builders and reviewers in the startup ecosystem are saying about our platform.</p>
           </div>
 

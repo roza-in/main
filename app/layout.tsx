@@ -1,34 +1,9 @@
 // Force global CSS rebuild v2
 import type { Metadata, Viewport } from "next";
-import { Inter, Plus_Jakarta_Sans, Geist_Mono } from "next/font/google";
 import { AnalyticsTracker } from "@/components/shared/analytics-tracker";
 import { CookieConsent } from "@/components/shared/cookie-consent";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  display: "swap",
-  preload: true,
-});
-
-const plusJakarta = Plus_Jakarta_Sans({
-  variable: "--font-display",
-  subsets: ["latin"],
-  weight: ["700"],
-  display: "swap",
-  preload: true,
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  weight: ["400"],
-  display: "swap",
-  preload: true,
-});
 
 export const metadata: Metadata = {
   title: {
@@ -92,7 +67,6 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${plusJakarta.variable} ${geistMono.variable}`}
       suppressHydrationWarning
     >
       <head>

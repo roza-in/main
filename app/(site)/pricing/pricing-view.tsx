@@ -209,7 +209,7 @@ export function PricingView() {
             <span className="text-[10px] font-bold uppercase tracking-widest text-primary bg-primary/10 px-2.5 py-0.5 rounded-full">
               Full Matrix
             </span>
-            <h2 className="text-heading-2 text-2xl font-bold tracking-tight text-foreground">Detailed Feature Breakdown</h2>
+            <h2 className="text-heading-2 text-foreground">Detailed Feature Breakdown</h2>
             <p className="text-xs sm:text-sm text-muted-foreground font-light">Compare capabilities across all operational modules to find your optimal setup.</p>
           </div>
 

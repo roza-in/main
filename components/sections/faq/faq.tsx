@@ -44,7 +44,7 @@ export function FAQ() {
   };
 
   return (
-    <section className="py-20 bg-muted/20 border-y border-border/60 relative overflow-hidden">
+    <section className="py-20 md:py-24 bg-muted/20 border-y border-border/60 relative overflow-hidden">
       <div className="container max-w-4xl">
         {/* Section Header */}
         <div className="text-center space-y-4 mb-16">
@@ -67,11 +67,11 @@ export function FAQ() {
             return (
               <div
                 key={index}
-                className="rounded-xl border border-border bg-card overflow-hidden shadow-sm transition-colors duration-200 hover:border-primary/40"
+                className="rounded-xl border border-border bg-card overflow-hidden shadow-xs transition-all duration-200 hover:border-primary/40 hover:shadow-sm"
               >
                 <button
                   onClick={() => toggleFAQ(index)}
-                  className="flex w-full items-center justify-between gap-4 p-5 text-left font-semibold text-foreground focus:outline-none"
+                  className="flex w-full items-center justify-between gap-4 p-6 text-left font-semibold text-foreground focus-visible:ring-1 focus-visible:ring-primary focus-visible:outline-none"
                   aria-expanded={isOpen}
                 >
                   <span className="flex items-center gap-3 text-sm sm:text-base">
@@ -93,7 +93,7 @@ export function FAQ() {
                       exit={{ height: 0, opacity: 0 }}
                       transition={{ duration: 0.25, ease: "easeInOut" }}
                     >
-                      <div className="border-t border-border/60 px-5 pb-5 pt-4 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                      <div className="border-t border-border/60 px-6 pb-6 pt-4 text-xs sm:text-sm text-muted-foreground leading-relaxed">
                         {item.answer}
                       </div>
                     </motion.div>

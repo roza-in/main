@@ -82,7 +82,7 @@ export function Testimonials() {
   const col3 = [testimonials[2], testimonials[5]];
 
   return (
-    <section className="py-24 bg-surface-1 border-t border-border/40 relative overflow-hidden">
+    <section className="py-20 md:py-24 bg-surface-1 border-t border-border/40 relative overflow-hidden">
       {/* Decorative background grid line element */}
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-[size:100%_48px] opacity-[0.07]" />
 
@@ -138,7 +138,7 @@ function TestimonialCard({ testimonial, variants }: { testimonial: Testimonial; 
   return (
     <motion.div
       variants={variants}
-      className="rounded-xl border border-border bg-card p-6.5 shadow-[0_2px_8px_-3px_rgba(0,0,0,0.03)] hover:shadow-[0_4px_16px_-4px_rgba(0,0,0,0.05)] hover:border-primary/40 transition-all duration-200 flex flex-col justify-between"
+      className="rounded-xl border border-border bg-card p-6 shadow-xs hover:shadow-sm hover:border-primary/40 transition-all duration-200 flex flex-col justify-between"
     >
       <div>
         {/* Quote message */}
