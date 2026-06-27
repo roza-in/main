@@ -98,7 +98,7 @@ export function proxy(request: NextRequest) {
   // --- Rate limiting on public API endpoints ---
   if (
     request.method === "POST" &&
-    (pathname === "/api/subscribe" || pathname === "/api/trial")
+    pathname === "/api/subscribe"
   ) {
     const forwarded = request.headers.get("x-forwarded-for");
     const ip = forwarded?.split(",")[0]?.trim() || "unknown";
@@ -118,5 +118,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/api/subscribe", "/api/trial", "/studio/:path*"],
+  matcher: ["/api/subscribe", "/studio/:path*"],
 };

@@ -107,6 +107,49 @@ export function FeaturesGrid() {
                     </div>
                   )}
 
+                  {/* Micro Visuals for Standard Cards */}
+                  {!isFeatured && item.label === "Customer CRM" && (
+                    <div className="hidden sm:flex gap-1.5 overflow-hidden mt-3">
+                      <span className="text-[9px] font-mono px-2 py-0.5 border border-border/40 rounded bg-background/45 text-muted-foreground/90">Priya S.</span>
+                      <span className="text-[9px] font-mono px-2 py-0.5 border border-border/40 rounded bg-background/45 text-muted-foreground/90">Amit K.</span>
+                      <span className="text-[9px] font-mono px-2 py-0.5 border border-border/40 rounded bg-background/45 text-muted-foreground/90">Sunita R.</span>
+                    </div>
+                  )}
+
+                  {!isFeatured && item.label === "Payments & Billing" && (
+                    <div className="hidden sm:flex items-center justify-between border border-border/45 rounded p-1.5 bg-background/45 text-[9px] font-mono mt-3">
+                      <span className="text-muted-foreground/90">Invoice #4802</span>
+                      <span className="font-bold text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded text-[8px]">PAID</span>
+                    </div>
+                  )}
+
+                  {!isFeatured && item.label === "Website Builder" && (
+                    <div className="hidden sm:block border border-border/45 rounded p-1.5 bg-background/45 text-[9px] font-mono text-muted-foreground/90 truncate mt-3">
+                      kapils.rozx.in
+                    </div>
+                  )}
+
+                  {!isFeatured && item.label === "Marketing" && (
+                    <div className="hidden sm:flex items-center justify-between border border-border/45 rounded p-1.5 bg-background/45 text-[9px] font-mono mt-3">
+                      <span className="text-muted-foreground/90">Promo SMS Campaign</span>
+                      <span className="text-primary font-bold bg-primary/10 px-1.5 py-0.5 rounded text-[8px]">SENT</span>
+                    </div>
+                  )}
+
+                  {!isFeatured && item.label === "Loyalty & Memberships" && (
+                    <div className="hidden sm:flex items-center gap-2 mt-3">
+                      <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-primary/10 border border-primary/20 text-primary font-bold">Gold Tier</span>
+                      <span className="text-[9px] font-mono text-muted-foreground/90">450 pts</span>
+                    </div>
+                  )}
+
+                  {!isFeatured && item.label === "Analytics" && (
+                    <div className="hidden sm:flex items-center justify-between border border-border/45 rounded p-1.5 bg-background/45 text-[9px] font-mono mt-3">
+                      <span className="text-muted-foreground/90">LTV Average</span>
+                      <span className="text-foreground font-bold">₹18,500</span>
+                    </div>
+                  )}
+
                   {/* Link action */}
                   <div className="pt-4 mt-auto">
                     <Link

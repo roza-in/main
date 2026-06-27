@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import * as z from "zod";
 import { escapeHtml } from "@/lib/security/sanitize";
 import { sanityClient } from "@/sanity/client/sanity";
+import { checkRateLimit, getClientIp } from "@/lib/security/rate-limit";
 
 const careerApplicationSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters").max(100, "Name is too long"),
@@ -17,6 +18,15 @@ const careerApplicationSchema = z.object({
 });
 
 export async function POST(request: Request) {
+  // Rate limiting — max 5 requests per IP per minute
+  const ip = getClientIp(request);
+  if (!checkRateLimit(ip)) {
+    return NextResponse.json(
+      { success: false, error: "Too many requests. Please try again in a minute." },
+      { status: 429 }
+    );
+  }
+
   // Reject oversized payloads (max 15KB for a job application form)
   const contentLength = request.headers.get("content-length");
   if (contentLength && parseInt(contentLength, 10) > 15_360) {

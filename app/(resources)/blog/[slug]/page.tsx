@@ -5,6 +5,20 @@ import { ArrowLeft, User, Calendar, BookOpen, Share2 } from "lucide-react";
 import { sanityClient } from "@/sanity/client/sanity";
 import { postBySlugQuery } from "@/sanity/queries/blog";
 
+export const revalidate = 3600; // Cache and update once per hour
+
+export async function generateStaticParams() {
+  try {
+    const blogSlugsQuery = `*[_type == "post" && defined(slug.current)].slug.current`;
+    const slugs = await sanityClient.fetch<string[]>(blogSlugsQuery);
+    if (!slugs) return [];
+    return slugs.map((slug) => ({ slug }));
+  } catch (error) {
+    console.error("Failed to fetch blog slugs for generateStaticParams:", error);
+    return [];
+  }
+}
+
 interface ArticleDetails {
   slug: string;
   title: string;

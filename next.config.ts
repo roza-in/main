@@ -64,6 +64,15 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: "/start-trial",
+        destination: "https://app.rozx.in/register",
+        permanent: false,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

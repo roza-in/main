@@ -1,8 +1,7 @@
-"use client";
-
 import React from "react";
 import { Check, X, ShieldAlert, BadgeInfo } from "lucide-react";
 import Link from "next/link";
+import { ROUTES } from "@/config/routes";
 import { Button } from "@/components/ui/button";
 
 interface ComparisonFeature {
@@ -101,7 +100,7 @@ export function Comparison({ competitorName, tagline, description, features }: C
               <p className="text-xs text-muted-foreground mt-0.5">We migrate all your client books, services catalog, and staff rosters with zero downtime.</p>
             </div>
           </div>
-          <Link href="/start-trial">
+          <Link href={ROUTES.app.register}>
             <Button variant="premium" className="font-bold text-xs">
               Start Free Trial
             </Button>

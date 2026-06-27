@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
 import { motion } from "motion/react";
+import { ROUTES } from "@/config/routes";
 import { Button } from "@/components/ui/button";
 
 export function CTASection() {
@@ -31,7 +32,7 @@ export function CTASection() {
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-              <Link href="/start-trial" className="w-full sm:w-auto">
+              <Link href={ROUTES.app.register} className="w-full sm:w-auto">
                 <Button variant="premium" size="lg" className="w-full sm:w-auto font-bold bg-white text-emerald-950 hover:bg-emerald-50 shadow-lg shadow-white/5">
                   Start Your 14-Day Free Trial
                 </Button>

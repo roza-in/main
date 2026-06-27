@@ -13,6 +13,12 @@ export const ROUTES = {
   docs: "/docs",
   help: "/help",
   
+  app: {
+    login: "https://app.rozx.in/login",
+    register: "https://app.rozx.in/register",
+    dashboard: "https://app.rozx.in",
+  },
+  
   features: {
     appointments: "/features/appointments",
     crm: "/features/crm",

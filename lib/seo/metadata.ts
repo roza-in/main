@@ -24,7 +24,7 @@ export function generateMetadata({
   const ogImage = image || siteConfig.ogImage;
 
   return {
-    title: fullTitle,
+    title: { absolute: fullTitle },
     description: fullDescription,
     keywords: siteConfig.keywords as unknown as string[],
     authors: [{ name: siteConfig.creator }],

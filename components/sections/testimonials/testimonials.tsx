@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { ShieldCheck, MessageSquare } from "lucide-react";
 import { motion } from "motion/react";
 
 interface Testimonial {
@@ -148,27 +147,19 @@ function TestimonialCard({ testimonial, variants }: { testimonial: Testimonial; 
         </p>
       </div>
 
-      {/* Author and Plan info */}
-      <div className="mt-6 pt-5 border-t border-border/60 flex items-center justify-between gap-3">
-        <div className="flex items-center gap-3">
-          {/* Uniform Minimal Avatar */}
-          <div className="h-8.5 w-8.5 rounded-full bg-surface-3 border border-border/60 text-muted-foreground flex items-center justify-center font-bold text-xs select-none">
-            {testimonial.initials}
-          </div>
-          <div className="text-left space-y-0.5">
-            <h4 className="text-xs font-bold text-foreground leading-none">
-              {testimonial.author}
-            </h4>
-            <p className="text-[10px] text-muted-foreground leading-none">
-              {testimonial.role}, <span className="font-semibold text-foreground/70">{testimonial.company}</span>
-            </p>
-          </div>
+      {/* Author info */}
+      <div className="mt-6 pt-5 border-t border-border/60 flex items-center gap-3">
+        {/* Uniform Minimal Avatar */}
+        <div className="h-8.5 w-8.5 rounded-full bg-surface-3 border border-border/60 text-muted-foreground flex items-center justify-center font-bold text-xs select-none">
+          {testimonial.initials}
         </div>
-
-        {/* Small verified tag / plan indicator */}
-        <div className="flex items-center gap-1 rounded-full bg-primary/5 border border-primary/10 px-2 py-0.5 text-[9px] font-bold text-primary uppercase tracking-wider shrink-0 select-none">
-          <ShieldCheck className="h-3 w-3 text-primary" />
-          <span>{testimonial.plan}</span>
+        <div className="text-left space-y-0.5">
+          <h4 className="text-xs font-bold text-foreground leading-none">
+            {testimonial.author}
+          </h4>
+          <p className="text-[10px] text-muted-foreground leading-none">
+            {testimonial.role}, <span className="font-semibold text-foreground/70">{testimonial.company}</span>
+          </p>
         </div>
       </div>
     </motion.div>

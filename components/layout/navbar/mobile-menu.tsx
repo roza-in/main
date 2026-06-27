@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Menu, X, ChevronDown, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { featureItems, industryItems, mainNavItems } from "@/config/navigation";
+import { ROUTES } from "@/config/routes";
 import { Button } from "@/components/ui/button";
 
 export function MobileMenu() {
@@ -135,12 +136,17 @@ export function MobileMenu() {
 
               {/* Action Buttons */}
               <div className="mt-6 border-t border-border/55 pt-5 space-y-3">
+                <Link href={ROUTES.app.login} onClick={toggleMenu} className="block w-full">
+                  <Button variant="ghost" className="w-full justify-center h-10 text-sm">
+                    Login
+                  </Button>
+                </Link>
                 <Link href="/book-demo" onClick={toggleMenu} className="block w-full">
                   <Button variant="outline" className="w-full justify-center h-10 text-sm">
                     Book a Demo
                   </Button>
                 </Link>
-                <Link href="/start-trial" onClick={toggleMenu} className="block w-full">
+                <Link href={ROUTES.app.register} onClick={toggleMenu} className="block w-full">
                   <Button variant="premium" className="w-full justify-center h-10 text-sm">
                     Start Free Trial
                   </Button>

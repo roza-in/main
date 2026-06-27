@@ -5,7 +5,7 @@ export const siteConfig = {
     "Manage your appointments, billing, staff, and customer relationships with a custom website for your brand. Start your free trial today.",
   url: "https://rozx.in",
   ogImage: "https://rozx.in/og/home.png",
-  creator: "Rozx",
+  creator: "Rozx Team",
   keywords: [
     "Rozx",
     "Rozx software",
