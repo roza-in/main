@@ -1,10 +1,9 @@
-"use client";
-
 import React from "react";
 import Link from "next/link";
-import { useParams, notFound } from "next/navigation";
+import { notFound } from "next/navigation";
 import { Terminal, Shield, Key, ArrowRight, Layers, Code, Cpu, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ROUTES } from "@/config/routes";
 
 interface DocContent {
   slug: string;
@@ -37,25 +36,28 @@ curl -X GET "https://api.rozx.in/v1/customers/cust_92a817b" \\
   "event": "appointment.created",
   "created_at": "2026-06-08T15:00:00Z",
   "data": {
-    "appointment_id": "apt_01h8a",
-    "customer_name": "Rahul Sharma",
-    "service": "Classic Hair Styling",
-    "amount": 1999.00
+    "id": "appt_1098a87b",
+    "customer": "Aarav Mehta",
+    "service": "Men's Styling & Trim",
+    "starts_at": "2026-06-10T11:30:00Z",
+    "amount_due_in_cents": 120000
   }
 }`,
     sections: [
-      { name: "Configuring Endpoints", text: "Add your server URLs inside settings. Choose event triggers (e.g. appointment.created, invoice.paid) to send JSON payloads." },
-      { name: "Signature Verification", text: "We sign every webhook request payload. Verify the X-Rozx-Signature header using your webhook signing secret key." }
+      { name: "Event Types", text: "We trigger webhooks for calendar updates (appointment.created, appointment.rescheduled, appointment.cancelled) and invoices (invoice.paid, invoice.refunded)." },
+      { name: "Signature Verification", text: "Each webhook payload contains an X-Rzx-Signature header. You must verify this signature using your secret signing key to protect your webhook endpoint from spoofing." }
     ]
   },
   "security": {
     slug: "security",
-    title: "Security & Encryption Protocols",
-    description: "Understand data compliance standards, sandbox details, and client data protection.",
-    codeBlock: `// API Headers Response
+    title: "Security & Sandbox Reference",
+    description: "Build robust integrations using sandbox test API keys and bank-grade encryption protocols.",
+    codeBlock: `# Verifying Security Headers Response
+curl -I -X GET "https://api.rozx.in/v1/health" \\
+  -H "Authorization: Bearer rzx_live_key_xyz"
+
 HTTP/1.1 200 OK
-Strict-Transport-Security: max-age=63072000; includeSubDomains
-Content-Security-Policy: default-src 'self'
+Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
 X-Frame-Options: DENY`,
     sections: [
       { name: "Bank-Grade Encryption", text: "All connection data payloads are encrypted using HTTPS TLS 1.3 standards. Client data records are protected with secure database keys." },
@@ -85,28 +87,42 @@ const docCategories = [
   }
 ];
 
-export default function DocPage() {
-  const { slug } = useParams();
-  const slugArray = Array.isArray(slug) ? slug : [];
+interface DocPageProps {
+  params: Promise<{
+    slug?: string[];
+  }>;
+}
+
+export default async function DocPage({ params }: DocPageProps) {
+  const resolvedParams = await params;
+  const slugArray = resolvedParams.slug || [];
   const slugStr = slugArray.join("/");
 
   // Render Docs Index if slug is empty
   if (slugArray.length === 0 || !slugStr) {
     return (
-      <div className="pt-24 pb-20 relative overflow-hidden bg-background">
+      <div className="relative overflow-hidden bg-background">
+        {/* Background ambient spots & grid */}
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-[size:100%_48px] opacity-10" />
-        <div className="container max-w-5xl">
-          <div className="text-left max-w-3xl space-y-4 mb-16">
-            <span className="rounded-full bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary uppercase tracking-wide inline-block">
-              API Docs
+        <div className="absolute top-0 left-[-15%] w-[60%] h-[60%] bg-radial from-primary/10 via-primary/5 to-transparent blur-[140px] -z-10 pointer-events-none" />
+        <div className="absolute top-[20%] right-[-15%] w-[60%] h-[60%] bg-radial from-primary/10 via-primary/5 to-transparent blur-[140px] -z-10 pointer-events-none" />
+
+        {/* Hero Section */}
+        <div className="pt-28 pb-20 relative overflow-hidden">
+          <div className="container max-w-5xl text-center space-y-8">
+            <span className="rounded-full bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary uppercase tracking-wider inline-block">
+              Developer Hub
             </span>
-            <h1 className="text-display text-4xl sm:text-5xl md:text-6xl tracking-tight">
-              Developer Documentation.
+            <h1 className="text-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl max-w-4xl mx-auto tracking-tight leading-none">
+              Developer <span className="text-primary font-bold">Documentation</span>.
             </h1>
-            <p className="text-body text-muted-foreground leading-relaxed">
-              Integrate Rozx live booking systems, POS checkouts, and customer profiles directly inside your custom web software.
+            <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed font-light">
+              Explore API parameters, webhooks, and secure integration patterns to connect Rozx to your custom internal systems.
             </p>
           </div>
+        </div>
+
+        <div className="container max-w-5xl">
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 text-left">
             {docCategories.map((cat, idx) => {
@@ -145,7 +161,7 @@ export default function DocPage() {
                 <p className="text-[11px] text-muted-foreground">Sandbox triggers and test API keys are available in your Rozx billing console on Professional tiers.</p>
               </div>
             </div>
-            <Link href="/start-trial" className="w-full md:w-auto shrink-0">
+            <Link href={ROUTES.app.register} className="w-full md:w-auto shrink-0">
               <Button variant="premium" className="w-full md:w-auto font-bold text-xs h-8 px-4">
                 Generate Keys
               </Button>
@@ -163,30 +179,39 @@ export default function DocPage() {
   }
 
   return (
-    <div className="pt-24 pb-20 relative overflow-hidden bg-background">
+    <div className="relative overflow-hidden bg-background">
+      {/* Background ambient spots & grid */}
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-[size:100%_48px] opacity-10" />
-      <div className="container max-w-4xl text-left">
-        <Link
-          href="/docs"
-          className="inline-flex items-center gap-1.5 text-xs font-bold text-muted-foreground hover:text-foreground mb-8"
-        >
-          <ArrowLeft className="h-3.5 w-3.5" />
-          Back to Docs
-        </Link>
+      <div className="absolute top-0 left-[-15%] w-[60%] h-[60%] bg-radial from-primary/10 via-primary/5 to-transparent blur-[140px] -z-10 pointer-events-none" />
+      <div className="absolute top-[20%] right-[-15%] w-[60%] h-[60%] bg-radial from-primary/10 via-primary/5 to-transparent blur-[140px] -z-10 pointer-events-none" />
 
-        <div className="space-y-4 mb-8">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-[10px] font-bold text-primary uppercase tracking-wide w-fit">
-            <Terminal className="h-3.5 w-3.5" />
-            Developer Reference
-          </span>
-          <h1 className="text-display text-2xl sm:text-3xl md:text-4xl tracking-tight">
-            {doc.title}
-          </h1>
-          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-            {doc.description}
-          </p>
-          <hr className="border-border/60" />
+      {/* Hero Section */}
+      <div className="pt-28 pb-16 relative overflow-hidden">
+        <div className="container max-w-4xl text-center space-y-6">
+          <Link
+            href="/docs"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-muted-foreground hover:text-foreground mb-4"
+          >
+            <ArrowLeft className="h-3.5 w-3.5" />
+            Back to Docs
+          </Link>
+          
+          <div className="space-y-4">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-[10px] font-bold text-primary uppercase tracking-wide w-fit mx-auto">
+              <Terminal className="h-3.5 w-3.5" />
+              Developer Reference
+            </span>
+            <h1 className="text-display text-3xl sm:text-4xl md:text-5xl tracking-tight leading-tight max-w-3xl mx-auto">
+              {doc.title}
+            </h1>
+            <p className="text-body text-muted-foreground leading-relaxed max-w-2xl mx-auto font-light">
+              {doc.description}
+            </p>
+          </div>
         </div>
+      </div>
+
+      <div className="container max-w-4xl">
 
         {/* Styled Code Block container */}
         <div className="rounded-xl border border-border bg-[#0a0a0c] p-5 overflow-x-auto shadow-sm mb-10 text-white font-mono text-[11px] sm:text-xs">

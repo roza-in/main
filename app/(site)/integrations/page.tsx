@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import Link from "next/link";
 import { Check, ArrowRight, ShieldCheck, Zap, Globe, CreditCard, Mail, Calendar } from "lucide-react";
@@ -47,21 +45,28 @@ const integrationsList = [
 
 export default function IntegrationsPage() {
   return (
-    <div className="pt-24 pb-20 relative overflow-hidden bg-background">
-      {/* Background gradients */}
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--color-primary-100)_0%,_transparent_60%)] opacity-55 dark:opacity-35" />
+    <div className="relative overflow-hidden bg-background">
+      {/* Background ambient spots & grid */}
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-[size:100%_48px] opacity-10" />
+      <div className="absolute top-0 left-[-15%] w-[60%] h-[60%] bg-radial from-primary/10 via-primary/5 to-transparent blur-[140px] -z-10 pointer-events-none" />
+      <div className="absolute top-[20%] right-[-15%] w-[60%] h-[60%] bg-radial from-primary/10 via-primary/5 to-transparent blur-[140px] -z-10 pointer-events-none" />
 
-      <div className="container max-w-5xl">
-        {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl">
+      {/* Hero Section */}
+      <div className="pt-28 pb-20 relative overflow-hidden">
+        <div className="container max-w-5xl text-center space-y-8">
+          <span className="rounded-full bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary uppercase tracking-wider inline-block">
             Integrations Catalog
+          </span>
+          <h1 className="text-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl max-w-4xl mx-auto tracking-tight leading-none">
+            Connect your <span className="text-primary font-bold">existing tools</span>.
           </h1>
-          <p className="text-muted-foreground text-base sm:text-lg">
-            Connect Rozx with the payment gateways, messaging networks, and calendar systems
-            your business already uses daily.
+          <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed font-light">
+            Connect Rozx with the payment gateways, messaging networks, and calendar systems your business already uses daily.
           </p>
         </div>
+      </div>
+
+      <div className="container max-w-5xl">
 
         {/* Integration Grid */}
         <div className="space-y-12 mb-16">

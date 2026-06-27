@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { sanityClient } from "@/sanity/client/sanity";
 
+export const revalidate = 86400; // Revalidate sitemap daily
+
 const BASE_URL = "https://rozx.in";
 
 // Queries to fetch active slugs from Sanity
@@ -28,7 +30,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/about",
     "/contact",
     "/book-demo",
-    "/start-trial",
     "/integrations",
     "/customers",
     "/careers",

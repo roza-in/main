@@ -44,23 +44,28 @@ export default async function BlogIndexPage() {
   const remainingPosts = displayPosts.length > 1 ? displayPosts.slice(1) : [];
 
   return (
-    <div className="pt-24 pb-20 relative overflow-hidden bg-background">
-      {/* Background decoration */}
+    <div className="relative overflow-hidden bg-background">
+      {/* Background ambient spots & grid */}
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-[size:100%_48px] opacity-10" />
+      <div className="absolute top-0 left-[-15%] w-[60%] h-[60%] bg-radial from-primary/10 via-primary/5 to-transparent blur-[140px] -z-10 pointer-events-none" />
+      <div className="absolute top-[20%] right-[-15%] w-[60%] h-[60%] bg-radial from-primary/10 via-primary/5 to-transparent blur-[140px] -z-10 pointer-events-none" />
 
-      <div className="container max-w-5xl">
-        {/* Header */}
-        <div className="text-left max-w-3xl space-y-4 mb-16">
-          <span className="rounded-full bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary uppercase tracking-wide inline-block">
+      {/* Hero Section */}
+      <div className="pt-28 pb-20 relative overflow-hidden">
+        <div className="container max-w-5xl text-center space-y-8">
+          <span className="rounded-full bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary uppercase tracking-wider inline-block">
             Resources Hub
           </span>
-          <h1 className="text-display text-4xl sm:text-5xl md:text-6xl tracking-tight">
-            The Rozx Blog.
+          <h1 className="text-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl max-w-4xl mx-auto tracking-tight leading-none">
+            The Rozx <span className="text-primary font-bold">Blog</span>.
           </h1>
-          <p className="text-body text-muted-foreground leading-relaxed">
+          <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed font-light">
             Operational blueprints, tax guidelines, and growth marketing guides curated specifically for service business leaders.
           </p>
         </div>
+      </div>
+
+      <div className="container max-w-5xl">
 
         {/* Empty State */}
         {displayPosts.length === 0 ? (

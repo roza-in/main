@@ -3,8 +3,23 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, CheckCircle2, Trophy, ArrowRight, AlertCircle, Sparkles, Building2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ROUTES } from "@/config/routes";
 import { sanityClient } from "@/sanity/client/sanity";
 import { caseStudyBySlugQuery } from "@/sanity/queries/blog";
+
+export const revalidate = 3600; // Cache and update once per hour
+
+export async function generateStaticParams() {
+  try {
+    const caseStudySlugsQuery = `*[_type == "case-study" && defined(slug.current)].slug.current`;
+    const slugs = await sanityClient.fetch<string[]>(caseStudySlugsQuery);
+    if (!slugs) return [];
+    return slugs.map((slug) => ({ slug }));
+  } catch (error) {
+    console.error("Failed to fetch case study slugs for generateStaticParams:", error);
+    return [];
+  }
+}
 
 interface CaseStudyDetails {
   slug: string;
@@ -175,7 +190,7 @@ export default async function CustomerDetailPage({ params }: { params: Promise<{
           <p className="text-sm text-muted-foreground max-w-lg mx-auto mb-6">
             Join our growing community of service businesses. Create your 14-day free trial account today.
           </p>
-          <Link href="/start-trial">
+          <Link href={ROUTES.app.register}>
             <Button variant="premium" className="font-bold text-sm">
               Start Free Trial
             </Button>

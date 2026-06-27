@@ -1,12 +1,22 @@
 import { NextResponse } from "next/server";
 import * as z from "zod";
 import { escapeHtml } from "@/lib/security/sanitize";
+import { checkRateLimit, getClientIp } from "@/lib/security/rate-limit";
 
 const subscribeRequestSchema = z.object({
   email: z.string().email("Invalid email address").max(100, "Email is too long"),
 });
 
 export async function POST(request: Request) {
+  // Rate limiting — max 5 requests per IP per minute
+  const ip = getClientIp(request);
+  if (!checkRateLimit(ip)) {
+    return NextResponse.json(
+      { success: false, error: "Too many requests. Please try again in a minute." },
+      { status: 429 }
+    );
+  }
+
   // Reject oversized payloads (max 10KB for a form submission)
   const contentLength = request.headers.get("content-length");
   if (contentLength && parseInt(contentLength, 10) > 10_240) {

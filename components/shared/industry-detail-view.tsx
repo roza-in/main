@@ -1,7 +1,6 @@
-"use client";
-
 import React from "react";
 import Link from "next/link";
+import { ROUTES } from "@/config/routes";
 import { Check, ArrowLeft, ArrowRight, Scissors, Droplets, Heart, Pen, Hand, Paintbrush } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { type IndustryDetail } from "@/lib/constants/industries";
@@ -66,7 +65,7 @@ export function IndustryDetailView({ industry }: IndustryDetailViewProps) {
               {industry.metricLabel}
             </p>
             <div className="pt-4">
-              <Link href="/start-trial">
+              <Link href={ROUTES.app.register}>
                 <Button variant="premium" className="w-full font-bold text-xs h-10 shadow-sm">
                   Start Your Free Trial
                 </Button>

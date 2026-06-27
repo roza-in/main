@@ -7,6 +7,7 @@ import { ChevronDown, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
 import { mainNavItems } from "@/config/navigation";
+import { ROUTES } from "@/config/routes";
 import { Button } from "@/components/ui/button";
 import { MegaMenu } from "./mega-menu";
 import { MobileMenu } from "./mobile-menu";
@@ -51,22 +52,25 @@ export function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-40 w-full transition-all duration-300 ${
-        isScrolled
-          ? "border-b border-border/80 bg-background/70 backdrop-blur-md shadow-xs h-14 md:h-16"
-          : "bg-transparent h-16"
+      className={`sticky top-0 z-40 w-full transition-all duration-500 ease-in-out ${
+        isScrolled ? "py-3 px-4 md:px-8 bg-transparent" : "py-0 px-4 md:px-8 bg-transparent"
       }`}
     >
-      <div className="container flex h-full items-center justify-between">
+      <div
+        className={`mx-auto flex items-center justify-between transition-all duration-500 ease-in-out w-full max-w-6xl px-6 ${
+          isScrolled
+            ? "h-14 rounded-2xl border border-border/70 bg-background/80 backdrop-blur-md shadow-sm"
+            : "h-16 border-0"
+        }`}
+      >
         {/* Brand Logo */}
         <Link href="/" className="flex items-center focus-visible:ring-2 focus-visible:ring-primary rounded-md px-1" aria-label="ROZX Home">
           <Image
             src="/logos/logo.png"
             alt="ROZX Logo"
-            width={100}
-            height={28}
-            className="h-7 w-auto object-contain dark:brightness-110"
-            style={{ width: "auto", height: "auto" }}
+            width={86}
+            height={22}
+            className="h-5.5 w-auto object-contain dark:brightness-110"
             priority
           />
         </Link>
@@ -143,12 +147,12 @@ export function Navbar() {
 
         {/* Action Buttons */}
         <div className="hidden md:flex items-center gap-3">
-          <Link href="/book-demo">
+          <Link href={ROUTES.app.login}>
             <Button variant="ghost" className="font-semibold text-sm">
-              Book a Demo
+              Login
             </Button>
           </Link>
-          <Link href="/start-trial">
+          <Link href={ROUTES.app.register}>
             <Button variant="premium" className="font-semibold text-sm flex items-center gap-1.5">
               Start Free Trial
               <ArrowRight className="h-4 w-4" />

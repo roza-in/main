@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-import { ShieldCheck, MessageSquare } from "lucide-react";
 import { motion } from "motion/react";
 
 interface Testimonial {
@@ -83,7 +82,7 @@ export function Testimonials() {
   const col3 = [testimonials[2], testimonials[5]];
 
   return (
-    <section className="py-24 bg-surface-1 border-t border-border/40 relative overflow-hidden">
+    <section className="py-20 md:py-24 bg-surface-1 border-t border-border/40 relative overflow-hidden">
       {/* Decorative background grid line element */}
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-[size:100%_48px] opacity-[0.07]" />
 
@@ -139,7 +138,7 @@ function TestimonialCard({ testimonial, variants }: { testimonial: Testimonial; 
   return (
     <motion.div
       variants={variants}
-      className="rounded-xl border border-border bg-card p-6.5 shadow-[0_2px_8px_-3px_rgba(0,0,0,0.03)] hover:shadow-[0_4px_16px_-4px_rgba(0,0,0,0.05)] hover:border-primary/40 transition-all duration-200 flex flex-col justify-between"
+      className="rounded-xl border border-border bg-card p-6 shadow-xs hover:shadow-sm hover:border-primary/40 transition-all duration-200 flex flex-col justify-between"
     >
       <div>
         {/* Quote message */}
@@ -148,27 +147,19 @@ function TestimonialCard({ testimonial, variants }: { testimonial: Testimonial; 
         </p>
       </div>
 
-      {/* Author and Plan info */}
-      <div className="mt-6 pt-5 border-t border-border/60 flex items-center justify-between gap-3">
-        <div className="flex items-center gap-3">
-          {/* Uniform Minimal Avatar */}
-          <div className="h-8.5 w-8.5 rounded-full bg-surface-3 border border-border/60 text-muted-foreground flex items-center justify-center font-bold text-xs select-none">
-            {testimonial.initials}
-          </div>
-          <div className="text-left space-y-0.5">
-            <h4 className="text-xs font-bold text-foreground leading-none">
-              {testimonial.author}
-            </h4>
-            <p className="text-[10px] text-muted-foreground leading-none">
-              {testimonial.role}, <span className="font-semibold text-foreground/70">{testimonial.company}</span>
-            </p>
-          </div>
+      {/* Author info */}
+      <div className="mt-6 pt-5 border-t border-border/60 flex items-center gap-3">
+        {/* Uniform Minimal Avatar */}
+        <div className="h-8.5 w-8.5 rounded-full bg-surface-3 border border-border/60 text-muted-foreground flex items-center justify-center font-bold text-xs select-none">
+          {testimonial.initials}
         </div>
-
-        {/* Small verified tag / plan indicator */}
-        <div className="flex items-center gap-1 rounded-full bg-primary/5 border border-primary/10 px-2 py-0.5 text-[9px] font-bold text-primary uppercase tracking-wider shrink-0 select-none">
-          <ShieldCheck className="h-3 w-3 text-primary" />
-          <span>{testimonial.plan}</span>
+        <div className="text-left space-y-0.5">
+          <h4 className="text-xs font-bold text-foreground leading-none">
+            {testimonial.author}
+          </h4>
+          <p className="text-[10px] text-muted-foreground leading-none">
+            {testimonial.role}, <span className="font-semibold text-foreground/70">{testimonial.company}</span>
+          </p>
         </div>
       </div>
     </motion.div>

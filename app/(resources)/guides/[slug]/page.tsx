@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { useParams, notFound } from "next/navigation";
+import { notFound } from "next/navigation";
 import { ArrowLeft, Clock, Award, BookOpen, Share2 } from "lucide-react";
 
 interface GuideDetails {
@@ -38,11 +38,11 @@ const guideDetailsList: Record<string, GuideDetails> = {
     level: "Advanced",
     steps: [
       "Step 1: Create Meta Developer Account: Go to developer.facebook.com, register as a Meta Developer, and set up a new Business Application.",
-      "Step 2: Add WhatsApp Product: Go to your app dashboard, click 'Add Product', select 'WhatsApp', and link it to your Meta Business Account.",
-      "Step 3: Register verified Phone Number: Add a telephone number that does not have an active consumer WhatsApp app. Verify it via SMS/Voice call OTP.",
-      "Step 4: Retrieve API Credentials: Copy your Temporary Access Token, Phone Number ID, and WhatsApp Business Account ID.",
-      "Step 5: Connect API in Rozx Dashboard: In Rozx, go to Settings -> Integrations -> WhatsApp Cloud API, paste the API credentials, and click 'Verify Connection'.",
-      "Step 6: Submit Message Templates for Approval: Create message template structures (booking alerts, reminders, win-backs) and submit them to Meta. Review times average 2 hours."
+      "Step 2: Add WhatsApp Product: Under App Dashboard -> Add Product, select WhatsApp. Get access credentials (temporary token and phone number ID).",
+      "Step 3: Setup Permanent API Token: Go to your Meta Business Manager, create a System User, and generate a permanent access token with whatsapp_business_messaging permissions.",
+      "Step 4: Add Phone Number: Add your real business phone number to the WhatsApp Cloud account. Verify it via SMS or voice code call.",
+      "Step 5: Connect API in Rozx Dashboard: Copy your access token, phone number ID, and business account ID into Settings -> Channels -> WhatsApp in Rozx.",
+      "Step 6: Setup Templates & Triggers: Create reminder messages (e.g. Appointment Confirmation, 24-Hour Reminder, Feedback Request). Submit templates for Meta approval, then trigger them automatically."
     ]
   },
   "configuring-gst-taxes": {
@@ -61,9 +61,15 @@ const guideDetailsList: Record<string, GuideDetails> = {
   }
 };
 
-export default function GuideDetailPage() {
-  const { slug } = useParams();
-  const slugStr = Array.isArray(slug) ? slug[0] : slug || "";
+interface GuideDetailPageProps {
+  params: Promise<{
+    slug: string;
+  }>;
+}
+
+export default async function GuideDetailPage({ params }: GuideDetailPageProps) {
+  const resolvedParams = await params;
+  const slugStr = resolvedParams.slug || "";
   const guide = guideDetailsList[slugStr];
 
   if (!guide) {

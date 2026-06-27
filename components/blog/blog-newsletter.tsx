@@ -59,7 +59,7 @@ export function BlogNewsletter() {
               onChange={(e) => setEmail(e.target.value)}
               disabled={isSubmitting}
               placeholder="Enter your email"
-              className="rounded-lg border border-border bg-background px-3 py-2 text-xs text-foreground focus:outline-none focus:ring-1 focus:ring-primary flex-1 h-9"
+              className="rounded-lg border border-border bg-background px-3 py-2 text-xs text-foreground focus-visible:ring-1 focus-visible:ring-primary focus-visible:outline-none flex-1 h-9"
             />
             <Button type="submit" variant="premium" className="font-bold text-xs h-9 px-4 shrink-0" disabled={isSubmitting}>
               {isSubmitting ? "Subscribing..." : "Subscribe"}

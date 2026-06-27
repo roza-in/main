@@ -140,23 +140,26 @@ export function CareersView({ initialJobs }: CareersViewProps) {
   ];
 
   return (
-    <div className="pt-24 pb-20 relative overflow-hidden bg-background">
+    <div className="relative overflow-hidden bg-background">
       {/* Background decoration grid */}
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-[size:100%_48px] opacity-10" />
 
-      <div className="container max-w-4xl text-left">
-        {/* Page Header */}
-        <div className="max-w-3xl space-y-4 mb-20">
-          <span className="rounded-full bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary uppercase tracking-wide inline-block">
+      {/* Hero Section */}
+      <div className="pt-28 pb-20 relative overflow-hidden">
+        <div className="container max-w-5xl text-center space-y-8">
+          <span className="rounded-full bg-primary/10 px-3.5 py-1 text-xs font-bold text-primary uppercase tracking-wider inline-block">
             Careers
           </span>
-          <h1 className="text-display text-4xl sm:text-5xl md:text-6xl tracking-tight">
-            Build the OS for <span className="text-primary">Local Commerce</span>.
+          <h1 className="text-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl max-w-4xl mx-auto tracking-tight leading-none">
+            Build the backbone of the <span className="text-primary font-bold">service economy</span>.
           </h1>
-          <p className="text-body text-muted-foreground leading-relaxed max-measure">
-            We are assembling a team of passionate developers, designers, and creators to simplify daily operations for salons, spas, and wellness centers globally.
+          <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed font-light">
+            We are building high-performance booking and billing engines for salon and wellness teams. Join our lean engineering or design crew.
           </p>
         </div>
+      </div>
+
+      <div className="container max-w-4xl">
 
         {/* Culture Section */}
         <div className="mb-20">

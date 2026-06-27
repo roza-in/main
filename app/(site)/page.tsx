@@ -1,34 +1,15 @@
 import React from "react";
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
 import { generateMetadata } from "@/lib/seo/metadata";
 import { organizationSchema, websiteSchema, softwareApplicationSchema, faqSchema } from "@/lib/seo/schema";
 import { Hero } from "@/components/sections/hero/hero";
-import { LazySection } from "@/components/shared/lazy-section";
-
-const FeaturesGrid = dynamic(() => import("@/components/sections/features/features-grid").then((m) => m.FeaturesGrid), {
-  loading: () => null,
-});
-
-const Industries = dynamic(() => import("@/components/sections/industries/industries").then((m) => m.Industries), {
-  loading: () => null,
-});
-
-const Testimonials = dynamic(() => import("@/components/sections/testimonials/testimonials").then((m) => m.Testimonials), {
-  loading: () => null,
-});
-
-const PricingPreview = dynamic(() => import("@/components/sections/pricing/pricing-preview").then((m) => m.PricingPreview), {
-  loading: () => null,
-});
-
-const FAQ = dynamic(() => import("@/components/sections/faq/faq").then((m) => m.FAQ), {
-  loading: () => null,
-});
-
-const CTASection = dynamic(() => import("@/components/sections/cta/cta-section").then((m) => m.CTASection), {
-  loading: () => null,
-});
+import { Mockup } from "@/components/sections/mockup/mockup";
+import { FeaturesGrid } from "@/components/sections/features/features-grid";
+import { Industries } from "@/components/sections/industries/industries";
+import { Testimonials } from "@/components/sections/testimonials/testimonials";
+import { PricingPreview } from "@/components/sections/pricing/pricing-preview";
+import { FAQ } from "@/components/sections/faq/faq";
+import { CTASection } from "@/components/sections/cta/cta-section";
 
 export const metadata: Metadata = generateMetadata({
   path: "/",
@@ -90,30 +71,19 @@ export default function HomePage() {
 
       {/* Page Sections */}
       <Hero />
+      <Mockup />
       
-      <LazySection height="550px">
-        <FeaturesGrid />
-      </LazySection>
+      <FeaturesGrid />
       
-      <LazySection height="500px">
-        <Industries />
-      </LazySection>
+      <Industries />
       
-      <LazySection height="550px">
-        <Testimonials />
-      </LazySection>
+      <Testimonials />
       
-      <LazySection height="600px">
-        <PricingPreview />
-      </LazySection>
+      <PricingPreview />
       
-      <LazySection height="500px">
-        <FAQ />
-      </LazySection>
+      <FAQ />
       
-      <LazySection height="400px">
-        <CTASection />
-      </LazySection>
+      <CTASection />
     </>
   );
 }

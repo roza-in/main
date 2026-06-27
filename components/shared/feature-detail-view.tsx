@@ -1,7 +1,6 @@
-"use client";
-
 import React from "react";
 import Link from "next/link";
+import { ROUTES } from "@/config/routes";
 import { Check, ArrowLeft, ArrowRight, Zap, Calendar, Users, CreditCard, Globe, Megaphone, Gift, BarChart3, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { type FeatureDetail } from "@/lib/constants/features";
@@ -66,7 +65,7 @@ export function FeatureDetailView({ feature }: FeatureDetailViewProps) {
               {feature.highlightLabel}
             </p>
             <div className="pt-4">
-              <Link href="/start-trial">
+              <Link href={ROUTES.app.register}>
                 <Button variant="premium" className="w-full font-bold text-xs h-10 shadow-sm">
                   Start Your Free Trial
                 </Button>

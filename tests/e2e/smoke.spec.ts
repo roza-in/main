@@ -6,10 +6,9 @@ test("homepage loads with correct title", async ({ page }) => {
   await expect(page.locator("h1")).toBeVisible();
 });
 
-test("trial page loads and form is visible", async ({ page }) => {
+test("trial page redirects to live registration platform", async ({ page }) => {
   await page.goto("/start-trial");
-  await expect(page.locator('input[id="email"]')).toBeVisible();
-  await expect(page.locator('button[type="submit"]')).toBeVisible();
+  await expect(page).toHaveURL(/.*app\.rozx\.in\/register.*/);
 });
 
 test("pricing page loads with plan cards", async ({ page }) => {

@@ -138,41 +138,42 @@ export function Footer() {
               Get weekly blueprints, marketing templates, and tax updates directly in your inbox.
             </p>
             
-            <form onSubmit={handleSubmit} className="flex flex-col gap-2">
-              <div className="relative flex items-center">
-                <input
-                  type="email"
-                  required
-                  disabled={isSubmitting}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your work email"
-                  className="w-full rounded-lg border border-border bg-background px-3 py-2 text-xs text-foreground placeholder-muted-foreground focus:outline-none focus:ring-1 focus:ring-primary disabled:opacity-50 h-9"
-                />
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="absolute right-1 top-1/2 -translate-y-1/2 rounded-md bg-primary p-1.5 text-primary-foreground hover:opacity-90 disabled:opacity-55 flex items-center justify-center h-7 w-7"
-                  aria-label="Subscribe"
-                >
-                  {isSubmitting ? (
-                    <div className="h-3 w-3 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                  ) : (
-                    <Send className="h-3 w-3" />
-                  )}
-                </button>
+            {isSubmitted ? (
+              <div className="text-xs font-semibold text-primary bg-primary/5 border border-primary/15 py-3 px-4 rounded-lg animate-fade-in text-center">
+                ✓ Successfully subscribed! Thank you.
               </div>
-              {submitError && (
-                <p className="text-[10px] text-destructive font-medium animate-fade-in">
-                  ⚠️ {submitError}
-                </p>
-              )}
-              {isSubmitted && (
-                <p className="text-[10px] text-primary font-medium animate-fade-in">
-                  ✓ Successfully subscribed!
-                </p>
-              )}
-            </form>
+            ) : (
+              <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+                <div className="relative flex items-center">
+                  <input
+                    type="email"
+                    required
+                    disabled={isSubmitting}
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter your work email"
+                    className="w-full rounded-lg border border-border bg-background px-3 py-2 text-xs text-foreground placeholder-muted-foreground focus-visible:ring-1 focus-visible:ring-primary focus-visible:outline-none disabled:opacity-50 h-9"
+                  />
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="absolute right-1 top-1/2 -translate-y-1/2 rounded-md bg-primary p-1.5 text-primary-foreground hover:opacity-90 disabled:opacity-55 flex items-center justify-center h-7 w-7"
+                    aria-label="Subscribe"
+                  >
+                    {isSubmitting ? (
+                      <div className="h-3 w-3 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                    ) : (
+                      <Send className="h-3 w-3" />
+                    )}
+                  </button>
+                </div>
+                {submitError && (
+                  <p className="text-[10px] text-destructive font-medium animate-fade-in">
+                    ⚠️ {submitError}
+                  </p>
+                )}
+              </form>
+            )}
 
             {/* Social Media Links */}
             <div className="flex items-center gap-2 pt-2">

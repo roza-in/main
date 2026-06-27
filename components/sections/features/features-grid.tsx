@@ -21,7 +21,7 @@ export function FeaturesGrid() {
   };
 
   return (
-    <section id="features" className="py-20 bg-surface-1 border-y border-border/40 relative overflow-hidden">
+    <section id="features" className="py-20 md:py-24 bg-surface-1 border-y border-border/40 relative overflow-hidden">
       {/* Decorative vertical lines */}
       <div className="absolute top-[20%] left-[-10%] -z-10 h-[300px] w-[300px] rounded-full bg-primary/5 blur-3xl" />
       
@@ -55,7 +55,7 @@ export function FeaturesGrid() {
               <motion.div
                 key={item.label}
                 variants={cardVariants}
-                className={`group relative rounded-xl border border-border bg-card p-5.5 shadow-xs transition-all duration-200 hover:border-primary/50 hover:shadow-sm flex flex-col justify-between overflow-hidden ${
+                className={`group relative rounded-xl border border-border bg-card p-6 shadow-xs transition-all duration-200 hover:border-primary/50 hover:shadow-sm flex flex-col justify-between overflow-hidden ${
                   isFeatured 
                     ? "md:col-span-3 min-h-[260px] bg-gradient-to-tr from-surface-1 via-card to-card" 
                     : "md:col-span-2 min-h-[220px]"
@@ -104,6 +104,49 @@ export function FeaturesGrid() {
                     <div className="hidden sm:block mt-3 border border-border/60 rounded-lg p-2 bg-background/50 text-[10px] space-y-1 font-mono text-muted-foreground">
                       <div className="text-foreground">Command: <span className="text-primary font-bold">"Generate daily report"</span></div>
                       <div>&gt; Initializing forecasting metrics... Done.</div>
+                    </div>
+                  )}
+
+                  {/* Micro Visuals for Standard Cards */}
+                  {!isFeatured && item.label === "Customer CRM" && (
+                    <div className="hidden sm:flex gap-1.5 overflow-hidden mt-3">
+                      <span className="text-[9px] font-mono px-2 py-0.5 border border-border/40 rounded bg-background/45 text-muted-foreground/90">Priya S.</span>
+                      <span className="text-[9px] font-mono px-2 py-0.5 border border-border/40 rounded bg-background/45 text-muted-foreground/90">Amit K.</span>
+                      <span className="text-[9px] font-mono px-2 py-0.5 border border-border/40 rounded bg-background/45 text-muted-foreground/90">Sunita R.</span>
+                    </div>
+                  )}
+
+                  {!isFeatured && item.label === "Payments & Billing" && (
+                    <div className="hidden sm:flex items-center justify-between border border-border/45 rounded p-1.5 bg-background/45 text-[9px] font-mono mt-3">
+                      <span className="text-muted-foreground/90">Invoice #4802</span>
+                      <span className="font-bold text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded text-[8px]">PAID</span>
+                    </div>
+                  )}
+
+                  {!isFeatured && item.label === "Website Builder" && (
+                    <div className="hidden sm:block border border-border/45 rounded p-1.5 bg-background/45 text-[9px] font-mono text-muted-foreground/90 truncate mt-3">
+                      kapils.rozx.in
+                    </div>
+                  )}
+
+                  {!isFeatured && item.label === "Marketing" && (
+                    <div className="hidden sm:flex items-center justify-between border border-border/45 rounded p-1.5 bg-background/45 text-[9px] font-mono mt-3">
+                      <span className="text-muted-foreground/90">Promo SMS Campaign</span>
+                      <span className="text-primary font-bold bg-primary/10 px-1.5 py-0.5 rounded text-[8px]">SENT</span>
+                    </div>
+                  )}
+
+                  {!isFeatured && item.label === "Loyalty & Memberships" && (
+                    <div className="hidden sm:flex items-center gap-2 mt-3">
+                      <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-primary/10 border border-primary/20 text-primary font-bold">Gold Tier</span>
+                      <span className="text-[9px] font-mono text-muted-foreground/90">450 pts</span>
+                    </div>
+                  )}
+
+                  {!isFeatured && item.label === "Analytics" && (
+                    <div className="hidden sm:flex items-center justify-between border border-border/45 rounded p-1.5 bg-background/45 text-[9px] font-mono mt-3">
+                      <span className="text-muted-foreground/90">LTV Average</span>
+                      <span className="text-foreground font-bold">₹18,500</span>
                     </div>
                   )}
 

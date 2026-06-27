@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Check, ArrowRight } from "lucide-react";
 import { siteConfig } from "@/config/site";
+import { ROUTES } from "@/config/routes";
 import { Button } from "@/components/ui/button";
 
 export function PricingPreview() {
@@ -63,7 +64,7 @@ export function PricingPreview() {
                 key={plan.id}
                 className={`relative rounded-xl border p-5 flex flex-col justify-between transition-all duration-200 ${
                   plan.popular
-                    ? "border-primary bg-surface-1 shadow-md scale-[1.02] z-10"
+                    ? "border-primary bg-surface-1 shadow-md ring-1 ring-primary/20 z-10"
                     : "border-border bg-card hover:border-primary/40 hover:shadow-xs"
                 }`}
               >
@@ -106,7 +107,7 @@ export function PricingPreview() {
                 <Link
                   href={
                     hasPrice
-                      ? `/start-trial?plan=${plan.id}&billing=${isAnnual ? "annual" : "monthly"}`
+                      ? `${ROUTES.app.register}?plan=${plan.id}&billing=${isAnnual ? "annual" : "monthly"}`
                       : "/contact?purpose=enterprise"
                   }
                   className="block w-full mt-auto"
