@@ -71,6 +71,7 @@ export function Navbar() {
             width={86}
             height={22}
             className="h-5.5 w-auto object-contain dark:brightness-110"
+            style={{ width: "auto", height: "auto" }}
             priority
           />
         </Link>
