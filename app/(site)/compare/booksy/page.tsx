@@ -47,7 +47,7 @@ export default function BooksyComparePage() {
     <Comparison
       competitorName="Booksy"
       tagline="Your clients. Your brand. 0% marketplace commissions."
-      description="Booksy functions primarily as a marketplace aggregator, which means they acquire new clients but charge commission cuts on those bookings. Rozx gives you a dedicated client portal under your own domain name with flat SaaS subscription terms."
+      description="Booksy functions primarily as a marketplace aggregator, which means they acquire new clients but charge commission cuts on those bookings. Rozx gives you a dedicated client portal under your own domain name with flat SUBSCRIPTION terms."
       features={features}
     />
   );
