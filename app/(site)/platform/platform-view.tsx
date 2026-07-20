@@ -192,7 +192,7 @@ export function PlatformView() {
             {/* Interactive workflow visual block */}
             <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-6 relative">
               {/* Horizontal line connector (hidden on mobile) */}
-              <div className="absolute top-[20px] left-[15%] right-[15%] h-0.5 border-t border-dashed border-border/80 -z-10 hidden sm:block" />
+              <div className="absolute top-5 left-[15%] right-[15%] h-0.5 border-t border-dashed border-border/80 -z-10 hidden sm:block" />
 
               <div className="flex flex-col items-center sm:items-start text-center sm:text-left space-y-3 pt-4 sm:pt-0">
                 <div className="h-10 w-10 rounded-xl border border-border bg-card flex items-center justify-center text-primary shadow-xs">

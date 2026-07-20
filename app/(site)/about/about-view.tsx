@@ -102,7 +102,7 @@ export function AboutView() {
                 </p>
               </div>
               <div className="flex justify-center md:justify-start md:pl-12">
-                <div className="rounded-2xl border border-border/70 bg-card p-6 shadow-xs w-full max-w-[280px] h-[180px] flex items-center justify-center hover:border-primary/45 transition-colors">
+                <div className="rounded-2xl border border-border/70 bg-card p-6 shadow-xs w-full max-w-70 h-45 flex items-center justify-center hover:border-primary/45 transition-colors">
                   <svg viewBox="0 0 200 150" className="w-full h-full text-primary" fill="none" stroke="currentColor">
                     <circle cx="100" cy="70" r="30" strokeWidth="1.5" strokeDasharray="3 3" opacity="0.6" />
                     <path d="M100 35 V45 M100 95 V105 M65 70 H75 M125 70 H135" strokeWidth="1.5" strokeLinecap="round" />
@@ -117,7 +117,7 @@ export function AboutView() {
             {/* Event 2 */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center text-left">
               <div className="flex justify-center md:justify-end md:pr-12 order-last md:order-first">
-                <div className="rounded-2xl border border-border/70 bg-card p-6 shadow-xs w-full max-w-[280px] h-[180px] flex items-center justify-center hover:border-primary/45 transition-colors">
+                <div className="rounded-2xl border border-border/70 bg-card p-6 shadow-xs w-full max-w-70 h-45 flex items-center justify-center hover:border-primary/45 transition-colors">
                   <svg viewBox="0 0 200 150" className="w-full h-full text-primary" fill="none" stroke="currentColor">
                     <rect x="30" y="30" width="140" height="90" rx="8" strokeWidth="2" fill="var(--card)" />
                     <line x1="30" y1="52" x2="170" y2="52" strokeWidth="1.5" />
@@ -153,7 +153,7 @@ export function AboutView() {
                 </p>
               </div>
               <div className="flex justify-center md:justify-start md:pl-12">
-                <div className="rounded-2xl border border-border/70 bg-card p-6 shadow-xs w-full max-w-[280px] h-[180px] flex items-center justify-center hover:border-primary/45 transition-colors">
+                <div className="rounded-2xl border border-border/70 bg-card p-6 shadow-xs w-full max-w-70 h-45 flex items-center justify-center hover:border-primary/45 transition-colors">
                   <svg viewBox="0 0 200 150" className="w-full h-full text-primary" fill="none" stroke="currentColor">
                     <circle cx="100" cy="75" r="40" strokeWidth="2" />
                     <ellipse cx="100" cy="75" rx="40" ry="15" strokeWidth="1.5" opacity="0.7" />
@@ -172,7 +172,7 @@ export function AboutView() {
             {/* Event 4 */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center text-left">
               <div className="flex justify-center md:justify-end md:pr-12 order-last md:order-first">
-                <div className="rounded-2xl border border-border/70 bg-card p-6 shadow-xs w-full max-w-[280px] h-[180px] flex items-center justify-center hover:border-primary/45 transition-colors">
+                <div className="rounded-2xl border border-border/70 bg-card p-6 shadow-xs w-full max-w-70 h-45 flex items-center justify-center hover:border-primary/45 transition-colors">
                   <svg viewBox="0 0 200 150" className="w-full h-full text-primary" fill="none" stroke="currentColor">
                     <path d="M 30 110 L 30 30 M 30 110 L 170 110" strokeWidth="1.5" strokeLinecap="round" opacity="0.5" />
                     <line x1="30" y1="80" x2="170" y2="80" strokeWidth="0.75" strokeDasharray="3 3" opacity="0.3" />

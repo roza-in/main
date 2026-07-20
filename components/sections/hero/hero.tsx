@@ -15,8 +15,8 @@ export function Hero() {
       {/* Dynamic Glowing background shapes */}
       <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
         {/* Soft glowing ambient spots */}
-        <div className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-primary/10 blur-[130px] dark:bg-primary/5" />
-        <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-primary/10 blur-[130px] dark:bg-primary/5" />
+        <div className="absolute -top-40 -left-40 w-150 h-150 rounded-full bg-primary/10 blur-[130px] dark:bg-primary/5" />
+        <div className="absolute -top-40 -right-40 w-150 h-150 rounded-full bg-primary/10 blur-[130px] dark:bg-primary/5" />
         {/* Diagonal glowing beams */}
         <div className="absolute top-[20%] left-[-20%] w-[50%] h-[60%] bg-linear-to-tr from-primary/15 via-primary/5 to-transparent blur-[120px] rotate-15 opacity-75 dark:opacity-40" />
         <div className="absolute top-[20%] right-[-20%] w-[50%] h-[60%] bg-linear-to-tl from-primary/15 via-primary/5 to-transparent blur-[120px] rotate-[-15deg] opacity-75 dark:opacity-40" />

@@ -148,7 +148,7 @@ export function PricingView() {
                 key={plan.id}
                 className={`flex flex-col justify-between text-left space-y-6 relative group ${
                   plan.popular
-                    ? "border-t-2 border-primary pt-[22px]"
+                    ? "border-t-2 border-primary pt-5.5"
                     : "border-t border-border/60 pt-6"
                 }`}
               >
@@ -214,7 +214,7 @@ export function PricingView() {
           </div>
 
           <div className="overflow-x-auto">
-            <table className="w-full border-collapse text-left text-xs sm:text-sm min-w-[640px]">
+            <table className="w-full border-collapse text-left text-xs sm:text-sm min-w-160">
               <thead>
                 <tr className="border-b border-border/60 bg-transparent">
                   <th className="pb-4 font-bold text-foreground w-[32%] uppercase tracking-wider text-[10px]">Feature Capability</th>

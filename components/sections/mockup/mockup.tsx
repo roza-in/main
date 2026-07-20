@@ -39,7 +39,7 @@ export function Mockup() {
         </div>
 
         {/* Full-width Mockup Browser Container */}
-        <div className="w-full rounded-2xl border border-border bg-card shadow-xl overflow-hidden flex flex-col relative dark:shadow-[0_0_50px_rgba(43,140,105,0.03)] min-h-[500px]">
+        <div className="w-full rounded-2xl border border-border bg-card shadow-xl overflow-hidden flex flex-col relative dark:shadow-[0_0_50px_rgba(43,140,105,0.03)] min-h-125">
           {/* Mockup Frame Header */}
           <div className="flex items-center justify-between border-b border-border bg-surface-1 py-3 px-4 select-none shrink-0">
             <div className="flex gap-1.5 shrink-0">
@@ -47,7 +47,7 @@ export function Mockup() {
               <span className="h-3 w-3 rounded-full bg-warning/80" />
               <span className="h-3 w-3 rounded-full bg-success/80" />
             </div>
-            <div className="rounded bg-surface-2 border border-border px-8 md:px-24 py-1 text-[10px] text-muted-foreground font-mono select-all truncate max-w-[280px] sm:max-w-md">
+            <div className="rounded bg-surface-2 border border-border px-8 md:px-24 py-1 text-[10px] text-muted-foreground font-mono select-all truncate max-w-70 sm:max-w-md">
               https://app.rozx.in
             </div>
             <div className="w-12 flex justify-end">
@@ -56,7 +56,7 @@ export function Mockup() {
           </div>
 
           {/* App Layout Container */}
-          <div className="flex flex-1 min-h-[440px] text-xs font-sans overflow-hidden">
+          <div className="flex flex-1 min-h-110 text-xs font-sans overflow-hidden">
             {/* Sidebar Mock */}
             <div className="w-40 shrink-0 border-r border-border bg-surface-1 hidden sm:flex flex-col justify-between py-4 select-none">
               <div className="space-y-4">
@@ -92,7 +92,7 @@ export function Mockup() {
             </div>
 
             {/* Main Content Area */}
-            <div className="flex-1 bg-surface-2/40 flex flex-col min-h-[440px] text-left">
+            <div className="flex-1 bg-surface-2/40 flex flex-col min-h-110 text-left">
               {/* Top Nav Strip */}
               <div className="h-12 border-b border-border bg-card px-4 flex items-center justify-between select-none shrink-0">
                 <h4 className="font-bold text-foreground tracking-tight text-xs uppercase">
@@ -180,7 +180,7 @@ export function Mockup() {
                 {/* Bottom Leaderboard / Graph Section */}
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-stretch select-none">
                   {/* Revenue Trend (Last 7 Days) widget */}
-                  <div className="md:col-span-8 rounded-xl border border-border bg-card p-4 flex flex-col justify-between min-h-[180px]">
+                  <div className="md:col-span-8 rounded-xl border border-border bg-card p-4 flex flex-col justify-between min-h-45">
                     <div className="flex items-center justify-between pb-2 border-b border-border/30">
                       <div className="flex items-center gap-1.5">
                         <TrendingUp className="h-3.5 w-3.5 text-primary" />
@@ -247,7 +247,7 @@ export function Mockup() {
                   </div>
 
                   {/* Staff Performance widget */}
-                  <div className="md:col-span-4 rounded-xl border border-border bg-card p-4 flex flex-col justify-between min-h-[180px]">
+                  <div className="md:col-span-4 rounded-xl border border-border bg-card p-4 flex flex-col justify-between min-h-45">
                     <div className="flex items-center justify-between pb-2 border-b border-border/30 mb-2">
                       <div className="flex items-center gap-1.5">
                         <Users className="h-3.5 w-3.5 text-primary" />
@@ -307,7 +307,7 @@ function MetricCard({ label, value, subtitle, iconBg, iconColor, icon: Icon, val
   return (
     <div className="rounded-xl border border-border bg-card p-3 shadow-xs flex justify-between items-start">
       <div className="space-y-1">
-        <span className="text-[8px] sm:text-[9px] uppercase font-bold tracking-wider text-muted-foreground block truncate max-w-[85px] sm:max-w-[95px]">
+        <span className="text-[8px] sm:text-[9px] uppercase font-bold tracking-wider text-muted-foreground block truncate max-w-21.25 sm:max-w-23.75">
           {label}
         </span>
         <div className="text-sm sm:text-base font-extrabold text-foreground tracking-tight leading-none">
