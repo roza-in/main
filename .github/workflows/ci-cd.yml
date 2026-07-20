@@ -38,5 +38,28 @@ jobs:
       - name: Verify Build Compile
         run: npm run build
         env:
-          NEXT_PUBLIC_API_URL: https://api.rozx.in
-          NEXT_PUBLIC_APP_ENV: production
+          NEXT_PUBLIC_API_URL: ${{ github.ref == 'refs/heads/main' && 'https://api.rozx.in' || 'https://staging.api.rozx.in' }}
+          NEXT_PUBLIC_APP_ENV: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
+
+  deploy-check:
+    name: Vercel Deployment Check
+    needs: lint-test-build
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/staging')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log Deployment Target
+        run: |
+          if [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            echo "=================================================="
+            echo "  MAIN MARKETING WEBSITE - PRODUCTION DEPLOYMENT"
+            echo "  Target Domain: https://rozx.in"
+            echo "  Platform: Vercel Production"
+            echo "=================================================="
+          else
+            echo "=================================================="
+            echo "  MAIN MARKETING WEBSITE - STAGING DEPLOYMENT"
+            echo "  Target Domain: https://staging.rozx.in"
+            echo "  Platform: Vercel Preview / Staging"
+            echo "=================================================="
+          fi
+

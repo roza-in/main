@@ -3,8 +3,10 @@ export const siteConfig = {
   title: "Rozx - Booking & Billing Software for Salons, Spas & Clinics",
   description:
     "Manage your appointments, billing, staff, and customer relationships with a custom website for your brand. Start your free trial today.",
-  url: "https://rozx.in",
-  ogImage: "https://rozx.in/og/home.png",
+  url: process.env.NEXT_PUBLIC_SITE_URL || "https://rozx.in",
+  ogImage: process.env.NEXT_PUBLIC_SITE_URL
+    ? `${process.env.NEXT_PUBLIC_SITE_URL}/og/home.png`
+    : "https://rozx.in/og/home.png",
   creator: "Rozx Team",
   keywords: [
     "Rozx",

@@ -1,7 +1,7 @@
-// Force global CSS rebuild v2
 import type { Metadata, Viewport } from "next";
 import { AnalyticsTracker } from "@/components/shared/analytics-tracker";
 import { CookieConsent } from "@/components/shared/cookie-consent";
+import { StructuredData } from "@/components/shared/structured-data";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
 
@@ -103,6 +103,7 @@ export default function RootLayout({
             `,
           }}
         />
+        <StructuredData />
         <AnalyticsTracker />
         <CookieConsent />
         {children}

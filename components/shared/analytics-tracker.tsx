@@ -21,7 +21,7 @@ function TrackerComponent() {
     if (posthogKey) {
       import("posthog-js").then(({ default: ph }) => {
         ph.init(posthogKey, {
-          api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://app.posthog.com",
+          api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://us.i.posthog.com",
           capture_pageview: false, // Track pageviews manually on route changes
           person_profiles: "identified_only",
         });
