@@ -33,8 +33,8 @@ export function BlogNewsletter() {
 
       setIsSubmitted(true);
       setEmail("");
-    } catch (err: any) {
-      setSubmitError(err?.message || "An error occurred. Please try again later.");
+    } catch (err: unknown) {
+      setSubmitError(err instanceof Error ? err.message : "An error occurred. Please try again later.");
     } finally {
       setIsSubmitting(false);
     }

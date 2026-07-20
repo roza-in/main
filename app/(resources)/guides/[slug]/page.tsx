@@ -1,9 +1,7 @@
-"use client";
-
 import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Clock, Award, BookOpen, Share2 } from "lucide-react";
+import { ArrowLeft, Clock, Award } from "lucide-react";
 
 interface GuideDetails {
   slug: string;
@@ -79,7 +77,7 @@ export default async function GuideDetailPage({ params }: GuideDetailPageProps) 
   return (
     <div className="pt-24 pb-20 relative overflow-hidden bg-background">
       {/* Background decoration */}
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-[size:100%_48px] opacity-10" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-size-[100%_48px] opacity-10" />
 
       <div className="container max-w-3xl text-left">
         {/* Back Link */}

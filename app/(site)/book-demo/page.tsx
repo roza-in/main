@@ -20,13 +20,13 @@ export default function BookDemoPage() {
   const calendlyUrl = process.env.NEXT_PUBLIC_CALENDLY_URL || siteConfig.contact.calendly;
 
   useEffect(() => {
-    setIsMounted(true);
+    queueMicrotask(() => setIsMounted(true));
   }, []);
 
   return (
     <div className="pt-24 pb-20 relative overflow-hidden bg-background">
       {/* Background decoration */}
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-[size:100%_48px] opacity-10" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-size-[100%_48px] opacity-10" />
 
       <div className="container max-w-6xl">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">

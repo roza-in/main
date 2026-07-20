@@ -26,16 +26,16 @@ interface ArticleDetails {
   author: string;
   publishedAt: string;
   category: string;
-  body: any; // PortableText block[]
+  body: unknown; // PortableText block[]
 }
 
-function renderPostBody(body: any): React.ReactNode[] {
+function renderPostBody(body: unknown): React.ReactNode[] {
   if (!body) return [];
   if (Array.isArray(body)) {
-    return body.map((block: any, idx: number) => {
-      if (block && block._type === "block" && block.children) {
-        const text = block.children.map((child: any) => child.text).join("");
-        const style = block.style || "normal";
+    return body.map((block: Record<string, unknown>, idx: number) => {
+      if (block && block._type === "block" && Array.isArray(block.children)) {
+        const text = (block.children as Array<{ text?: string }>).map((child) => child.text || "").join("");
+        const style = (block.style as string) || "normal";
 
         if (style === "h2") {
           return (
@@ -83,7 +83,8 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
   let article: ArticleDetails | null = null;
 
   try {
-    const rawPost = await sanityClient.fetch<any>(postBySlugQuery, { slug });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const rawPost = await sanityClient.fetch<Record<string, any>>(postBySlugQuery, { slug });
     if (rawPost) {
       article = {
         slug: rawPost.slug?.current || "",
@@ -112,7 +113,7 @@ export default async function ArticleDetailPage({ params }: { params: Promise<{ 
   return (
     <div className="pt-24 pb-20 relative overflow-hidden bg-background">
       {/* Background decoration */}
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-[size:100%_48px] opacity-10" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-size-[100%_48px] opacity-10" />
 
       <div className="container max-w-3xl text-left">
         {/* Back Link */}

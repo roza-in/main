@@ -52,7 +52,7 @@ export function FAQ() {
             Frequently Asked Questions
           </h2>
           <h3 className="text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl">
-            Got questions? We've got answers.
+            Got questions? We&apos;ve got answers.
           </h3>
           <p className="text-muted-foreground text-base sm:text-lg">
             Find quick answers to common questions about setting up, billing, and migrating to Rozx.

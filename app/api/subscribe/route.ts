@@ -113,8 +113,8 @@ export async function POST(request: Request) {
           errorDetails = { teamStatus: teamRes.status, teamText, subscriberStatus: subscriberRes.status, subscriberText };
           console.error("[Newsletter Subscription] Resend error payload: ", errorDetails);
         }
-      } catch (err: any) {
-        errorDetails = err?.message || err;
+      } catch (err: unknown) {
+        errorDetails = err instanceof Error ? err.message : String(err);
         console.error("[Newsletter Subscription] Resend API throw: ", err);
       }
     } else {
@@ -127,7 +127,7 @@ export async function POST(request: Request) {
       ...(errorDetails && { warning: "Email delivery encountered an issue. Your subscription was still recorded." }),
     });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("[Newsletter Subscription] Internal error in API route: ", error);
     return NextResponse.json(
       { success: false, error: "An internal server error occurred." },

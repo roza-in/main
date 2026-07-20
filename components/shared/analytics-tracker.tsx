@@ -15,7 +15,7 @@ function TrackerComponent() {
     const consent = localStorage.getItem("rozx_cookie_consent");
     if (consent !== "all") return;
 
-    setIsConsentGiven(true);
+    queueMicrotask(() => setIsConsentGiven(true));
 
     const posthogKey = process.env.NEXT_PUBLIC_POSTHOG_KEY;
     if (posthogKey) {

@@ -22,7 +22,7 @@ export function Mockup() {
   return (
     <section id="mockup" className="py-20 bg-background relative overflow-hidden border-b border-border/40">
       {/* Background decoration grid */}
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-surface-1)_1px,transparent_1px)] bg-[size:100%_48px] opacity-15" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-surface-1)_1px,transparent_1px)] bg-size-[100%_48px] opacity-15" />
 
       <div className="container max-w-6xl">
         {/* Section Header - Styled precisely like other landing sections */}
@@ -273,7 +273,7 @@ export function Mockup() {
 }
 
 /* Sidebar Navigation Item Helper */
-function SidebarItem({ icon: Icon, label, active }: { icon: any; label: string; active: boolean }) {
+function SidebarItem({ icon: Icon, label, active }: { icon: React.ComponentType<{ className?: string }>; label: string; active: boolean }) {
   return (
     <div
       className={`flex items-center justify-between gap-2 px-3 py-2 text-[11px] font-semibold transition-colors ${active
@@ -297,10 +297,11 @@ interface MetricCardProps {
   subtitle: string;
   iconBg: string;
   iconColor: string;
-  icon?: any;
+  icon?: React.ComponentType<{ className?: string }>;
   valueIcon?: string;
   trendGreen?: boolean;
 }
+
 
 function MetricCard({ label, value, subtitle, iconBg, iconColor, icon: Icon, valueIcon, trendGreen }: MetricCardProps) {
   return (

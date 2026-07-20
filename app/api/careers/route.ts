@@ -69,7 +69,7 @@ export async function POST(request: Request) {
       roleName = fallbackTitle;
 
       try {
-        const sanityJob = await sanityClient.fetch<any>(
+        const sanityJob = await sanityClient.fetch<{ title?: string }>(
           `*[_type == "job" && slug.current == $slug][0] { title }`,
           { slug: data.jobSlug }
         );
@@ -149,8 +149,8 @@ export async function POST(request: Request) {
           errorDetails = { teamStatus: teamRes.status, teamText, candidateStatus: candidateRes.status, candidateText };
           console.error("[Careers Application] Resend error payload: ", errorDetails);
         }
-      } catch (err: any) {
-        errorDetails = err?.message || err;
+      } catch (err: unknown) {
+        errorDetails = err instanceof Error ? err.message : String(err);
         console.error("[Careers Application] Resend API throw: ", err);
       }
     } else {
@@ -163,11 +163,12 @@ export async function POST(request: Request) {
       ...(errorDetails && { warning: "Application recorded, but confirmation email failed to dispatch." }),
     });
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("[Careers Application] Internal error in API route: ", error);
     return NextResponse.json(
       { success: false, error: "An internal server error occurred." },
       { status: 500 }
     );
   }
+
 }

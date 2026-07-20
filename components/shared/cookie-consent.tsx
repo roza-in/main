@@ -12,7 +12,7 @@ export function CookieConsent() {
     // Check if consent has already been given or declined
     const consent = localStorage.getItem("rozx_cookie_consent");
     if (!consent) {
-      setIsVisible(true);
+      queueMicrotask(() => setIsVisible(true));
     }
   }, []);
 

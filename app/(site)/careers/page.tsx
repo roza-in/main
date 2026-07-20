@@ -12,6 +12,7 @@ export const metadata: Metadata = generateMetadata({
 });
 
 export default async function CareersPage() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let jobs: any[] = [];
   try {
     jobs = await sanityClient.fetch(
@@ -31,3 +32,4 @@ export default async function CareersPage() {
 
   return <CareersView initialJobs={jobs} />;
 }
+

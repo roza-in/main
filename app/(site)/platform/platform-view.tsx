@@ -9,7 +9,6 @@ import {
   Gift,
   BarChart3,
   Sparkles,
-  ArrowRight,
   Shield,
   Zap,
   RefreshCw,
@@ -97,7 +96,7 @@ export function PlatformView() {
   return (
     <div className="relative overflow-hidden bg-background">
       {/* Background ambient spots & grid */}
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-[size:100%_48px] opacity-10" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-size-[100%_48px] opacity-10" />
       <div className="absolute top-0 left-[-15%] w-[60%] h-[60%] bg-radial from-primary/10 via-primary/5 to-transparent blur-[140px] -z-10 pointer-events-none" />
       <div className="absolute top-[20%] right-[-15%] w-[60%] h-[60%] bg-radial from-primary/10 via-primary/5 to-transparent blur-[140px] -z-10 pointer-events-none" />
 

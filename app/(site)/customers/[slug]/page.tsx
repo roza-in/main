@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, CheckCircle2, Trophy, ArrowRight, AlertCircle, Sparkles, Building2 } from "lucide-react";
+import { ArrowLeft, CheckCircle2, Trophy, AlertCircle, Sparkles, Building2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ROUTES } from "@/config/routes";
 import { sanityClient } from "@/sanity/client/sanity";
@@ -57,7 +57,8 @@ export default async function CustomerDetailPage({ params }: { params: Promise<{
   let study: CaseStudyDetails | null = null;
 
   try {
-    const rawStudy = await sanityClient.fetch<any>(caseStudyBySlugQuery, { slug });
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const rawStudy = await sanityClient.fetch<Record<string, any>>(caseStudyBySlugQuery, { slug });
     if (rawStudy) {
       const resultsText = rawStudy.results || "";
       
@@ -107,7 +108,7 @@ export default async function CustomerDetailPage({ params }: { params: Promise<{
 
   return (
     <div className="pt-24 pb-20 relative overflow-hidden bg-background">
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-[size:100%_48px] opacity-10" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-size-[100%_48px] opacity-10" />
 
       <div className="container max-w-4xl text-left">
         <Link
@@ -146,7 +147,7 @@ export default async function CustomerDetailPage({ params }: { params: Promise<{
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          <div className="rounded-2xl border border-rose-500/10 dark:border-rose-500/20 bg-rose-500/[0.02] dark:bg-rose-500/[0.04] p-6 hover:shadow-sm hover:border-rose-500/25 transition-all duration-300 space-y-4 flex flex-col justify-start">
+          <div className="rounded-2xl border border-rose-500/10 dark:border-rose-500/20 bg-rose-500/2 dark:bg-rose-500/4 p-6 hover:shadow-sm hover:border-rose-500/25 transition-all duration-300 space-y-4 flex flex-col justify-start">
             <h3 className="text-lg font-bold text-foreground flex items-center gap-2">
               <AlertCircle className="h-5 w-5 text-rose-500 shrink-0" />
               The Challenge
@@ -156,7 +157,7 @@ export default async function CustomerDetailPage({ params }: { params: Promise<{
             </p>
           </div>
 
-          <div className="rounded-2xl border border-emerald-500/10 dark:border-emerald-500/20 bg-emerald-500/[0.02] dark:bg-emerald-500/[0.04] p-6 hover:shadow-sm hover:border-emerald-500/25 transition-all duration-300 space-y-4 flex flex-col justify-start">
+          <div className="rounded-2xl border border-emerald-500/10 dark:border-emerald-500/20 bg-emerald-500/2 dark:bg-emerald-500/4 p-6 hover:shadow-sm hover:border-emerald-500/25 transition-all duration-300 space-y-4 flex flex-col justify-start">
             <h3 className="text-lg font-bold text-foreground flex items-center gap-2">
               <Sparkles className="h-5 w-5 text-emerald-500 shrink-0" />
               The Solution

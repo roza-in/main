@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
-import { Play, Check, Calendar, Users, IndianRupee, Shield, ArrowRight } from "lucide-react";
+import { Play, Check } from "lucide-react";
 import { motion } from "motion/react";
 import { ROUTES } from "@/config/routes";
 import { Button } from "@/components/ui/button";
@@ -11,7 +10,7 @@ export function Hero() {
   return (
     <section className="relative overflow-hidden bg-background pt-24 pb-16 md:pt-32 md:pb-24">
       {/* Decorative Grid Lines */}
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-[size:24px_24px] opacity-15 [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_right,var(--color-border)_1px,transparent_1px),linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-size-[24px_24px] opacity-15 mask-[radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
 
       {/* Dynamic Glowing background shapes */}
       <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
@@ -19,8 +18,8 @@ export function Hero() {
         <div className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-primary/10 blur-[130px] dark:bg-primary/5" />
         <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-primary/10 blur-[130px] dark:bg-primary/5" />
         {/* Diagonal glowing beams */}
-        <div className="absolute top-[20%] left-[-20%] w-[50%] h-[60%] bg-gradient-to-tr from-primary/15 via-primary/5 to-transparent blur-[120px] rotate-[15deg] opacity-75 dark:opacity-40" />
-        <div className="absolute top-[20%] right-[-20%] w-[50%] h-[60%] bg-gradient-to-tl from-primary/15 via-primary/5 to-transparent blur-[120px] rotate-[-15deg] opacity-75 dark:opacity-40" />
+        <div className="absolute top-[20%] left-[-20%] w-[50%] h-[60%] bg-linear-to-tr from-primary/15 via-primary/5 to-transparent blur-[120px] rotate-15 opacity-75 dark:opacity-40" />
+        <div className="absolute top-[20%] right-[-20%] w-[50%] h-[60%] bg-linear-to-tl from-primary/15 via-primary/5 to-transparent blur-[120px] rotate-[-15deg] opacity-75 dark:opacity-40" />
       </div>
 
       <div className="container relative text-center max-w-5xl">

@@ -27,7 +27,7 @@ interface Job {
   department: string;
   location: string;
   type: string;
-  description: any[];
+  description: unknown[];
 }
 
 interface CareersViewProps {
@@ -46,13 +46,13 @@ export function CareersView({ initialJobs }: CareersViewProps) {
     }
   };
 
-  function renderJobDescription(body: any): React.ReactNode[] {
+  function renderJobDescription(body: unknown): React.ReactNode[] {
     if (!body) return [];
     if (Array.isArray(body)) {
-      return body.map((block: any, idx: number) => {
-        if (block && block._type === "block" && block.children) {
-          const text = block.children.map((child: any) => child.text).join("");
-          const style = block.style || "normal";
+      return body.map((block: Record<string, unknown>, idx: number) => {
+        if (block && block._type === "block" && Array.isArray(block.children)) {
+          const text = (block.children as Array<{ text?: string }>).map((child) => child.text || "").join("");
+          const style = (block.style as string) || "normal";
   
           if (style === "h2") {
             return (
@@ -142,7 +142,7 @@ export function CareersView({ initialJobs }: CareersViewProps) {
   return (
     <div className="relative overflow-hidden bg-background">
       {/* Background decoration grid */}
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-[size:100%_48px] opacity-10" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-size-[100%_48px] opacity-10" />
 
       {/* Hero Section */}
       <div className="pt-28 pb-20 relative overflow-hidden">
@@ -210,7 +210,7 @@ export function CareersView({ initialJobs }: CareersViewProps) {
               </div>
               <h4 className="text-sm font-bold text-foreground">No Active Job Openings</h4>
               <p className="text-xs text-muted-foreground max-w-md mx-auto">
-                While we don't have active positions listed right now, we are always looking for exceptional builders. Submit a general application below, and we will get back to you if a fit arises!
+                While we don&apos;t have active positions listed right now, we are always looking for exceptional builders. Submit a general application below, and we will get back to you if a fit arises!
               </p>
               <div className="pt-2">
                 <Link href="/careers/apply?job=general-application">
