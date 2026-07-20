@@ -28,7 +28,7 @@ export function Navbar() {
 
   // Close dropdown on route change or clicking outside
   useEffect(() => {
-    setActiveDropdown(null);
+    queueMicrotask(() => setActiveDropdown(null));
   }, [pathname]);
 
   useEffect(() => {

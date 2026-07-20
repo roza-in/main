@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Compass, Eye, Heart, Shield, Sparkles, Code, Globe, TrendingUp, ArrowRight, Linkedin, ShieldCheck, Layers, Award } from "lucide-react";
+import { Sparkles, Code, Globe, ArrowRight, ShieldCheck, Layers, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ROUTES } from "@/config/routes";
 
@@ -54,7 +54,7 @@ export function AboutView() {
       {/* Hero Section */}
       <div className="pt-28 pb-20 relative overflow-hidden">
         {/* Background ambient spots & grid */}
-        <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-[size:100%_48px] opacity-10" />
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-size-[100%_48px] opacity-10" />
         <div className="absolute top-0 left-[-15%] w-[60%] h-[60%] bg-radial from-primary/10 via-primary/5 to-transparent blur-[140px] -z-10 pointer-events-none" />
         <div className="absolute top-[20%] right-[-15%] w-[60%] h-[60%] bg-radial from-primary/10 via-primary/5 to-transparent blur-[140px] -z-10 pointer-events-none" />
 
@@ -299,11 +299,11 @@ export function AboutView() {
               >
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <h4 className="text-sm font-extrabold text-foreground tracking-tight uppercase tracking-wider">{p.logoText}</h4>
+                    <h4 className="text-sm font-extrabold text-foreground tracking-tight uppercase">{p.logoText}</h4>
                     <span className="text-[9px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full">{p.badge}</span>
                   </div>
                   <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed italic font-light">
-                    "{p.quote}"
+                    &quot;{p.quote}&quot;
                   </p>
                 </div>
                 <div className="flex items-center gap-1.5 text-xs font-bold text-primary group-hover:underline">

@@ -111,8 +111,8 @@ export async function POST(request: Request) {
           errorDetails = { teamStatus: teamRes.status, teamText, userStatus: userRes.status, userText };
           console.error("[Contact] Resend error:", errorDetails);
         }
-      } catch (err: any) {
-        errorDetails = err?.message || err;
+      } catch (err: unknown) {
+        errorDetails = err instanceof Error ? err.message : String(err);
         console.error("[Contact] Resend API throw:", err);
       }
     } else {
@@ -124,11 +124,12 @@ export async function POST(request: Request) {
       emailSent,
       ...(errorDetails && { warning: "Message recorded but confirmation email failed." }),
     });
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("[Contact] Internal error:", error);
     return NextResponse.json(
       { success: false, error: "An internal server error occurred." },
       { status: 500 }
     );
   }
+
 }

@@ -1,4 +1,3 @@
-import { Calendar, Users, CreditCard, Globe, Megaphone, Gift, BarChart3, Sparkles, type LucideIcon } from "lucide-react";
 
 export interface FeatureDetail {
   slug: string;

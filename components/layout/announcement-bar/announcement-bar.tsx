@@ -12,7 +12,7 @@ export function AnnouncementBar() {
   useEffect(() => {
     const isDismissed = localStorage.getItem("rozx-announcement-dismissed");
     if (isDismissed === "true") {
-      setIsVisible(false);
+      queueMicrotask(() => setIsVisible(false));
     }
   }, []);
 

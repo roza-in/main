@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { motion } from "motion/react";
+import { motion, type Variants } from "motion/react";
 
 interface Testimonial {
   quote: string;
@@ -84,7 +84,7 @@ export function Testimonials() {
   return (
     <section className="py-20 md:py-24 bg-surface-1 border-t border-border/40 relative overflow-hidden">
       {/* Decorative background grid line element */}
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-[size:100%_48px] opacity-[0.07]" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-size-[100%_48px] opacity-[0.07]" />
 
       <div className="container max-w-6xl">
         {/* Section Header */}
@@ -134,7 +134,7 @@ export function Testimonials() {
   );
 }
 
-function TestimonialCard({ testimonial, variants }: { testimonial: Testimonial; variants: any }) {
+function TestimonialCard({ testimonial, variants }: { testimonial: Testimonial; variants: Variants }) {
   return (
     <motion.div
       variants={variants}
@@ -143,7 +143,7 @@ function TestimonialCard({ testimonial, variants }: { testimonial: Testimonial; 
       <div>
         {/* Quote message */}
         <p className="text-[13px] sm:text-sm text-foreground/90 leading-relaxed font-normal">
-          "{testimonial.quote}"
+          &quot;{testimonial.quote}&quot;
         </p>
       </div>
 

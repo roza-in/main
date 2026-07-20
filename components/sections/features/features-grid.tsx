@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { Sparkles, ArrowRight, Calendar, Users, CreditCard, Globe, Megaphone, Gift, BarChart3 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { motion } from "motion/react";
 import { featureItems } from "@/config/navigation";
 
@@ -47,7 +47,7 @@ export function FeaturesGrid() {
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-1 md:grid-cols-6 gap-5 items-stretch"
         >
-          {featureItems.map((item, index) => {
+          {featureItems.map((item) => {
             const IconComponent = item.icon;
             const isFeatured = item.label === "Appointments" || item.label === "AI Assistant";
 
@@ -57,7 +57,7 @@ export function FeaturesGrid() {
                 variants={cardVariants}
                 className={`group relative rounded-xl border border-border bg-card p-6 shadow-xs transition-all duration-200 hover:border-primary/50 hover:shadow-sm flex flex-col justify-between overflow-hidden ${
                   isFeatured 
-                    ? "md:col-span-3 min-h-[260px] bg-gradient-to-tr from-surface-1 via-card to-card" 
+                    ? "md:col-span-3 min-h-[260px] bg-linear-to-tr from-surface-1 via-card to-card" 
                     : "md:col-span-2 min-h-[220px]"
                 }`}
               >
@@ -102,7 +102,7 @@ export function FeaturesGrid() {
 
                   {isFeatured && item.label === "AI Assistant" && (
                     <div className="hidden sm:block mt-3 border border-border/60 rounded-lg p-2 bg-background/50 text-[10px] space-y-1 font-mono text-muted-foreground">
-                      <div className="text-foreground">Command: <span className="text-primary font-bold">"Generate daily report"</span></div>
+                      <div className="text-foreground">Command: <span className="text-primary font-bold">&quot;Generate daily report&quot;</span></div>
                       <div>&gt; Initializing forecasting metrics... Done.</div>
                     </div>
                   )}

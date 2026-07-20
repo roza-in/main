@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, Suspense } from "react";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { 
   CheckCircle2, 
@@ -22,7 +22,6 @@ function formatJobTitle(slug: string | null): string {
 
 function ApplyFormContent() {
   const searchParams = useSearchParams();
-  const router = useRouter();
   const jobSlug = searchParams.get("job") || "general-application";
   const displayTitle = formatJobTitle(jobSlug);
 
@@ -58,17 +57,18 @@ function ApplyFormContent() {
     
     try {
       new URL(resumeUrl);
-    } catch (_) {
+    } catch {
       errors.resumeUrl = "Please enter a valid URL (e.g. Google Drive, Dropbox link).";
     }
 
     if (portfolioUrl.trim() !== "") {
       try {
         new URL(portfolioUrl);
-      } catch (_) {
+      } catch {
         errors.portfolioUrl = "Please enter a valid URL (e.g. LinkedIn profile link).";
       }
     }
+
     
     if (coverLetter.trim().length < 10) {
       errors.coverLetter = "Tell us a bit more about yourself (at least 10 characters).";
@@ -126,7 +126,7 @@ function ApplyFormContent() {
           setFieldErrors(flatErrors);
         }
       }
-    } catch (err) {
+    } catch {
       setSubmitStatus("error");
       setErrorMessage("Network error: Failed to submit form. Please check your connection.");
     } finally {
@@ -328,7 +328,7 @@ export function ApplyView() {
   return (
     <div className="pt-24 pb-20 relative overflow-hidden bg-background">
       {/* Background decoration grid */}
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-[size:100%_48px] opacity-10" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-size-[100%_48px] opacity-10" />
       
       <Suspense fallback={
         <div className="container max-w-2xl text-center py-20">

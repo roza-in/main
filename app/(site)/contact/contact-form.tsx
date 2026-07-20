@@ -76,7 +76,7 @@ export function ContactForm() {
   return (
     <div className="relative overflow-hidden bg-background">
       {/* Background decoration */}
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-[size:100%_48px] opacity-10" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-size-[100%_48px] opacity-10" />
 
       {/* Hero Section */}
       <div className="pt-28 pb-20 relative overflow-hidden">

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Menu, X, ChevronDown, Sparkles } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
-import { featureItems, industryItems, mainNavItems } from "@/config/navigation";
+import { mainNavItems } from "@/config/navigation";
 import { ROUTES } from "@/config/routes";
 import { Button } from "@/components/ui/button";
 

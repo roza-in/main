@@ -36,7 +36,8 @@ export default async function CustomersPage() {
   let displayStudies: CaseStudy[] = [];
 
   try {
-    const rawStudies = await sanityClient.fetch<any[]>(caseStudiesQuery);
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const rawStudies = await sanityClient.fetch<Record<string, any>[]>(caseStudiesQuery);
     if (rawStudies && rawStudies.length > 0) {
       displayStudies = rawStudies.map((study, idx) => ({
         slug: study.slug?.current || "",
@@ -56,7 +57,7 @@ export default async function CustomersPage() {
   return (
     <div className="relative overflow-hidden bg-background">
       {/* Background ambient spots & grid */}
-      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-[size:100%_48px] opacity-10" />
+      <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-border)_1px,transparent_1px)] bg-size-[100%_48px] opacity-10" />
       <div className="absolute top-0 left-[-15%] w-[60%] h-[60%] bg-radial from-primary/10 via-primary/5 to-transparent blur-[140px] -z-10 pointer-events-none" />
       <div className="absolute top-[20%] right-[-15%] w-[60%] h-[60%] bg-radial from-primary/10 via-primary/5 to-transparent blur-[140px] -z-10 pointer-events-none" />
 
@@ -131,7 +132,7 @@ export default async function CustomersPage() {
         {/* Reassuring Banner */}
         <div className="rounded-3xl border border-border bg-muted/20 p-8 text-center max-w-4xl mx-auto">
           <h3 className="text-2xl font-bold text-foreground mb-3">Join our successful client base</h3>
-          <p className="text-sm text-muted-foreground max-w-lg mx-auto mb-6">Create your 14-day free trial account today. We'll import all your past data for free.</p>
+          <p className="text-sm text-muted-foreground max-w-lg mx-auto mb-6">Create your 14-day free trial account today. We&apos;ll import all your past data for free.</p>
           <Link href={ROUTES.app.register}>
             <Button variant="premium" className="font-bold text-sm">
               Start Free Trial

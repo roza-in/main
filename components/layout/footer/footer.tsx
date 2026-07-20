@@ -7,7 +7,6 @@ import { Mail, MapPin, Send, Instagram, Linkedin, Twitter, Facebook, Youtube } f
 import { siteConfig } from "@/config/site";
 import { footerNavItems } from "@/config/navigation";
 import { footerConfig } from "@/config/footer";
-import { Button } from "@/components/ui/button";
 
 export function Footer() {
   const [email, setEmail] = useState("");
@@ -40,8 +39,8 @@ export function Footer() {
       setIsSubmitted(true);
       setEmail("");
       setTimeout(() => setIsSubmitted(false), 6000);
-    } catch (err: any) {
-      setSubmitError(err?.message || "An error occurred. Please try again later.");
+    } catch (err: unknown) {
+      setSubmitError(err instanceof Error ? err.message : "An error occurred. Please try again later.");
     } finally {
       setIsSubmitting(false);
     }

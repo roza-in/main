@@ -3,7 +3,6 @@
 import React from "react";
 import Link from "next/link";
 import { Sparkles, ArrowRight, type LucideIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
 
 interface MegaMenuProps {
   items: {
@@ -12,11 +11,13 @@ interface MegaMenuProps {
     description?: string;
     icon?: LucideIcon;
   }[];
-  title: string;
+  title?: string;
   onItemClick?: () => void;
 }
 
-export function MegaMenu({ items, title, onItemClick }: MegaMenuProps) {
+
+
+export function MegaMenu({ items, onItemClick }: MegaMenuProps) {
   return (
     <div className="absolute top-full left-1/2 -translate-x-1/2 z-50 mt-1 w-[560px] rounded-xl border border-border bg-card/98 p-5 shadow-lg backdrop-blur-md">
       <div className="grid grid-cols-2 gap-3">

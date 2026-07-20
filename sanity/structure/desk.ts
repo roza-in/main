@@ -1,5 +1,7 @@
+import type { StructureResolver } from "sanity/structure";
+
 // desk structure builder with only active types
-export const deskStructure = (S: any) =>
+export const deskStructure: StructureResolver = (S) =>
   S.list()
     .title("Content Manager")
     .items([
