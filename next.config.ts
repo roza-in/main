@@ -70,7 +70,17 @@ const nextConfig: NextConfig = {
       {
         source: "/start-trial",
         destination: "https://app.rozx.in/register",
-        permanent: false,
+        permanent: true,
+      },
+      {
+        source: "/trial",
+        destination: "https://app.rozx.in/register",
+        permanent: true,
+      },
+      {
+        source: "/features/ai-assistant",
+        destination: "/features",
+        permanent: true,
       },
     ];
   },

@@ -21,19 +21,18 @@ export function CTASection() {
 
           <div className="relative z-10 max-w-3xl mx-auto space-y-8">
             <h3 className="text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl text-balance leading-[1.15]">
-              Ready to upgrade your service operations?
+              Ready to streamline your service business?
             </h3>
             
             <p className="text-emerald-100/85 text-base sm:text-lg max-w-2xl mx-auto text-balance leading-relaxed">
-              Join thousands of salons, spas, and aesthetic clinics using Rozx to run their business
-              smoother, reduce administrative hours, and double client retention.
+              Manage your appointments, staff schedules, customer records, and GST billing in one simple dashboard.
             </p>
 
             {/* CTAs */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
               <Link href={ROUTES.app.register} className="w-full sm:w-auto">
                 <Button variant="premium" size="lg" className="w-full sm:w-auto font-bold bg-white text-emerald-950 hover:bg-emerald-50 shadow-lg shadow-white/5">
-                  Start Your 14-Day Free Trial
+                  Get Started
                 </Button>
               </Link>
               <Link href="/book-demo" className="w-full sm:w-auto">
@@ -47,7 +46,7 @@ export function CTASection() {
             <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-3.5 text-xs sm:text-sm text-emerald-200/80 pt-4">
               <span className="flex items-center gap-1.5">
                 <Check className="h-4.5 w-4.5 text-emerald-400 shrink-0" />
-                14-day trial
+                0% commission
               </span>
               <span className="flex items-center gap-1.5">
                 <Check className="h-4.5 w-4.5 text-emerald-400 shrink-0" />
@@ -55,11 +54,11 @@ export function CTASection() {
               </span>
               <span className="flex items-center gap-1.5">
                 <Check className="h-4.5 w-4.5 text-emerald-400 shrink-0" />
-                Cancel anytime
+                Custom domain site
               </span>
               <span className="flex items-center gap-1.5">
                 <Check className="h-4.5 w-4.5 text-emerald-400 shrink-0" />
-                Free migration assistance
+                Assisted onboarding
               </span>
             </div>
           </div>

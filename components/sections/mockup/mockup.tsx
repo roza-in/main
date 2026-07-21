@@ -25,7 +25,7 @@ export function Mockup() {
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-surface-1)_1px,transparent_1px)] bg-size-[100%_48px] opacity-15" />
 
       <div className="container max-w-6xl">
-        {/* Section Header - Styled precisely like other landing sections */}
+        {/* Section Header */}
         <div className="max-w-2xl text-left space-y-4 mb-16">
           <span className="text-xs font-bold uppercase tracking-widest text-primary bg-primary/10 px-3 py-1 rounded-full inline-block">
             Console Preview
@@ -61,7 +61,7 @@ export function Mockup() {
             <div className="w-40 shrink-0 border-r border-border bg-surface-1 hidden sm:flex flex-col justify-between py-4 select-none">
               <div className="space-y-4">
                 {/* Brand Header */}
-                <div className="flex items-center font-bold text-foreground text-sm px-4 ">
+                <div className="flex items-center font-bold text-foreground text-sm px-4">
                   <Image
                     src="/logos/logo.png"
                     alt="Rozx Logo"
@@ -106,13 +106,13 @@ export function Mockup() {
                 </div>
               </div>
 
-              {/* Dashboard Content matching user Reference screenshot */}
+              {/* Dashboard Content */}
               <div className="flex-1 p-4 overflow-y-auto relative min-h-0 space-y-4">
                 {/* Welcome Block */}
                 <div className="space-y-0.5">
-                  <h3 className="text-base font-bold text-foreground">Good morning, Priya</h3>
+                  <h3 className="text-base font-bold text-foreground">Good morning</h3>
                   <p className="text-[10px] text-muted-foreground">
-                    Here&apos;s your overview for <strong className="text-foreground font-semibold">Kapils Salon</strong>.
+                    Here&apos;s your operational overview for <strong className="text-foreground font-semibold">Kapils Salon</strong>.
                   </p>
                 </div>
 
@@ -142,10 +142,10 @@ export function Mockup() {
                   <MetricCard
                     label="Today's Revenue"
                     value="₹24,850"
-                    subtitle="+12% vs last week"
+                    subtitle="Tracked POS & online"
                     trendGreen={true}
-                    iconBg="bg-emerald-500/10"
-                    iconColor="text-emerald-500"
+                    iconBg="bg-primary/10"
+                    iconColor="text-primary"
                     valueIcon="₹"
                   />
                   <MetricCard
@@ -153,26 +153,26 @@ export function Mockup() {
                     value="14 / 18"
                     subtitle="77% capacity fill"
                     trendGreen={true}
-                    iconBg="bg-emerald-500/10"
-                    iconColor="text-emerald-500"
+                    iconBg="bg-primary/10"
+                    iconColor="text-primary"
                     icon={Calendar}
                   />
                   <MetricCard
                     label="New Customers"
                     value="5"
-                    subtitle="+25% weekly lift"
+                    subtitle="Registered in CRM"
                     trendGreen={true}
-                    iconBg="bg-emerald-500/10"
-                    iconColor="text-emerald-500"
+                    iconBg="bg-primary/10"
+                    iconColor="text-primary"
                     icon={Users}
                   />
                   <MetricCard
                     label="30-Day Net Revenue"
                     value="₹4,18,500"
-                    subtitle="+18% MoM growth"
+                    subtitle="GST & POS total"
                     trendGreen={true}
-                    iconBg="bg-emerald-500/10"
-                    iconColor="text-emerald-500"
+                    iconBg="bg-primary/10"
+                    iconColor="text-primary"
                     icon={TrendingUp}
                   />
                 </div>
@@ -186,7 +186,7 @@ export function Mockup() {
                         <TrendingUp className="h-3.5 w-3.5 text-primary" />
                         <h4 className="text-[10px] sm:text-xs font-bold text-foreground">Revenue Trend <span className="text-muted-foreground font-normal">(Last 7 Days)</span></h4>
                       </div>
-                      <span className="text-[9px] font-bold text-emerald-500 bg-emerald-500/10 px-2 py-0.5 rounded-full">+12.4% MoM</span>
+                      <span className="text-[9px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full">Live Overview</span>
                     </div>
 
                     <div className="flex-1 flex flex-col justify-between pt-3">
@@ -278,7 +278,6 @@ function SidebarItem({ icon: Icon, label, active }: { icon: React.ComponentType<
     <div
       className={`flex items-center justify-between gap-2 px-3 py-2 text-[11px] font-semibold transition-colors ${active
         ? "text-primary font-bold border-r-4 border-primary -mr-2"
-
         : "text-muted-foreground hover:text-foreground hover:bg-surface-2"
         }`}
     >
@@ -302,8 +301,7 @@ interface MetricCardProps {
   trendGreen?: boolean;
 }
 
-
-function MetricCard({ label, value, subtitle, iconBg, iconColor, icon: Icon, valueIcon, trendGreen }: MetricCardProps) {
+function MetricCard({ label, value, subtitle, iconBg, iconColor, icon: Icon, valueIcon }: MetricCardProps) {
   return (
     <div className="rounded-xl border border-border bg-card p-3 shadow-xs flex justify-between items-start">
       <div className="space-y-1">
@@ -313,7 +311,7 @@ function MetricCard({ label, value, subtitle, iconBg, iconColor, icon: Icon, val
         <div className="text-sm sm:text-base font-extrabold text-foreground tracking-tight leading-none">
           {value}
         </div>
-        <span className={`text-[7px] sm:text-[8px] block ${trendGreen ? "text-emerald-500 font-semibold" : "text-muted-foreground"}`}>{subtitle}</span>
+        <span className="text-[7px] sm:text-[8px] block text-muted-foreground font-medium">{subtitle}</span>
       </div>
       <div className={`h-6 w-6 sm:h-7 sm:w-7 rounded-lg ${iconBg} flex items-center justify-center shrink-0`}>
         {Icon ? (

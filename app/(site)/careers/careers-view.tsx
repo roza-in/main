@@ -10,7 +10,6 @@ import {
   Shield, 
   Compass, 
   Award, 
-  Sparkles, 
   Coffee, 
   GraduationCap, 
   Plane,
@@ -113,7 +112,7 @@ export function CareersView({ initialJobs }: CareersViewProps) {
       desc: "Top-tier base salary combined with performance-linked rewards."
     },
     {
-      icon: Sparkles,
+      icon: Clock,
       title: "Hybrid / Remote Flexibility",
       desc: "Work from anywhere in India with flexible core hours."
     },

@@ -4,12 +4,17 @@ import { generateMetadata } from "@/lib/seo/metadata";
 import { sanityClient } from "@/sanity/client/sanity";
 import { CareersView } from "@/app/(site)/careers/careers-view";
 
-export const metadata: Metadata = generateMetadata({
-  title: "Careers - Join the Rozx Team",
-  description:
-    "Explore open positions and career opportunities at Rozx. Join us in building the booking and billing software that empowers salons, spas, and clinics globally.",
-  path: "/careers",
-});
+export const metadata: Metadata = {
+  ...generateMetadata({
+    title: "Careers - Rozx",
+    description: "Explore opportunities at Rozx.",
+    path: "/careers",
+  }),
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default async function CareersPage() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -32,4 +37,3 @@ export default async function CareersPage() {
 
   return <CareersView initialJobs={jobs} />;
 }
-

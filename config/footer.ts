@@ -4,8 +4,8 @@ import { siteConfig } from "./site";
 export const footerConfig = {
   columns: [
     {
-      title: "Resources",
-      links: footerNavItems.resources.items,
+      title: "Industries",
+      links: footerNavItems.solutions.items,
     },
     {
       title: "Compare",

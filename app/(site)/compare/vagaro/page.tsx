@@ -4,41 +4,41 @@ import { generateMetadata } from "@/lib/seo/metadata";
 import { Comparison } from "@/components/sections/comparison/comparison";
 
 export const metadata: Metadata = generateMetadata({
-  title: "Rozx vs Vagaro: SaaS Feature Comparison",
-  description: "Discover why aesthetic clinics and day spas select Rozx over Vagaro for unified POS checkouts and advanced marketing campaigns.",
+  title: "Rozx vs Vagaro: Feature & Pricing Comparison",
+  description: "Compare Rozx and Vagaro for aesthetic clinics, salons, and wellness retreats in India. Local GST invoicing and custom domain booking.",
   path: "/compare/vagaro",
 });
 
 const features = [
   {
-    name: "Sleek Modern UX & Speed",
-    desc: "Vagaro's administration interface is built on older legacy layouts. Rozx offers a premium, Stripe-like, high-speed UX.",
+    name: "Flat Subscription Pricing",
+    desc: "Single clear subscription plan (₹999/month) with no hidden add-on costs.",
     rozx: true,
-    competitor: false,
-  },
-  {
-    name: "Consolidated Multi-Location Controls",
-    desc: "Franchise operator consoles that synchronize services, permissions, and dashboards across 100+ branches instantly.",
-    rozx: true,
-    competitor: "Lacks Centralization",
+    competitor: "Per-Feature Add-Ons",
   },
   {
     name: "Custom Website Domain Mapping",
-    desc: "Map your own website domain (e.g. yourbusiness.com) with automatic CDN and SSL.",
+    desc: "Map your custom website domain (e.g. www.yourbrand.com) with SSL included.",
     rozx: true,
     competitor: false,
   },
   {
-    name: "Official WhatsApp Cloud API Campaigning",
-    desc: "Integrate verified WhatsApp marketing campaigns. Vagaro relies primarily on standard SMS and emails.",
+    name: "WhatsApp Cloud API Integration",
+    desc: "Dispatch official broadcast campaigns and appointment reminders via WhatsApp.",
     rozx: true,
     competitor: false,
   },
   {
-    name: "Flat Subscription Pricing",
-    desc: "Predictable pricing plans. Vagaro adds extra charges for additional features and staff accounts.",
+    name: "GST Invoicing & Thermal Printing",
+    desc: "Generate A4 PDF invoices or thermal receipts with itemized CGST, SGST, and SAC codes.",
     rozx: true,
-    competitor: false,
+    competitor: "US-Centric Billing",
+  },
+  {
+    name: "Digital Intake Forms & Disclaimers",
+    desc: "Collect signed disclaimers and progress notes with timestamped audit trails.",
+    rozx: true,
+    competitor: true,
   }
 ];
 
@@ -46,8 +46,8 @@ export default function VagaroComparePage() {
   return (
     <Comparison
       competitorName="Vagaro"
-      tagline="A modern booking and billing system. Built for speed."
-      description="Vagaro is feature-rich but contains a dated, complex administration menu that slows down checkouts. Rozx is built from the ground up for speed, offering aesthetic clinics and wellness retreats a unified portal with flat pricing."
+      tagline="Custom domain booking, GST billing, and transparent pricing."
+      description="Compare how Rozx provides an all-in-one booking, billing, and custom domain website platform tailored specifically for Indian service businesses."
       features={features}
     />
   );

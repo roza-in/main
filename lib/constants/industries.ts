@@ -1,3 +1,12 @@
+export interface IndustryPreviewData {
+  badge: string;
+  title: string;
+  subtitle: string;
+  stats: { label: string; value: string }[];
+  snippetTitle: string;
+  snippetItems: { title: string; meta: string; status?: string; statusColor?: string }[];
+}
+
 export interface IndustryDetail {
   slug: string;
   name: string;
@@ -7,160 +16,549 @@ export interface IndustryDetail {
   featuresList: { title: string; desc: string }[];
   metric: string;
   metricLabel: string;
-  iconName: "salon" | "spa" | "barbershop" | "nail-studio" | "makeup-studio" | "wellness-center" | "tattoo-studio" | "clinic";
+  iconName:
+    | "salon"
+    | "spa"
+    | "barbershop"
+    | "nail-studio"
+    | "makeup-studio"
+    | "wellness-center"
+    | "tattoo-studio"
+    | "clinic"
+    | "consulting"
+    | "coaching-training"
+    | "photography-creative"
+    | "pet-services"
+    | "auto-services"
+    | "repair-service"
+    | "classes-events";
+  preview: IndustryPreviewData;
 }
 
 export const INDUSTRY_DETAILS: Record<string, IndustryDetail> = {
   salon: {
     slug: "salon",
     name: "Salons & Parlours",
-    tagline: "Streamline booth rentals, stylist schedules, and walk-in queues.",
-    description: "Running a busy salon requires coordinating multiple stylists, processing retail products, and keeping appointment chairs filled. Rozx provides a live grid sheet calendar, automated WhatsApp client updates, product inventory tracking, and split-payment checkout POS designed for modern salons.",
+    tagline: "Manage stylist rosters, service durations, and GST thermal receipt checkouts.",
+    description: "Running a busy hair or beauty salon requires coordinating multiple stylists, managing service buffer times, and keeping chairs filled. Rozx provides a color-coded calendar grid, WhatsApp appointment reminders, customer color formula notes, and fast GST thermal billing.",
     workflows: [
-      "Manage stylist commission calculations automatically at checkout.",
-      "Enable visual service menus showing stylist tiers (Junior, Senior, Master).",
-      "Auto-dispatch SMS color formula records to client CRM profiles."
+      "Track stylist shift schedules, break slots, and working hours across branches.",
+      "Automatically calculate staff commissions based on completed services and retail product sales.",
+      "Store client hair color formula notes and past service preferences in CRM profiles."
     ],
     featuresList: [
-      { title: "Stylist Tiers & Pricing", desc: "Vary price points dynamically depending on the selected provider's experience level." },
-      { title: "Chair & Booth Allocator", desc: "Block equipment and chair bookings automatically to avoid physical booth conflicts." },
-      { title: "Product Retail POS", desc: "Cross-sell retail shampoos, hair oils, or serums with automated barcodes during service checkout." }
+      { title: "Stylist Shift Roster", desc: "Manage individual working hours, breaks, and assigned service categories per stylist." },
+      { title: "Service Buffer Times", desc: "Set mandatory cleanup and buffer intervals between appointments to prevent schedule overruns." },
+      { title: "GST POS & Thermal Billing", desc: "Print 80mm/58mm thermal receipts or send A4 PDF invoices with itemized GST." }
     ],
-    metric: "32%",
-    metricLabel: "Average Retail Sales Increase",
+    metric: "Multi-Stylist",
+    metricLabel: "Shift & Calendar Roster",
     iconName: "salon",
+    preview: {
+      badge: "Salon Operations Grid",
+      title: "Glow Hair Salon (Main Outlet)",
+      subtitle: "8 Stylists On Duty • 24 Appointments Today",
+      stats: [
+        { label: "Bookings Today", value: "24 Slots" },
+        { label: "Chair Occupancy", value: "92%" },
+        { label: "GST Thermal POS", value: "Ready ✓" }
+      ],
+      snippetTitle: "Live Salon Ticket Activity",
+      snippetItems: [
+        { title: "Keratin Treatment & Haircut", meta: "Stylist: Rahul M. • Client: Ananya S.", status: "In Chair", statusColor: "emerald" },
+        { title: "Color Touch-Up (Formula #7B)", meta: "Stylist: Neha K. • Notes Recorded", status: "Completed", statusColor: "indigo" },
+        { title: "Thermal Receipt #INV-0892", meta: "₹2,850.00 • GST 18% Included", status: "Paid ✓", statusColor: "emerald" }
+      ]
+    }
   },
   spa: {
     slug: "spa",
-    name: "Day Spas & Retreats",
-    tagline: "Manage room capacities, therapist shifts, and membership packages.",
-    description: "Create a calm experience for your guests. Rozx manages therapist assignments, locks treatment rooms automatically during bookings, schedules packages (e.g. massage + sauna), and processes recurring membership checkouts.",
+    name: "Day Spas & Wellness Retreats",
+    tagline: "Coordinate treatment rooms, therapist assignments, and spa membership packages.",
+    description: "Create a serene experience for your guests. Rozx manages therapist schedules, locks treatment rooms during bookings, handles prepaid spa packages, and processes recurring membership tiers.",
     workflows: [
-      "Auto-allocate therapist and room inventory simultaneously on booking.",
-      "Charge non-refundable deposits for premium wellness sessions.",
-      "Activate recurring monthly membership packages with POS credits."
+      "Lock treatment rooms and therapist schedules simultaneously upon client booking.",
+      "Sell multi-session spa bundles with automated POS redemption tracking.",
+      "Process monthly membership subscriptions for regular guests."
     ],
     featuresList: [
-      { title: "Room & Equipment Lock", desc: "Automatically assign massage tables, saunas, or pools to check-outs, preventing double allocations." },
-      { title: "Therapist Shift Planner", desc: "Schedule therapist slots, breaks, and vacations with simple drag-and-drop actions." },
-      { title: "Package Deals", desc: "Combine multiple services (massage, facials, herbal baths) into single-purchase packages." }
+      { title: "Room & Station Locking", desc: "Automatically assign massage tables or specialized rooms to prevent physical double-allocations." },
+      { title: "Therapist Availability Engine", desc: "Schedule therapist working hours, break times, and gender preferences seamlessly." },
+      { title: "Prepaid Spa Packages", desc: "Combine multiple services into prepaid bundles with tracked session balances." }
     ],
-    metric: "45%",
-    metricLabel: "Increase in Recurring Memberships",
+    metric: "Resource Lock",
+    metricLabel: "Therapist & Room Assignment",
     iconName: "spa",
+    preview: {
+      badge: "Spa Resource Control",
+      title: "Aura Luxury Spa & Wellness",
+      subtitle: "6 Treatment Rooms • 12 Therapists Roster",
+      stats: [
+        { label: "Room Lock Rate", value: "100%" },
+        { label: "Active Members", value: "64 Clients" },
+        { label: "Session Balance", value: "Tracked ✓" }
+      ],
+      snippetTitle: "Live Spa Session Dispatch",
+      snippetItems: [
+        { title: "Deep Tissue Therapy (Room 3)", meta: "Therapist: Maya S. • 60 Mins", status: "Occupied", statusColor: "amber" },
+        { title: "Aromatherapy Detox Pass", meta: "Prepaid Bundle Redemption (2/5 Left)", status: "Redeemed", statusColor: "indigo" },
+        { title: "Sanitization & Prep Buffer", meta: "Room 3 Sanitization Protocol", status: "Auto Lock", statusColor: "slate" }
+      ]
+    }
   },
   barbershop: {
     slug: "barbershop",
-    name: "Classic Barbershops",
-    tagline: "Walk-in queues, digital waitlists, and instant checkouts.",
-    description: "Barbershops move fast. Rozx streamlines both online appointment bookings and walk-in queues. Clients check in on a tablet at the door, view estimated wait times, and receive WhatsApp notifications when their barber's chair is ready.",
+    name: "Barbershops & Male Grooming",
+    tagline: "Quick appointment scheduling, walk-in logging, and WhatsApp reminders.",
+    description: "Keep your barber chairs full and eliminate long waiting lines. Rozx provides quick booking links, front desk walk-in registration, automated SMS/WhatsApp alerts, and multi-payment checkouts.",
     workflows: [
-      "Support both pre-scheduled sessions and door walk-in check-ins.",
-      "Send WhatsApp alerts to clients when they are next in queue.",
-      "Run targeted SMS marketing campaigns for hair and beard products."
+      "Manage pre-booked slots and walk-in queues on a unified front desk screen.",
+      "Dispatch WhatsApp reminders to reduce appointment no-shows.",
+      "Track barber commissions based on daily cuts and grooming product sales."
     ],
     featuresList: [
-      { title: "Door Tablet Check-In", desc: "Set up a customer-facing tablet screen at the entry gate for instant walk-in registration." },
-      { title: "Live Estimated Waits", desc: "Display waiting queues and times on shop monitors to manage client expectations." },
-      { title: "Tip checkout POS", desc: "Offer pre-set tip percentages (10%, 15%, 20%) to client checkout card terminals." }
+      { title: "Walk-in & Queue POS", desc: "Log walk-in customers instantly and assign them to the next available barber chair." },
+      { title: "No-Show Prevention", desc: "Send automated WhatsApp appointment reminders 24 hours and 2 hours prior." },
+      { title: "Barber Commission Logs", desc: "Track daily sales and calculate commission payouts per barber automatically." }
     ],
-    metric: "15 min",
-    metricLabel: "Average Check-In Wait Reduction",
+    metric: "Fast Queue",
+    metricLabel: "Walk-in & Appointment POS",
     iconName: "barbershop",
+    preview: {
+      badge: "Barbershop POS Terminal",
+      title: "The Heritage Barbershop",
+      subtitle: "5 Barber Chairs • Live Walk-in Queue",
+      stats: [
+        { label: "Cuts Today", value: "38 Clients" },
+        { label: "Wait Time", value: "12 Mins" },
+        { label: "No-Show Rate", value: "< 1.5%" }
+      ],
+      snippetTitle: "Live Barber Queue & POS",
+      snippetItems: [
+        { title: "Beard Trim & Royal Shave", meta: "Barber: Vikram • Walk-in Client", status: "In Chair", statusColor: "emerald" },
+        { title: "Fade Cut & Head Massage", meta: "Barber: Karan • Pre-Booked (App)", status: "Next Up", statusColor: "indigo" },
+        { title: "Grooming Wax Sale", meta: "Retail Product Add-on • Ticket #089", status: "Sold ✓", statusColor: "emerald" }
+      ]
+    }
   },
   "nail-studio": {
     slug: "nail-studio",
-    name: "Nail Studios & Bars",
-    tagline: "Manage nail art slots, technician tools, and group packages.",
-    description: "Coordinate intricate nail art sessions. Rozx schedules detailed service slots, ensures technician assignments, manages group booking slots for bridal groups, and updates client logs with preferred colors.",
+    name: "Nail Studios & Art Bars",
+    tagline: "Custom service add-on pricing, technician scheduling, and photo portfolios.",
+    description: "Manage complex nail art appointments, gel extensions, and removal add-ons. Rozx handles multi-service durations, technician assignments, and recurring maintenance visit reminders.",
     workflows: [
-      "Track lacquer numbers and acrylic models inside customer profiles.",
-      "Coordinate multiple technician schedules for group parties.",
-      "Distribute review links immediately via SMS following checkout."
+      "Structure multi-tier service pricing (extensions, art levels, removals).",
+      "Assign specialist technicians based on art skills and availability.",
+      "Send automatic 3-week refill reminders via WhatsApp to retain clients."
     ],
     featuresList: [
-      { title: "Group Booking Shell", desc: "Allow clients to book slots for groups, assigning separate technicians to each visitor." },
-      { title: "Technician Commissions", desc: "Compute commission splits based on service levels or upsold charms." },
-      { title: "Material Inventories", desc: "Track levels of base coats, colors, gel lights, and files, with automated restock alerts." }
+      { title: "Add-On Service Tiering", desc: "Allow clients to select art levels, nail lengths, and removals during online booking." },
+      { title: "Technician Skill Matching", desc: "Assign specific nail technicians based on specialty (e.g. Acrylics, Gel Art, Extensions)." },
+      { title: "Refill Reminder Triggers", desc: "Automatically schedule 3-week refill prompts to maximize repeat visit frequency." }
     ],
-    metric: "28%",
-    metricLabel: "Growth in Multi-Client Bookings",
+    metric: "Add-On Builder",
+    metricLabel: "Art Level & Refill Reminders",
     iconName: "nail-studio",
+    preview: {
+      badge: "Nail Studio POS Engine",
+      title: "Polished Nail Bar & Studio",
+      subtitle: "4 Tech Stations • Custom Add-ons Active",
+      stats: [
+        { label: "Refill Rate", value: "84%" },
+        { label: "Avg Add-On", value: "+₹650" },
+        { label: "Tech Roster", value: "4 Active" }
+      ],
+      snippetTitle: "Live Nail Station Dispatch",
+      snippetItems: [
+        { title: "Gel Extensions + Chrome Art", meta: "Tech: Sneha • Add-on: Removal", status: "In Progress", statusColor: "amber" },
+        { title: "WhatsApp Refill Reminder", meta: "Triggered for Client: Riya M. (21 Days)", status: "Sent ✓", statusColor: "emerald" },
+        { title: "Nail Care Oil Add-on", meta: "Retail Product Sale at POS", status: "Paid", statusColor: "indigo" }
+      ]
+    }
   },
   "makeup-studio": {
     slug: "makeup-studio",
-    name: "Makeup & Bridal Studios",
-    tagline: "Coordinate off-site bridal bookings and advanced cosmetics.",
-    description: "Manage high-value event bookings. Rozx handles off-site travel coordinates, computes travel fees, processes milestone contract deposits, and organizes team schedules for event mornings.",
+    name: "Makeup Studios & Bridal Artists",
+    tagline: "Bridal booking packages, advance deposit management, and artist rosters.",
+    description: "Handle high-value bridal and event makeup bookings effortlessly. Rozx manages advance deposit requirements, multi-artist team assignments, travel logs, and consultation notes.",
     workflows: [
-      "Generate custom contract files for bridal bookings.",
-      "Receive partial milestone payments leading up to the main event date.",
-      "Add off-site travel fees to billing invoices automatically."
+      "Collect advance booking prepayments to secure peak bridal dates.",
+      "Assign senior and assistant artists to multi-person bridal parties.",
+      "Store trial makeup notes, skin preferences, and reference images in client CRM profiles."
     ],
     featuresList: [
-      { title: "Milestone POS Invoices", desc: "Split large contracts into automated payment blocks (booking fee, trial fee, final payment)." },
-      { title: "Travel Coordinates Map", desc: "Record off-site event addresses, coordinates, and times on staff calendars." },
-      { title: "Visual Style Portfolios", desc: "Upload trial pictures and product lists directly to the client CRM file." }
+      { title: "Advance Deposit Engine", desc: "Require partial or full prepayments online via Razorpay to lock event bookings." },
+      { title: "Bridal Party Scheduler", desc: "Coordinate time slots and artist rosters for large wedding parties seamlessly." },
+      { title: "Trial Notes & CRM History", desc: "Log product shades, skin undertones, and trial notes for perfection on wedding day." }
     ],
-    metric: "98%",
-    metricLabel: "On-Time Event Completion Rates",
+    metric: "Deposit Lock",
+    metricLabel: "Bridal & Event Reservations",
     iconName: "makeup-studio",
+    preview: {
+      badge: "Bridal Booking Engine",
+      title: "Glamour Glow Bridal Studio",
+      subtitle: "3 Lead Artists • Advance Deposits Active",
+      stats: [
+        { label: "Bridal Parties", value: "14 Booked" },
+        { label: "Deposit Lock", value: "100%" },
+        { label: "Trial Records", value: "Saved ✓" }
+      ],
+      snippetTitle: "Bridal Event Dispatch Log",
+      snippetItems: [
+        { title: "Bridal Makeup + 4 Bridesmaids", meta: "Lead Artist: Simran • Venue Location", status: "Deposit Paid", statusColor: "emerald" },
+        { title: "Pre-Bridal Trial Session", meta: "Shade Notes: MAC NC25 • Airbrush", status: "Recorded", statusColor: "indigo" },
+        { title: "Advance Receipt #INV-902", meta: "₹15,000.00 Advance Deposit Collected", status: "Verified ✓", statusColor: "emerald" }
+      ]
+    }
   },
   "wellness-center": {
     slug: "wellness-center",
-    name: "Wellness & Therapy Centers",
-    tagline: "Support patient consultations, secure records, and packages.",
-    description: "For holistic therapy, chiropractic, or massage clinics. Rozx offers consultation calendars, secure client histories, class schedules, and automated invoice records.",
+    name: "Wellness Centers & Holistic Care",
+    tagline: "Multi-practitioner scheduling, consultation notes, and recurring care plans.",
+    description: "Integrate holistic wellness services into one smooth management system. Rozx handles multi-specialist calendars, digital consultation notes, recurring package subscriptions, and client visit tracking.",
     workflows: [
-      "Manage client session packages with trackable usage balances.",
-      "Ensure secure history logs containing intake files.",
-      "Distribute custom reminder details for session preparation."
+      "Schedule appointments across naturopaths, nutritionists, and therapy specialists.",
+      "Store detailed consultation records and progress notes in secure client CRM files.",
+      "Sell multi-week wellness care packages with automated visit tracking."
     ],
     featuresList: [
-      { title: "Session Balance POS", desc: "Sell bundles of 10 therapy sessions and decrement remaining balances automatically at checkout." },
-      { title: "Secure History Files", desc: "Document client progress, medical disclaimers, and intake files with security encryption." },
-      { title: "Class Schedules", desc: "Coordinate group sessions or workshops, allowing multiple clients to book slots." }
+      { title: "Multi-Practitioner Grid", desc: "Manage distinct calendars for various wellness disciplines under a single workspace." },
+      { title: "Consultation Notes & Records", desc: "Document treatment plans, dietary recommendations, and progress notes." },
+      { title: "Wellness Subscription Packages", desc: "Create recurring care plans and multi-session therapy packages effortlessly." }
     ],
-    metric: "40%",
-    metricLabel: "Reduction in No-Shows with Reminders",
+    metric: "Care Plans",
+    metricLabel: "Multi-Specialist Coordination",
     iconName: "wellness-center",
+    preview: {
+      badge: "Wellness Practice System",
+      title: "Prana Holistic Wellness",
+      subtitle: "5 Specialists • Care Plan Subscriptions",
+      stats: [
+        { label: "Care Plans", value: "42 Active" },
+        { label: "Practitioners", value: "5 Roster" },
+        { label: "Client Records", value: "Secure 🔒" }
+      ],
+      snippetTitle: "Live Practitioner Schedule",
+      snippetItems: [
+        { title: "Ayurvedic Consultation & Therapy", meta: "Practitioner: Dr. Ananya • Room 1", status: "In Session", statusColor: "amber" },
+        { title: "6-Week Detox Care Package", meta: "Session 4/6 Redeemed at Check-in", status: "Redeemed", statusColor: "indigo" },
+        { title: "Digital Health Note #904", meta: "Consultation Summary & Diet Plan", status: "Saved ✓", statusColor: "emerald" }
+      ]
+    }
   },
   "tattoo-studio": {
     slug: "tattoo-studio",
-    name: "Tattoo & Art Studios",
-    tagline: "Organize custom sketches, artist sessions, and consent forms.",
-    description: "Tattooing requires detailed consultation and consent. Rozx compiles consultation requests, schedules artist time blocks, links sketches to client records, and handles digital waiver forms.",
+    name: "Tattoo Studios & Piercing Parlours",
+    tagline: "Consultation deposit collection, digital consent waivers, and artist rosters.",
+    description: "Protect your studio and keep artists focused on ink. Rozx collects consultation deposits, manages digital consent waivers with signatures, tracks hourly rates, and logs artist commissions.",
     workflows: [
-      "Capture digital consent waivers and store them inside client profiles.",
-      "Book artist consultation sessions and collect sketch deposits.",
-      "Attach image files of custom artwork to booking records."
+      "Collect advance booking deposits for custom tattoo design consultations.",
+      "Capture digital consent waivers and ID verification on tablet devices prior to sessions.",
+      "Track artist hourly rates, session durations, and material add-ons during POS checkout."
     ],
     featuresList: [
-      { title: "Digital Consent Waivers", desc: "Have clients sign disclaimers and consent forms directly on an iPad at checkout." },
-      { title: "Sketch Deposits POS", desc: "Collect custom sketch fees that can be adjusted on final pricing totals." },
-      { title: "Artist Calendars", desc: "Configure custom artist hours, commission structures, and bench allocations." }
+      { title: "Digital Consent Waivers", desc: "Deploy digital consent forms with age verification, health checklists, and touch signatures." },
+      { title: "Deposit & Session Booking", desc: "Require advance deposits via Razorpay to lock in custom design and tattooing hours." },
+      { title: "Artist Split Calculation", desc: "Automatically calculate studio vs artist revenue splits based on custom percentage rules." }
     ],
-    metric: "85%",
-    metricLabel: "Time Saved on Waiver Auditing",
+    metric: "Paperless Waivers",
+    metricLabel: "Digital Consent & Artist Splits",
     iconName: "tattoo-studio",
+    preview: {
+      badge: "Tattoo Studio Control",
+      title: "Ink & Art Tattoo Collective",
+      subtitle: "4 Resident Artists • Digital Waivers Active",
+      stats: [
+        { label: "Waiver Status", value: "Signed ✓" },
+        { label: "Deposits Locked", value: "100%" },
+        { label: "Artist Split POS", value: "Automated" }
+      ],
+      snippetTitle: "Studio Session & Waiver Logs",
+      snippetItems: [
+        { title: "Custom Sleeve Session (3 Hrs)", meta: "Artist: Kabir • Touch Consent Signed", status: "In Ink", statusColor: "emerald" },
+        { title: "Consultation Deposit Received", meta: "₹2,000 Deposit locked via Razorpay", status: "Verified ✓", statusColor: "indigo" },
+        { title: "Aftercare Kit Sale", meta: "Retail Product Add-on at Checkout", status: "Paid", statusColor: "emerald" }
+      ]
+    }
   },
   clinic: {
     slug: "clinic",
-    name: "Aesthetic & Medical Clinics",
-    tagline: "Secure client records, doctor schedules, and treatment billing.",
-    description: "Manage medical aesthetics, skin consultations, and dental bookings. Rozx ensures secure health records, helps schedule medical staff, supports package billing, and generates tax-compliant receipt invoices.",
+    name: "Aesthetic Clinics & Skin Care",
+    tagline: "Doctor & practitioner rosters, treatment consent forms, and GST-compliant invoices.",
+    description: "Operate a compliant, high-end aesthetic or dermatology clinic. Rozx coordinates doctor consultation slots, digital treatment consent waivers, patient visit histories, and SAC-coded GST invoices.",
     workflows: [
-      "Document aesthetic treatment history and clinical consent records.",
-      "Schedule doctor consultations and room assignments simultaneously.",
-      "Manage medical retail inventory and skincare prescriptions."
+      "Schedule doctor consultation slots, treatment follow-ups, and laser room availability.",
+      "Capture patient consent waivers and treatment progress notes before medical aesthetic procedures.",
+      "Issue GST-compliant medical invoices with itemized procedure codes and tax splits."
     ],
     featuresList: [
-      { title: "Doctor Scheduling", desc: "Coordinate specialized medical practitioners with standard client appointments." },
-      { title: "Clinical Records CRM", desc: "Document treatment parameters, settings, and allergy files with security protection." },
-      { title: "Skincare POS Billing", desc: "Sell clinical serums and prescription products directly from the check-out menu." }
+      { title: "Doctor Slot Management", desc: "Coordinate doctor availability, consultation durations, and follow-up visit slots." },
+      { title: "Treatment Consent & Notes", desc: "Store digital consent records, procedure logs, and skin assessment notes in patient files." },
+      { title: "Medical GST Invoicing", desc: "Generate compliant invoices with SAC service codes, CGST/SGST itemization, and patient records." }
     ],
-    metric: "50%",
-    metricLabel: "Efficiency Gains in Record Retrieval",
+    metric: "Clinical POS",
+    metricLabel: "Doctor Slots & Consent Forms",
     iconName: "clinic",
+    preview: {
+      badge: "Clinical Operations Engine",
+      title: "DermaGlow Aesthetic Clinic",
+      subtitle: "Dr. Meera Vasudevan • Laser & Dermatology",
+      stats: [
+        { label: "Doctor Slots", value: "16 Today" },
+        { label: "Consent Status", value: "Verified 🔒" },
+        { label: "GST SAC Invoice", value: "Automated" }
+      ],
+      snippetTitle: "Live Clinical Patient Queue",
+      snippetItems: [
+        { title: "Laser Skin Resurfacing", meta: "Dr. Meera • Laser Suite 1 • Consent Signed", status: "In Procedure", statusColor: "amber" },
+        { title: "Dermatology Consultation", meta: "Patient: Rohit V. • SAC Code 999312", status: "Completed", statusColor: "emerald" },
+        { title: "Clinical Tax Invoice #INV-109", meta: "₹4,500.00 • Itemized GST Included", status: "Paid ✓", statusColor: "emerald" }
+      ]
+    }
+  },
+  consulting: {
+    slug: "consulting",
+    name: "Consulting & Professional Advisory",
+    tagline: "1-on-1 consultation scheduling, prepayment lock, and calendar sync.",
+    description: "Streamline your advisory practice. Rozx allows clients to book paid 1-on-1 advice sessions online, pay consultation fees upfront via Razorpay, and sync schedules directly to Google or Outlook calendars.",
+    workflows: [
+      "Accept paid online consultation bookings with mandatory prepayment.",
+      "Sync advisor availability in real time with personal Google or Outlook calendars.",
+      "Automate consultation reminders and video meeting link distribution."
+    ],
+    featuresList: [
+      { title: "Paid Online Bookings", desc: "Require client fee prepayments to prevent no-shows and secure advisory time slots." },
+      { title: "2-Way Calendar Synchronization", desc: "Sync advisory slots automatically with Google Calendar and Microsoft Outlook." },
+      { title: "Automated Meeting Alerts", desc: "Dispatch meeting links, agendas, and reminders via email and WhatsApp automatically." }
+    ],
+    metric: "Upfront Pay",
+    metricLabel: "Prepaid Consultation Slots",
+    iconName: "consulting",
+    preview: {
+      badge: "Advisory Calendar Engine",
+      title: "Apex Business Advisory",
+      subtitle: "3 Senior Consultants • Calendar Sync Active",
+      stats: [
+        { label: "Paid Sessions", value: "18 Booked" },
+        { label: "Calendar Sync", value: "Google / Outlook" },
+        { label: "Prepayment Lock", value: "100%" }
+      ],
+      snippetTitle: "Live Advisory Session Log",
+      snippetItems: [
+        { title: "60-Min Strategy Consultation", meta: "Advisor: Rajesh K. • Fee: ₹5,000 Prepaid", status: "Confirmed", statusColor: "emerald" },
+        { title: "Google Calendar Sync", meta: "Auto-added to rajesh@apexadvisory.in", status: "Synced ✓", statusColor: "indigo" },
+        { title: "Automated WhatsApp Meeting Link", meta: "Sent to Client 2 Hours Prior", status: "Dispatched", statusColor: "emerald" }
+      ]
+    }
+  },
+  "coaching-training": {
+    slug: "coaching-training",
+    name: "Personal Training & Fitness Coaching",
+    tagline: "Trainer rosters, gym session package tracking, and membership renewals.",
+    description: "Keep your training clients accountable and engaged. Rozx tracks personal trainer schedules, multi-session gym workout packages, automated renewal alerts, and attendance check-ins.",
+    workflows: [
+      "Manage personal trainer schedules and client time slots across gym floors.",
+      "Sell 10-session or 20-session training bundles with instant POS session deduction.",
+      "Automate membership expiration notifications via WhatsApp."
+    ],
+    featuresList: [
+      { title: "Session Package Deduction", desc: "Deduct personal training sessions at check-in with live balance tracking." },
+      { title: "Trainer Roster Management", desc: "Schedule trainer shifts, client allocations, and specialized gym zone bookings." },
+      { title: "Automated Renewal Alerts", desc: "Notify clients when package balances drop below 2 remaining sessions." }
+    ],
+    metric: "Pass Tracking",
+    metricLabel: "Session Deductions & Renewals",
+    iconName: "coaching-training",
+    preview: {
+      badge: "Fitness POS & Session Hub",
+      title: "IronPulse Fitness & Performance",
+      subtitle: "4 Lead Personal Trainers • Package Tracking",
+      stats: [
+        { label: "Active Passes", value: "85 Gym Passes" },
+        { label: "Today's Workouts", value: "22 Sessions" },
+        { label: "Session Balance", value: "Live POS Sync" }
+      ],
+      snippetTitle: "Live Gym Check-In Log",
+      snippetItems: [
+        { title: "1-on-1 Hypertrophy Training", meta: "Trainer: Dev S. • Client: Amit P.", status: "In Gym", statusColor: "emerald" },
+        { title: "12-Session PT Pass Deduction", meta: "Pass Balance: 8/12 Sessions Remaining", status: "Deducted ✓", statusColor: "indigo" },
+        { title: "Renewal Warning Trigger", meta: "Client: Sara T. (1 Session Left) -> WhatsApp", status: "Alert Sent", statusColor: "amber" }
+      ]
+    }
+  },
+  "photography-creative": {
+    slug: "photography-creative",
+    name: "Photography Studios & Creatives",
+    tagline: "Studio space booking, equipment reservation, and advance shoot deposits.",
+    description: "Run an organized creative studio. Rozx handles photography session bookings, studio space or equipment locking, advance deposit collection, and client shoot scheduling.",
+    workflows: [
+      "Lock studio bays, lighting gear, and photographer schedules upon booking.",
+      "Collect advance booking deposits to lock shoot dates and prevent cancellations.",
+      "Store client shoot briefs, Moodboards, and deliverable notes in CRM files."
+    ],
+    featuresList: [
+      { title: "Studio & Gear Locking", desc: "Reserve photo bays, camera gear, and studio props to prevent physical conflicts." },
+      { title: "Advance Shoot Deposits", desc: "Collect online prepayments via Razorpay to confirm high-demand weekend shoots." },
+      { title: "Creative Brief Storage", desc: "Attach shoot requirements, reference links, and deliverable dates to client records." }
+    ],
+    metric: "Bay Locking",
+    metricLabel: "Studio Space & Deposit Engine",
+    iconName: "photography-creative",
+    preview: {
+      badge: "Creative Studio Reservations",
+      title: "Lumina Creative & Photo Studio",
+      subtitle: "2 Studio Bays • Advance Deposits Active",
+      stats: [
+        { label: "Studio Bays", value: "2 Reserved" },
+        { label: "Shoot Prepayments", value: "100% Locked" },
+        { label: "Gear Inventory", value: "Sync ✓" }
+      ],
+      snippetTitle: "Live Studio Shoot Reservations",
+      snippetItems: [
+        { title: "Fashion Lookbook Shoot (Bay A)", meta: "Photographer: Rohan • 4 Hrs", status: "In Shoot", statusColor: "emerald" },
+        { title: "Lighting Gear Lock", meta: "Godox Flash Set #2 Allocated to Bay A", status: "Locked 🔒", statusColor: "indigo" },
+        { title: "Advance Prepayment #INV-772", meta: "₹8,000 Shoot Deposit Collected", status: "Paid ✓", statusColor: "emerald" }
+      ]
+    }
+  },
+  "pet-services": {
+    slug: "pet-services",
+    name: "Pet Grooming & Veterinary Care",
+    tagline: "Pet parent CRM profiles, grooming schedules, and vaccine tracking.",
+    description: "Deliver loving care to furry companions while keeping your business organized. Rozx tracks pet profile details, grooming specifications, vaccine records, and service reminders.",
+    workflows: [
+      "Maintain detailed pet profiles (breed, weight, temperament, vaccine dates).",
+      "Schedule grooming appointments and vet consultation slots with groomer rosters.",
+      "Send WhatsApp reminders for upcoming grooming sessions and annual vaccinations."
+    ],
+    featuresList: [
+      { title: "Pet Parent CRM Profiles", desc: "Store pet name, breed, medical history, temperaments, and owner contact info." },
+      { title: "Grooming & Vet Slots", desc: "Manage bath, haircut, and consultation appointment slots with groomer allocations." },
+      { title: "Vaccine & Refill Alerts", desc: "Dispatch automated WhatsApp reminders for recurring grooming and booster shots." }
+    ],
+    metric: "Pet CRM",
+    metricLabel: "Breed Profiles & Grooming POS",
+    iconName: "pet-services",
+    preview: {
+      badge: "Pet Care & Grooming POS",
+      title: "Paws & Whiskers Pet Spa",
+      subtitle: "3 Grooming Stations • Pet CRM Active",
+      stats: [
+        { label: "Pets Groomed", value: "16 Today" },
+        { label: "Vaccine Verified", value: "100%" },
+        { label: "Repeat Parent", value: "88%" }
+      ],
+      snippetTitle: "Live Grooming Station Log",
+      snippetItems: [
+        { title: "Full Grooming & Bath (Golden Retriever)", meta: "Pet: Bruno • Owner: Ankit S. • Groomer: Vijay", status: "In Grooming", statusColor: "emerald" },
+        { title: "Vaccine Record Checked", meta: "Rabies Booster Up to Date (Exp: 2027)", status: "Verified ✓", statusColor: "indigo" },
+        { title: "Pet Shampoo Sale", meta: "Retail Product Add-on at Checkout", status: "Paid", statusColor: "emerald" }
+      ]
+    }
+  },
+  "auto-services": {
+    slug: "auto-services",
+    name: "Auto Detailing & Service Centers",
+    tagline: "Vehicle service bays, job card tracking, and GST auto-invoicing.",
+    description: "Manage auto detailing, ceramic coating, and repair workflows efficiently. Rozx handles service bay allocations, digital job cards, vehicle registration tracking, and GST invoices.",
+    workflows: [
+      "Assign vehicle service bays and detailing technicians based on job scope.",
+      "Generate digital job cards detailing service items, parts used, and estimated delivery times.",
+      "Send WhatsApp updates to vehicle owners when detailing or servicing is completed."
+    ],
+    featuresList: [
+      { title: "Detailing Bay Allocation", desc: "Manage workshop bays and technician assignments to prevent shop floor bottlenecks." },
+      { title: "Digital Job Cards & POS", desc: "Create digital service tickets with vehicle registration numbers and itemized parts." },
+      { title: "Completion Notification Triggers", desc: "Notify vehicle owners via automated WhatsApp as soon as their car is ready for pickup." }
+    ],
+    metric: "Job Cards",
+    metricLabel: "Vehicle Detailing & Bay Allocations",
+    iconName: "auto-services",
+    preview: {
+      badge: "Auto Workshop POS",
+      title: "Apex Ceramic Detailing & Studio",
+      subtitle: "4 Detailing Bays • Job Cards Active",
+      stats: [
+        { label: "Vehicles Detailing", value: "8 Cars" },
+        { label: "Bay Efficiency", value: "95%" },
+        { label: "GST Auto Invoice", value: "Ready ✓" }
+      ],
+      snippetTitle: "Live Workshop Bay Status",
+      snippetItems: [
+        { title: "Ceramic Coating (DL-01-AB-1234)", meta: "Bay 2 • Tech: Sunita • Delivery: 5 PM", status: "In Detailing", statusColor: "amber" },
+        { title: "Digital Job Card #JC-882", meta: "Paint Correction + Interior Spa", status: "Approved", statusColor: "indigo" },
+        { title: "Completion WhatsApp Alert", meta: "Triggered to Owner for Vehicle Pickup", status: "Sent ✓", statusColor: "emerald" }
+      ]
+    }
+  },
+  "repair-service": {
+    slug: "repair-service",
+    name: "Electronics & Device Repair",
+    tagline: "Device intake tickets, repair status tracking, and spare parts billing.",
+    description: "Streamline device repair intake and customer status updates. Rozx tracks serial numbers, repair job statuses, diagnostic notes, spare parts billing, and customer pickup alerts.",
+    workflows: [
+      "Log device intake with IMEI/serial numbers, physical condition notes, and fault descriptions.",
+      "Update repair job statuses (Diagnosed, In Repair, Ready for Pickup, Delivered).",
+      "Issue GST invoices itemizing repair labor charges and replaced spare parts."
+    ],
+    featuresList: [
+      { title: "Device Intake Tickets", desc: "Capture serial numbers, passcode locks, condition photos, and reported issues." },
+      { title: "Status Tracking Engine", desc: "Update repair stages so customers receive automated WhatsApp progress alerts." },
+      { title: "Parts & Labor POS Billing", desc: "Bill labor charges and spare parts separately with itemized GST codes." }
+    ],
+    metric: "Intake POS",
+    metricLabel: "Device IMEI & Status Tracking",
+    iconName: "repair-service",
+    preview: {
+      badge: "Device Repair Management",
+      title: "TechFix Electronics & Mobile Repair",
+      subtitle: "3 Technician Desks • IMEI Intake Active",
+      stats: [
+        { label: "Repairs In Hand", value: "14 Devices" },
+        { label: "Avg Turnaround", value: "3.2 Hours" },
+        { label: "Parts Billing", value: "Itemized ✓" }
+      ],
+      snippetTitle: "Live Repair Ticket Pipeline",
+      snippetItems: [
+        { title: "iPhone 15 Screen Replacement", meta: "IMEI #358912... • Tech: Rajesh", status: "In Repair", statusColor: "amber" },
+        { title: "Pickup WhatsApp Notification", meta: "Device Repair Completed -> Alert Sent", status: "Ready Pickup", statusColor: "emerald" },
+        { title: "GST Invoice #INV-502", meta: "Screen Part (₹4,500) + Labor (₹800)", status: "Paid ✓", statusColor: "indigo" }
+      ]
+    }
+  },
+  "classes-events": {
+    slug: "classes-events",
+    name: "Group Classes & Workshops",
+    tagline: "Class roster management, seat booking, and attendance tracking.",
+    description: "Organize group fitness sessions, dance workshops, or cooking masterclasses easily. Rozx handles seat capacity limits, online ticket sales, check-in rosters, and class pass redemptions.",
+    workflows: [
+      "Set class seat capacities (e.g. 15 spots per yoga or dance workshop) to prevent overcrowding.",
+      "Sell single class passes or multi-class monthly packs online.",
+      "Track attendance on tablet POS during class check-in."
+    ],
+    featuresList: [
+      { title: "Seat Capacity Limits", desc: "Set maximum spots per session with automated online booking lock when sold out." },
+      { title: "Class Pass Redemptions", desc: "Allow attendees to redeem active multi-session class passes upon arrival." },
+      { title: "Attendance Check-In Roster", desc: "Check in participants quickly via mobile or desk POS." }
+    ],
+    metric: "Seat Control",
+    metricLabel: "Workshop Roster & Class Passes",
+    iconName: "classes-events",
+    preview: {
+      badge: "Group Class Management",
+      title: "Pulse Dance & Movement Studio",
+      subtitle: "2 Studio Halls • Group Workshops",
+      stats: [
+        { label: "Class Capacity", value: "15 Spots/Class" },
+        { label: "Attendance POS", value: "Quick Check-in" },
+        { label: "Pass Balances", value: "Live Sync ✓" }
+      ],
+      snippetTitle: "Live Workshop Class Roster",
+      snippetItems: [
+        { title: "Salsa Masterclass (Hall 1)", meta: "Instructor: Alex • 14/15 Spots Booked", status: "Almost Full", statusColor: "amber" },
+        { title: "10-Class Pass Deduction", meta: "Attendee: Neha S. • Pass Balance: 6/10 Left", status: "Checked In", statusColor: "emerald" },
+        { title: "Single Session Pass Purchase", meta: "₹600 Ticket Purchased via UPI", status: "Paid ✓", statusColor: "indigo" }
+      ]
+    }
   }
 };

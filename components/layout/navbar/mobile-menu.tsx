@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronDown, Sparkles } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { mainNavItems } from "@/config/navigation";
 import { ROUTES } from "@/config/routes";
@@ -25,7 +25,7 @@ export function MobileMenu() {
     <div className="md:hidden">
       <button
         onClick={toggleMenu}
-        className="rounded-lg p-2.5 text-muted-foreground hover:bg-surface-2 hover:text-foreground focus:outline-none focus:ring-2 focus:ring-primary min-w-[44px] min-h-[44px] flex items-center justify-center"
+        className="rounded-lg p-2.5 text-muted-foreground hover:bg-surface-2 hover:text-foreground focus:outline-none focus:ring-2 focus:ring-primary min-w-11 min-h-11 flex items-center justify-center"
         aria-label="Toggle Menu"
         aria-expanded={isOpen}
       >
@@ -41,7 +41,7 @@ export function MobileMenu() {
               animate={{ opacity: 0.5 }}
               exit={{ opacity: 0 }}
               onClick={toggleMenu}
-              className="fixed inset-0 z-40 bg-black/50 backdrop-blur-xs top-[57px] md:top-[65px]"
+              className="fixed inset-0 z-40 bg-black/50 backdrop-blur-xs top-14.25 md:top-16.25"
             />
 
             {/* Panel */}
@@ -50,7 +50,7 @@ export function MobileMenu() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 28, stiffness: 220 }}
-              className="fixed inset-y-0 right-0 z-40 w-full max-w-xs bg-card border-l border-border px-5 py-6 overflow-y-auto top-[57px] md:top-[65px] flex flex-col justify-between"
+              className="fixed inset-y-0 right-0 z-40 w-full max-w-xs bg-card border-l border-border px-5 py-6 overflow-y-auto top-14.25 md:top-16.25 flex flex-col justify-between"
             >
               <div className="space-y-5">
                 <nav className="flex flex-col gap-1.5" aria-label="Mobile Navigation">
@@ -100,9 +100,6 @@ export function MobileMenu() {
                                       <div>
                                         <div className="text-xs font-semibold text-foreground flex items-center gap-1">
                                           {child.label}
-                                          {child.label.includes("AI") && (
-                                            <Sparkles className="h-3 w-3 text-accent fill-accent" />
-                                          )}
                                         </div>
                                         {child.description && (
                                           <p className="text-[10px] text-muted-foreground line-clamp-1 leading-snug">
@@ -148,11 +145,11 @@ export function MobileMenu() {
                 </Link>
                 <Link href={ROUTES.app.register} onClick={toggleMenu} className="block w-full">
                   <Button variant="premium" className="w-full justify-center h-10 text-sm">
-                    Start Free Trial
+                    Get Started
                   </Button>
                 </Link>
                 <p className="text-center text-[10px] text-muted-foreground mt-3 leading-snug">
-                  14-day free trial • No credit card required
+                  Booking &amp; billing software for Indian service businesses
                 </p>
               </div>
             </motion.div>
