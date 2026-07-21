@@ -5,13 +5,8 @@ export const ROUTES = {
   platform: "/platform",
   contact: "/contact",
   bookDemo: "/book-demo",
-  startTrial: "/start-trial",
-  integrations: "/integrations",
-  customers: "/customers",
+  startTrial: "https://app.rozx.in/register",
   blog: "/blog",
-  guides: "/guides",
-  docs: "/docs",
-  help: "/help",
   
   app: {
     login: "https://app.rozx.in/login",
@@ -27,7 +22,6 @@ export const ROUTES = {
     marketing: "/features/marketing",
     loyalty: "/features/loyalty",
     analytics: "/features/analytics",
-    aiAssistant: "/features/ai-assistant",
   },
   
   industries: {

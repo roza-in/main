@@ -1,151 +1,192 @@
 import React from "react";
 import type { Metadata } from "next";
 import { generateMetadata } from "@/lib/seo/metadata";
+import { siteConfig } from "@/config/site";
+import { LegalDocLayout, type LegalSection } from "@/components/shared/legal-doc-layout";
 
 export const metadata: Metadata = generateMetadata({
   title: "Privacy Policy",
-  description: "How we collect, secure, and handle your business data and client information.",
+  description: "Understand how Rozx handles account data, merchant CRM records, and client booking privacy.",
   path: "/privacy",
 });
 
+const sections: LegalSection[] = [
+  { id: "scope-and-roles", title: "1. Scope & Relationship" },
+  { id: "information-collected", title: "2. Information We Collect" },
+  { id: "how-we-use", title: "3. How Information Is Used" },
+  { id: "subprocessors", title: "4. Verified Service Providers" },
+  { id: "data-security", title: "5. Security & Isolation" },
+  { id: "data-retention", title: "6. Retention & Deletion" },
+  { id: "user-rights", title: "7. Privacy Rights & Compliance" },
+  { id: "legal-contact", title: "8. Contact & Inquiries" },
+];
+
 export default function PrivacyPage() {
   return (
-    <div className="pt-24 pb-20 relative overflow-hidden bg-background">
-      {/* Background gradients */}
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_top,_var(--color-primary-100)_0%,_transparent_60%)] opacity-55 dark:opacity-35" />
+    <LegalDocLayout
+      title="Privacy Policy"
+      description="This Privacy Policy explains how Rozx collects, uses, and safeguards information when you register for an account, subscribe to our service, or interact with our platform."
+      sections={sections}
+      activePolicy="privacy"
+    >
+      {/* 1. Scope & Relationship */}
+      <section id="scope-and-roles" className="scroll-mt-24 space-y-3">
+        <h2 className="text-xl font-bold text-foreground tracking-tight">1. Scope & Relationship</h2>
+        <p>
+          Rozx provides booking, appointment scheduling, billing, and customer relationship management (CRM) software for service businesses, including salons, spas, clinics, barbershops, and studios.
+        </p>
+        <p>
+          To ensure clarity, we distinguish between the different ways information is processed on our platform:
+        </p>
+        <ul className="list-disc list-inside space-y-2 pl-2">
+          <li>
+            <strong className="text-foreground">Merchant Account Users:</strong> Business owners, managers, receptionist staff, and service professionals who register and use Rozx accounts. Rozx acts as the data controller for account management, billing, and communication purposes regarding these users.
+          </li>
+          <li>
+            <strong className="text-foreground">End Customers & Clients of Merchants:</strong> Individuals who book appointments or receive services from businesses using Rozx. Merchants control their client database and determine what information is requested. Rozx processes this customer information strictly on behalf of and under the instruction of the merchant to deliver calendar scheduling, notifications, and POS checkout services.
+          </li>
+        </ul>
+      </section>
 
-      <div className="container max-w-3xl text-left font-sans px-6 lg:px-8">
-        {/* Header */}
-        <div className="border-b border-border pb-8 mb-10">
-          <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-foreground mb-4">
-            Privacy Policy
-          </h1>
-          <p className="text-xs text-muted-foreground">
-            Last updated: June 8, 2026. We believe legal policies should be readable. Here is a clear, human breakdown of how we handle data.
-          </p>
+      {/* 2. Information We Collect */}
+      <section id="information-collected" className="scroll-mt-24 space-y-3">
+        <h2 className="text-xl font-bold text-foreground tracking-tight">2. Information We Collect</h2>
+        <p>We collect information necessary to operate the platform, maintain security, and process billing:</p>
+        <ul className="list-disc list-inside space-y-2 pl-2">
+          <li>
+            <strong className="text-foreground">Account & Workspace Information:</strong> Name, phone number, email address, business name, GSTIN (where applicable), branch addresses, and staff account details provided during signup or workspace configuration.
+          </li>
+          <li>
+            <strong className="text-foreground">Billing & Subscription Details:</strong> Payment transaction identifiers, subscription status, and invoice history. Payment processing is handled directly by verified payment gateways (such as Razorpay). Raw credit card numbers or UPI PINs are never received or stored on Rozx servers.
+          </li>
+          <li>
+            <strong className="text-foreground">Merchant Operating & CRM Data:</strong> Service catalogs, pricing, staff schedules, appointment bookings, walk-in records, customer contact information, visit history, notes, and digital intake forms or waivers entered by merchants into their workspace.
+          </li>
+          <li>
+            <strong className="text-foreground">Technical & Usage Log Data:</strong> Standard server logs, IP addresses, browser specifications, operating system details, error traces, and anonymous interface navigation logs collected for security audit, troubleshooting, and system performance monitoring.
+          </li>
+        </ul>
+      </section>
+
+      {/* 3. How Information Is Used */}
+      <section id="how-we-use" className="scroll-mt-24 space-y-3">
+        <h2 className="text-xl font-bold text-foreground tracking-tight">3. How Information Is Used</h2>
+        <p>Information processed by Rozx is used strictly for legitimate business and operational purposes:</p>
+        <ul className="list-disc list-inside space-y-2 pl-2">
+          <li>To provision, maintain, and deliver the Rozx SaaS platform services.</li>
+          <li>To manage calendar bookings, prevent appointment conflicts, and process checkout transactions.</li>
+          <li>To deliver automated booking confirmations, WhatsApp/SMS appointment alerts, and invoice notifications requested by merchants.</li>
+          <li>To process subscription renewals, manage billing accounts, and issue tax invoices.</li>
+          <li>To investigate technical errors, prevent unauthorized access, and protect system infrastructure.</li>
+          <li>To fulfill legal obligations under applicable Indian laws and regulatory frameworks.</li>
+        </ul>
+      </section>
+
+      {/* 4. Verified Service Providers */}
+      <section id="subprocessors" className="scroll-mt-24 space-y-3">
+        <h2 className="text-xl font-bold text-foreground tracking-tight">4. Verified Third-Party Service Providers</h2>
+        <p>
+          Rozx engages third-party infrastructure and service providers to support specific platform operations. Data shared with these providers is limited to what is strictly required for function delivery:
+        </p>
+        <div className="overflow-x-auto my-4 rounded-xl border border-border">
+          <table className="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr className="bg-surface-2 border-b border-border text-foreground">
+                <th className="p-3 font-bold">Provider / Technology</th>
+                <th className="p-3 font-bold">Purpose</th>
+                <th className="p-3 font-bold">Data Type Handled</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-border">
+              <tr>
+                <td className="p-3 font-semibold text-foreground">Razorpay</td>
+                <td className="p-3">Payment processing & subscription gateway</td>
+                <td className="p-3">Transaction IDs, billing contact info</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-semibold text-foreground">Meta / WhatsApp Cloud API</td>
+                <td className="p-3">WhatsApp booking reminders & notifications</td>
+                <td className="p-3">Phone numbers, appointment notification text</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-semibold text-foreground">SMS Gateway Providers</td>
+                <td className="p-3">Transactional SMS notifications</td>
+                <td className="p-3">Recipient phone numbers, SMS message text</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-semibold text-foreground">PostHog</td>
+                <td className="p-3">Product usage analytics & performance tracking</td>
+                <td className="p-3">Anonymized page views, feature interaction metrics</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-semibold text-foreground">Sentry</td>
+                <td className="p-3">Application error logging & crash reporting</td>
+                <td className="p-3">Technical stack traces, browser/OS error logs</td>
+              </tr>
+              <tr>
+                <td className="p-3 font-semibold text-foreground">Sanity CMS</td>
+                <td className="p-3">Marketing website content delivery</td>
+                <td className="p-3">Public blog & case study content</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+      </section>
 
-        {/* Full Legal Text */}
-        <div className="space-y-8 text-sm text-muted-foreground leading-relaxed">
-          <section>
-            <h2 className="text-lg font-bold text-foreground mb-3">1. The Golden Rule: You own your data</h2>
-            <p className="mb-4">
-              Your business listings, staff rosters, services, appointment history, and client records belong entirely to you. We do not sell, rent, share, or monetize your database in any way. Our job is simply to provide the software that helps you run your business.
-            </p>
-          </section>
+      {/* 5. Security & Isolation */}
+      <section id="data-security" className="scroll-mt-24 space-y-3">
+        <h2 className="text-xl font-bold text-foreground tracking-tight">5. Security & Tenant Data Isolation</h2>
+        <p>
+          Rozx implements technical and organizational safeguards designed to protect workspace information from unauthorized access, loss, or misuse:
+        </p>
+        <ul className="list-disc list-inside space-y-2 pl-2">
+          <li>
+            <strong className="text-foreground">Tenant Isolation:</strong> Database queries enforce strict tenant boundary filtering (`tenantId` scoping) to prevent cross-business data leaks.
+          </li>
+          <li>
+            <strong className="text-foreground">Encryption in Transit & Rest:</strong> Data transmitted across web connections is encrypted using HTTPS / TLS protocols. Sensitive database credentials and tokens are encrypted at rest.
+          </li>
+          <li>
+            <strong className="text-foreground">Role-Based Access Control (RBAC):</strong> Workspace owners can assign specific staff roles (Owner, Manager, Reception, Professional) to restrict access to sensitive business reports and billing data.
+          </li>
+        </ul>
+      </section>
 
-          <section>
-            <h2 className="text-lg font-bold text-foreground mb-3">2. Who is who in this agreement</h2>
-            <p className="mb-4">
-              When you use Rozx, we handle data in two different ways:
-            </p>
-            <ul className="space-y-2 list-disc list-inside pl-4 mb-4">
-              <li>
-                <strong className="text-foreground">Your account data:</strong> We act as the <strong>Data Controller</strong> for the information you give us to run your account (like your login email, business name, and billing details).
-              </li>
-              <li>
-                <strong className="text-foreground">Your clients&apos; data:</strong> You act as the <strong>Data Controller</strong> for all data you upload about your clients, staff, and bookings. We act strictly as a <strong>Data Processor</strong>. We host this data and process it only to make your schedules, checkouts, and CRM work.
-              </li>
-            </ul>
-          </section>
+      {/* 6. Retention & Deletion */}
+      <section id="data-retention" className="scroll-mt-24 space-y-3">
+        <h2 className="text-xl font-bold text-foreground tracking-tight">6. Data Retention & Account Cancellation</h2>
+        <p>
+          We retain workspace data for as long as your account remains active or as necessary to provide services, resolve billing disputes, and comply with legal or tax obligations.
+        </p>
+        <p>
+          Upon subscription cancellation or account termination, access to the workspace is disabled at the end of the paid billing period. Operational database backups and inactive workspace records are subject to periodic server cleanup schedules. Merchants desiring a copy of their customer CRM or booking history should export their business records prior to workspace deactivation.
+        </p>
+      </section>
 
-          <section>
-            <h2 className="text-lg font-bold text-foreground mb-3">3. What we collect and why</h2>
-            <p className="mb-4">
-              We collect only what is necessary to run the platform and keep your account secure:
-            </p>
-            <ul className="space-y-3 list-disc list-inside pl-4 mb-4">
-              <li>
-                <strong className="text-foreground">Account Information:</strong> Your name, email, phone number, and business details. We use this to set up your workspace, contact you about updates, and verify your identity.
-              </li>
-              <li>
-                <strong className="text-foreground">Billing Details:</strong> Payment card details are sent directly to our payment processors (Stripe or Razorpay). We do not store raw card numbers on our servers.
-              </li>
-              <li>
-                <strong className="text-foreground">Client Booking Records:</strong> When your clients book an appointment, we save their name, phone, email, and booking time. We only use this to update your calendars, send them confirmations, and keep your business records organized.
-              </li>
-              <li>
-                <strong className="text-foreground">Usage Data &amp; Logs:</strong> We track anonymous interface actions (like which buttons are clicked) to debug errors and improve layout navigation.
-              </li>
-            </ul>
-          </section>
+      {/* 7. Privacy Rights & Compliance */}
+      <section id="user-rights" className="scroll-mt-24 space-y-3">
+        <h2 className="text-xl font-bold text-foreground tracking-tight">7. Privacy Rights & Indian DPDP Principles</h2>
+        <p>
+          Rozx respects data protection principles aligned with India&apos;s Digital Personal Data Protection (DPDP) Act, 2023. Account holders may request access to, correction of, or deletion of their account registration details by contacting us.
+        </p>
+        <p>
+          If you are an end customer of a salon, spa, or clinic using Rozx and wish to exercise privacy rights regarding your booking or treatment records, please contact the specific business directly, as they maintain control over their customer CRM records.
+        </p>
+      </section>
 
-          <section>
-            <h2 className="text-lg font-bold text-foreground mb-3">4. Vetted third parties we share data with</h2>
-            <p className="mb-4">
-              We use a few trusted infrastructure providers to power Rozx. Here is the list of who they are and what they do:
-            </p>
-            <div className="overflow-x-auto my-6 border border-border rounded-lg">
-              <table className="w-full text-left border-collapse text-xs">
-                <thead>
-                  <tr className="bg-muted border-b border-border">
-                    <th className="p-3 font-semibold text-foreground">Service</th>
-                    <th className="p-3 font-semibold text-foreground">What they handle</th>
-                    <th className="p-3 font-semibold text-foreground">Compliance & Location</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="border-b border-border">
-                    <td className="p-3 font-medium text-foreground">Supabase / AWS</td>
-                    <td className="p-3">Database hosting, storage, and encrypted backups.</td>
-                    <td className="p-3">Mumbai (India) / US East, SOC 2</td>
-                  </tr>
-                  <tr className="border-b border-border">
-                    <td className="p-3 font-medium text-foreground">Stripe / Razorpay</td>
-                    <td className="p-3">Processing your subscription billing securely.</td>
-                    <td className="p-3">Global / India, PCI-DSS Level 1</td>
-                  </tr>
-                  <tr className="border-b border-border">
-                    <td className="p-3 font-medium text-foreground">Twilio</td>
-                    <td className="p-3">Sending SMS notifications and reminders to your clients.</td>
-                    <td className="p-3">Global network, HIPAA-compliant pipeline</td>
-                  </tr>
-                  <tr className="border-b border-border">
-                    <td className="p-3 font-medium text-foreground">PostHog & Clarity</td>
-                    <td className="p-3">Anonymized usage analytics to trace UI bottlenecks and load speeds.</td>
-                    <td className="p-3">EU/US hosted, IP masking enabled</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </section>
-
-          <section>
-            <h2 className="text-lg font-bold text-foreground mb-3">5. How we keep your databases secure</h2>
-            <p className="mb-4">
-              We design our infrastructure around data isolation:
-            </p>
-            <ul className="space-y-2 list-disc list-inside pl-4 mb-4">
-              <li><strong className="text-foreground">Schema Isolation:</strong> Every business account runs inside separate database environments. This prevents cross-tenant data leaks.</li>
-              <li><strong className="text-foreground">Encryption:</strong> All database data is encrypted at rest using AES-256 standards, and all web connection traffic is encrypted in transit via SSL/TLS 1.3.</li>
-              <li><strong className="text-foreground">Regular Backups:</strong> Automated database snapshots are taken every 24 hours, encrypted, and saved across multiple servers to prevent data loss.</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-lg font-bold text-foreground mb-3">6. What happens when you leave us</h2>
-            <p className="mb-4">
-              You are free to leave at any time. If you decide to cancel your subscription:
-            </p>
-            <ul className="space-y-2 list-disc list-inside pl-4 mb-4">
-              <li>You can download a complete CSV or SQL export of all your client profiles, services, and appointment histories directly from your dashboard settings.</li>
-              <li>We retain your database for exactly 14 days after cancellation so you can retrieve your records. After that, your workspace is permanently deleted from our live servers.</li>
-              <li>If you sign up for a free trial and do not upgrade, we delete your database 30 days after the trial expires.</li>
-              <li>System backup copies of your data are completely overwritten and purged within 90 days.</li>
-            </ul>
-          </section>
-
-          <section>
-            <h2 className="text-lg font-bold text-foreground mb-3">7. Compliance & Rights</h2>
-            <p className="mb-4">
-              We respect user rights globally, matching requirements from Europe&apos;s GDPR, California&apos;s CCPA, and India&apos;s Digital Personal Data Protection Act (DPDPA 2023). You and your clients can request to view, edit, or delete any personal details we hold.
-            </p>
-            <p className="mb-4">
-              If you have any questions or want to request data deletion, email us at <a href="mailto:legal@rozx.in" className="text-primary hover:underline font-semibold">legal@rozx.in</a>. If you are a client of a business using Rozx, please contact that business directly, as we cannot access or delete your records without their authorization.
-            </p>
-          </section>
-        </div>
-      </div>
-    </div>
+      {/* 8. Contact & Inquiries */}
+      <section id="legal-contact" className="scroll-mt-24 space-y-3">
+        <h2 className="text-xl font-bold text-foreground tracking-tight">8. Privacy Contact & Inquiries</h2>
+        <p>
+          If you have any questions regarding this Privacy Policy, wish to update your business contact information, or have privacy inquiries, please contact our team at:
+        </p>
+        <p className="font-semibold text-foreground">
+          Email:{" "}
+          <a href={`mailto:${siteConfig.legal.contactEmail}`} className="text-primary hover:underline font-bold">
+            {siteConfig.legal.contactEmail}
+          </a>
+        </p>
+      </section>
+    </LegalDocLayout>
   );
 }

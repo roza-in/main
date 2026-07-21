@@ -23,7 +23,7 @@ export function FeaturesGrid() {
   return (
     <section id="features" className="py-20 md:py-24 bg-surface-1 border-y border-border/40 relative overflow-hidden">
       {/* Decorative vertical lines */}
-      <div className="absolute top-[20%] left-[-10%] -z-10 h-[300px] w-[300px] rounded-full bg-primary/5 blur-3xl" />
+      <div className="absolute top-[20%] left-[-10%] -z-10 h-75 w-75 rounded-full bg-primary/5 blur-3xl" />
       
       <div className="container max-w-6xl">
         {/* Section Header */}
@@ -35,7 +35,7 @@ export function FeaturesGrid() {
             Everything your operations require.
           </h2>
           <p className="text-body text-muted-foreground leading-relaxed">
-            Consolidate your client portal, booking link, staff logs, and invoicing system under a single, fast dashboard. Replaces fragmented tools with pure focus.
+            Consolidate your client portal, custom website, booking link, staff logs, and GST billing under a single, fast dashboard.
           </p>
         </div>
 
@@ -49,7 +49,7 @@ export function FeaturesGrid() {
         >
           {featureItems.map((item) => {
             const IconComponent = item.icon;
-            const isFeatured = item.label === "Appointments" || item.label === "AI Assistant";
+            const isFeatured = item.label === "Appointments" || item.label === "Website Builder";
 
             return (
               <motion.div
@@ -57,8 +57,8 @@ export function FeaturesGrid() {
                 variants={cardVariants}
                 className={`group relative rounded-xl border border-border bg-card p-6 shadow-xs transition-all duration-200 hover:border-primary/50 hover:shadow-sm flex flex-col justify-between overflow-hidden ${
                   isFeatured 
-                    ? "md:col-span-3 min-h-[260px] bg-linear-to-tr from-surface-1 via-card to-card" 
-                    : "md:col-span-2 min-h-[220px]"
+                    ? "md:col-span-3 min-h-65 bg-linear-to-tr from-surface-1 via-card to-card" 
+                    : "md:col-span-2 min-h-55"
                 }`}
               >
                 <div className="relative z-10 space-y-5 flex-1 flex flex-col justify-between">
@@ -72,13 +72,8 @@ export function FeaturesGrid() {
 
                     {/* Content */}
                     <div className="space-y-1.5">
-                      <h3 className="text-heading-3 text-base sm:text-lg flex items-center gap-1.5 leading-snug">
+                      <h3 className="text-heading-3 text-base sm:text-lg flex items-center gap-1.5 leading-snug font-bold">
                         {item.label}
-                        {item.label.includes("AI") && (
-                          <span className="inline-flex items-center gap-0.5 rounded-full bg-accent/10 px-2 py-0.5 text-[9px] font-bold text-accent uppercase tracking-wider">
-                            Active
-                          </span>
-                        )}
                       </h3>
                       <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-[34ch]">
                         {item.description}
@@ -91,7 +86,7 @@ export function FeaturesGrid() {
                     <div className="hidden sm:block mt-3 border border-border/60 rounded-lg p-2 bg-background/50 text-[10px] space-y-1 font-mono">
                       <div className="flex justify-between text-muted-foreground border-b border-border/40 pb-1">
                         <span>Calendar Slots</span>
-                        <span className="text-primary">Live</span>
+                        <span className="text-primary">Real-Time</span>
                       </div>
                       <div className="flex justify-between items-center bg-primary/5 px-2 py-1 rounded text-primary">
                         <span>10:30 AM — Rahul S.</span>
@@ -100,10 +95,13 @@ export function FeaturesGrid() {
                     </div>
                   )}
 
-                  {isFeatured && item.label === "AI Assistant" && (
+                  {isFeatured && item.label === "Website Builder" && (
                     <div className="hidden sm:block mt-3 border border-border/60 rounded-lg p-2 bg-background/50 text-[10px] space-y-1 font-mono text-muted-foreground">
-                      <div className="text-foreground">Command: <span className="text-primary font-bold">&quot;Generate daily report&quot;</span></div>
-                      <div>&gt; Initializing forecasting metrics... Done.</div>
+                      <div className="flex justify-between text-foreground">
+                        <span>Domain: <span className="text-primary font-bold">yourbrand.com</span></span>
+                        <span className="text-emerald-500 font-bold">SSL Active</span>
+                      </div>
+                      <div>&gt; Custom theme &amp; booking portal live</div>
                     </div>
                   )}
 
@@ -118,35 +116,29 @@ export function FeaturesGrid() {
 
                   {!isFeatured && item.label === "Payments & Billing" && (
                     <div className="hidden sm:flex items-center justify-between border border-border/45 rounded p-1.5 bg-background/45 text-[9px] font-mono mt-3">
-                      <span className="text-muted-foreground/90">Invoice #4802</span>
-                      <span className="font-bold text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded text-[8px]">PAID</span>
-                    </div>
-                  )}
-
-                  {!isFeatured && item.label === "Website Builder" && (
-                    <div className="hidden sm:block border border-border/45 rounded p-1.5 bg-background/45 text-[9px] font-mono text-muted-foreground/90 truncate mt-3">
-                      kapils.rozx.in
+                      <span className="text-muted-foreground/90">Invoice #4802 (A4 / Thermal)</span>
+                      <span className="font-bold text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded text-[8px]">GST PAID</span>
                     </div>
                   )}
 
                   {!isFeatured && item.label === "Marketing" && (
                     <div className="hidden sm:flex items-center justify-between border border-border/45 rounded p-1.5 bg-background/45 text-[9px] font-mono mt-3">
-                      <span className="text-muted-foreground/90">Promo SMS Campaign</span>
+                      <span className="text-muted-foreground/90">WhatsApp Broadcast</span>
                       <span className="text-primary font-bold bg-primary/10 px-1.5 py-0.5 rounded text-[8px]">SENT</span>
                     </div>
                   )}
 
-                  {!isFeatured && item.label === "Loyalty & Memberships" && (
+                  {!isFeatured && item.label === "Memberships & Packages" && (
                     <div className="hidden sm:flex items-center gap-2 mt-3">
-                      <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-primary/10 border border-primary/20 text-primary font-bold">Gold Tier</span>
-                      <span className="text-[9px] font-mono text-muted-foreground/90">450 pts</span>
+                      <span className="text-[9px] font-mono px-1.5 py-0.5 rounded bg-primary/10 border border-primary/20 text-primary font-bold">Monthly Pass</span>
+                      <span className="text-[9px] font-mono text-muted-foreground/90">3 sessions left</span>
                     </div>
                   )}
 
-                  {!isFeatured && item.label === "Analytics" && (
+                  {!isFeatured && item.label === "Analytics & Reporting" && (
                     <div className="hidden sm:flex items-center justify-between border border-border/45 rounded p-1.5 bg-background/45 text-[9px] font-mono mt-3">
-                      <span className="text-muted-foreground/90">LTV Average</span>
-                      <span className="text-foreground font-bold">₹18,500</span>
+                      <span className="text-muted-foreground/90">Owner Overview</span>
+                      <span className="text-foreground font-bold">Daily Export</span>
                     </div>
                   )}
 

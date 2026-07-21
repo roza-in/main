@@ -41,7 +41,7 @@ export function Industries() {
             href="/platform"
             className="inline-flex items-center gap-1.5 font-bold text-primary hover:text-primary-dark hover:underline whitespace-nowrap self-start md:self-end"
           >
-            Explore all integrations
+            Explore platform capabilities
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>

@@ -4,47 +4,41 @@ import { generateMetadata } from "@/lib/seo/metadata";
 import { Comparison } from "@/components/sections/comparison/comparison";
 
 export const metadata: Metadata = generateMetadata({
-  title: "Rozx vs Fresha: Compare Booking Features & Fees",
-  description: "Learn why salons and day spas switch from Fresha to Rozx to eliminate booking commissions and customize their booking domains.",
+  title: "Rozx vs Fresha: Feature & Pricing Comparison",
+  description: "Compare Rozx and Fresha for Indian salons, spas, and clinics. Flat subscription pricing, custom domain website, and GST invoicing.",
   path: "/compare/fresha",
 });
 
 const features = [
   {
-    name: "0% Client Booking Commissions",
-    desc: "Fresha charges commissions on client bookings from their marketplace. Rozx charges flat, predictable subscriptions with ₹0 marketplace fees.",
+    name: "0% Booking Commission Model",
+    desc: "Rozx operates strictly as a subscription platform with ₹0 booking commission fees.",
     rozx: true,
-    competitor: false,
+    competitor: "Marketplace Cut / Fees",
   },
   {
     name: "Custom Website Domain Mapping",
-    desc: "Map your own website domain (e.g. yourbusiness.com). Fresha links stay branded on their platform.",
+    desc: "Map your custom website domain (e.g. www.yourbrand.com) with automated SSL.",
     rozx: true,
     competitor: false,
   },
   {
-    name: "Official WhatsApp Cloud API Campaigning",
-    desc: "Send bulk newsletters, win-back prompts, and promotions on verified WhatsApp numbers without risk of bans.",
+    name: "Official WhatsApp Cloud API Integration",
+    desc: "Dispatch official broadcast campaigns and appointment reminders via Meta WhatsApp API.",
     rozx: true,
     competitor: false,
   },
   {
-    name: "Rozx AI Copilot Operations assistant",
-    desc: "Integrated AI writing campaigns, predicting inventory levels, and summarizing financial details in chat.",
+    name: "GST-Compliant PDF & Thermal Invoicing",
+    desc: "Generate A4 PDF invoices or 80mm/58mm thermal receipts with itemized CGST/SGST.",
     rozx: true,
-    competitor: false,
+    competitor: "Basic Tax Features",
   },
   {
-    name: "Unlimited Staff Accounts & Rosters",
-    desc: "Support and track coordinates for all your service providers without pricing tier upgrades.",
+    name: "Intake Forms & SOAP Notes",
+    desc: "Create custom intake disclaimers and SOAP progress notes with digital signatures.",
     rozx: true,
-    competitor: true,
-  },
-  {
-    name: "GST Invoice Generation & Registers",
-    desc: "Automate tax percentages, create invoices, and closing register books at check-out.",
-    rozx: true,
-    competitor: true,
+    competitor: "Basic Notes",
   }
 ];
 
@@ -52,8 +46,8 @@ export default function FreshaComparePage() {
   return (
     <Comparison
       competitorName="Fresha"
-      tagline="Keep 100% of your earnings. Stop paying booking commissions."
-      description="While Fresha offers basic software for salons, their discovery marketplace model takes cuts of bookings for repeat clients. Rozx is dedicated software for your brand, charging flat subscriptions and helping you map your own booking domain."
+      tagline="Flat subscription pricing and custom domain booking for your brand."
+      description="Compare how Rozx helps Indian service businesses maintain complete ownership of their client relationships, booking website domain, and billing without per-booking commission structures."
       features={features}
     />
   );

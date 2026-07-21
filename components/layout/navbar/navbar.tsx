@@ -155,7 +155,7 @@ export function Navbar() {
           </Link>
           <Link href={ROUTES.app.register}>
             <Button variant="premium" className="font-semibold text-sm flex items-center gap-1.5">
-              Start Free Trial
+              Get Started
               <ArrowRight className="h-4 w-4" />
             </Button>
           </Link>

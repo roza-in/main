@@ -14,16 +14,14 @@ export function Hero() {
 
       {/* Dynamic Glowing background shapes */}
       <div className="absolute inset-0 -z-10 overflow-hidden pointer-events-none">
-        {/* Soft glowing ambient spots */}
-        <div className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-primary/10 blur-[130px] dark:bg-primary/5" />
-        <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full bg-primary/10 blur-[130px] dark:bg-primary/5" />
-        {/* Diagonal glowing beams */}
+        <div className="absolute -top-40 -left-40 w-150 h-150 rounded-full bg-primary/10 blur-[130px] dark:bg-primary/5" />
+        <div className="absolute -top-40 -right-40 w-150 h-150 rounded-full bg-primary/10 blur-[130px] dark:bg-primary/5" />
         <div className="absolute top-[20%] left-[-20%] w-[50%] h-[60%] bg-linear-to-tr from-primary/15 via-primary/5 to-transparent blur-[120px] rotate-15 opacity-75 dark:opacity-40" />
         <div className="absolute top-[20%] right-[-20%] w-[50%] h-[60%] bg-linear-to-tl from-primary/15 via-primary/5 to-transparent blur-[120px] rotate-[-15deg] opacity-75 dark:opacity-40" />
       </div>
 
       <div className="container relative text-center max-w-5xl">
-        {/* Trust Badge / Announcement */}
+        {/* Trust Badge */}
         <motion.div
           initial={{ opacity: 0, y: -8 }}
           animate={{ opacity: 1, y: 0 }}
@@ -31,7 +29,7 @@ export function Hero() {
           className="inline-flex items-center gap-2 rounded-full border border-border bg-surface-1 px-3 py-1 text-xs font-semibold text-muted-foreground mb-6"
         >
           <span className="flex h-1.5 w-1.5 rounded-full bg-primary" />
-          Rozx 1.0 is officially live
+          Booking, Billing & Custom Website Platform
         </motion.div>
 
         {/* Headline */}
@@ -51,7 +49,7 @@ export function Hero() {
           transition={{ duration: 0.4, delay: 0.1 }}
           className="mt-5 text-body-lg text-muted-foreground max-w-2xl mx-auto max-measure"
         >
-          Manage appointments, automated reminders, customer details, billing, and your custom booking website in one simple dashboard.
+          Manage appointments, staff schedules, customer records, GST invoicing, and your custom domain booking website in one simple dashboard.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -63,7 +61,7 @@ export function Hero() {
         >
           <Link href={ROUTES.app.register} className="w-full sm:w-auto">
             <Button variant="premium" size="lg" className="w-full sm:w-auto text-sm font-semibold h-11">
-              Start Free 14-Day Trial
+              Get Started
             </Button>
           </Link>
           <Link href="/book-demo" className="w-full sm:w-auto">
@@ -83,15 +81,15 @@ export function Hero() {
         >
           <span className="flex items-center gap-1.5">
             <Check className="h-3.5 w-3.5 text-primary shrink-0" />
-            No credit card details required
+            0% commission on bookings
           </span>
           <span className="flex items-center gap-1.5">
             <Check className="h-3.5 w-3.5 text-primary shrink-0" />
-            14-day full access tier
+            GST billing & thermal receipts
           </span>
           <span className="flex items-center gap-1.5">
             <Check className="h-3.5 w-3.5 text-primary shrink-0" />
-            Setup in 5 minutes
+            Custom domain booking site
           </span>
         </motion.div>
 

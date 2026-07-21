@@ -6,13 +6,19 @@ import {
   Megaphone,
   Gift,
   BarChart3,
-  Sparkles,
   Scissors,
   Droplets,
   Paintbrush,
   Hand,
   Heart,
   Pen,
+  Briefcase,
+  Dumbbell,
+  Camera,
+  Dog,
+  Car,
+  Wrench,
+  GraduationCap,
   type LucideIcon,
 } from "lucide-react";
 
@@ -33,50 +39,44 @@ export const featureItems: NavItem[] = [
   {
     label: "Appointments",
     href: "/features/appointments",
-    description: "Calendar, online booking, waitlists & walk-ins",
+    description: "Calendar, online booking, availability & walk-ins",
     icon: Calendar,
   },
   {
     label: "Customer CRM",
     href: "/features/crm",
-    description: "Profiles, history, preferences & lifetime value",
+    description: "Profiles, visit history, notes & preferences",
     icon: Users,
   },
   {
     label: "Payments & Billing",
     href: "/features/payments",
-    description: "POS, invoices, GST & multi-gateway support",
+    description: "GST POS, thermal receipt printing & online checkout",
     icon: CreditCard,
   },
   {
     label: "Website Builder",
     href: "/features/website-builder",
-    description: "Templates, booking portal & custom domains",
+    description: "Custom domain, themes, booking portal & live publishing",
     icon: Globe,
   },
   {
     label: "Marketing",
     href: "/features/marketing",
-    description: "Campaigns, automation, WhatsApp & email",
+    description: "WhatsApp Cloud API & SMS promotional campaigns",
     icon: Megaphone,
   },
   {
-    label: "Loyalty & Memberships",
+    label: "Memberships & Packages",
     href: "/features/loyalty",
-    description: "Points, tiers, gift cards & referrals",
+    description: "Recurring memberships & bundled service packages",
     icon: Gift,
   },
   {
-    label: "Analytics",
+    label: "Analytics & Reporting",
     href: "/features/analytics",
-    description: "Revenue, retention, growth & forecasting",
+    description: "Revenue trends, staff reports & financial exports",
     icon: BarChart3,
-  },
-  {
-    label: "AI Assistant",
-    href: "/features/ai-assistant",
-    description: "Business copilot for operations & insights",
-    icon: Sparkles,
   },
 ];
 
@@ -129,6 +129,48 @@ export const industryItems: NavItem[] = [
     description: "Medical & aesthetic clinics",
     icon: Hand,
   },
+  {
+    label: "Consulting",
+    href: "/industries/consulting",
+    description: "1-on-1 mentorship & consulting",
+    icon: Briefcase,
+  },
+  {
+    label: "Coaching & Training",
+    href: "/industries/coaching-training",
+    description: "Personal training & tutors",
+    icon: Dumbbell,
+  },
+  {
+    label: "Creative Studio",
+    href: "/industries/photography-creative",
+    description: "Photo & creative art studios",
+    icon: Camera,
+  },
+  {
+    label: "Pet Services",
+    href: "/industries/pet-services",
+    description: "Pet grooming & veterinary",
+    icon: Dog,
+  },
+  {
+    label: "Auto Services",
+    href: "/industries/auto-services",
+    description: "Car wash & garage repairs",
+    icon: Car,
+  },
+  {
+    label: "Repair Service",
+    href: "/industries/repair-service",
+    description: "Phone & appliance repairs",
+    icon: Wrench,
+  },
+  {
+    label: "Classes & Events",
+    href: "/industries/classes-events",
+    description: "Group classes & workshops",
+    icon: GraduationCap,
+  },
 ];
 
 export const mainNavItems: NavGroup[] = [
@@ -140,7 +182,7 @@ export const mainNavItems: NavGroup[] = [
 
 export const ctaNavItems: NavItem[] = [
   { label: "Book a Demo", href: "/book-demo" },
-  { label: "Start Free Trial", href: "/start-trial" },
+  { label: "Get Started", href: "https://app.rozx.in/register" },
 ];
 
 export const footerNavItems = {
@@ -163,23 +205,13 @@ export const footerNavItems = {
       { label: "Tattoo Studio", href: "/industries/tattoo-studio" },
     ],
   },
-  resources: {
-    title: "Resources",
-    items: [
-      { label: "Blog", href: "/blog" },
-      { label: "Guides", href: "/guides" },
-      { label: "Help Center", href: "/help" },
-      { label: "Integrations", href: "/integrations" },
-      { label: "Documentation", href: "/docs" },
-    ],
-  },
   company: {
     title: "Company",
     items: [
       { label: "About", href: "/about" },
       { label: "Contact", href: "/contact" },
-      { label: "Careers", href: "/careers" },
-      { label: "Customers", href: "/customers" },
+      { label: "Blog", href: "/blog" },
+      { label: "Help Center", href: "/help" },
     ],
   },
   legal: {

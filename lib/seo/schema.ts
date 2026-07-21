@@ -17,7 +17,7 @@ export function organizationSchema() {
     sameAs: Object.values(siteConfig.social),
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Rohini, New Delhi",
+      addressLocality: "New Delhi",
       addressCountry: "IN",
     },
   };
@@ -45,8 +45,8 @@ export function softwareApplicationSchema() {
       "@type": "AggregateOffer",
       priceCurrency: "INR",
       lowPrice: "999",
-      highPrice: "2999",
-      offerCount: "3",
+      highPrice: "9999",
+      offerCount: "1",
     },
   };
 }

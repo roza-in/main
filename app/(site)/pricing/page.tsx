@@ -4,9 +4,9 @@ import { generateMetadata } from "@/lib/seo/metadata";
 import { PricingView } from "./pricing-view";
 
 export const metadata: Metadata = generateMetadata({
-  title: "Pricing Plans & Packages",
+  title: "Pricing & Plans",
   description:
-    "Explore transparent subscription options for Rozx - booking and billing software for salons, spas, and clinics. Compare Starter, Growth, Professional, and Enterprise plans.",
+    "Simple, transparent subscription pricing for Rozx - booking, billing, and website platform for salons, spas, and clinics in India.",
   path: "/pricing",
 });
 

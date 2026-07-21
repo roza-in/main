@@ -7,20 +7,6 @@ const BASE_URL = "https://rozx.in";
 
 // Queries to fetch active slugs from Sanity
 const blogSlugsQuery = `*[_type == "post" && defined(slug.current)].slug.current`;
-const caseStudySlugsQuery = `*[_type == "case-study" && defined(slug.current)].slug.current`;
-
-// Lists of static slugs matching our static pages configs
-const staticGuides = [
-  "migration-zenoti-to-rozx",
-  "setting-up-whatsapp-business-api",
-  "configuring-gst-taxes"
-];
-
-const staticDocs = [
-  "api-reference",
-  "webhooks",
-  "security"
-];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const staticRoutes = [
@@ -30,12 +16,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/about",
     "/contact",
     "/book-demo",
-    "/integrations",
-    "/customers",
-    "/careers",
     "/blog",
-    "/guides",
-    "/docs",
     "/help",
     "/privacy",
     "/terms",
@@ -49,7 +30,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/features/marketing",
     "/features/loyalty",
     "/features/analytics",
-    "/features/ai-assistant",
     // Industry pages
     "/industries/salon",
     "/industries/spa",
@@ -59,6 +39,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/industries/wellness-center",
     "/industries/tattoo-studio",
     "/industries/clinic",
+    "/industries/consulting",
+    "/industries/coaching-training",
+    "/industries/photography-creative",
+    "/industries/pet-services",
+    "/industries/auto-services",
+    "/industries/repair-service",
+    "/industries/classes-events",
     // Comparison pages
     "/compare/fresha",
     "/compare/vagaro",
@@ -66,20 +53,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/compare/mindbody",
   ];
 
-  // Initialize all routes array with static base routes
   const routes = [...staticRoutes];
 
-  // 1. Add static guides sub-routes
-  staticGuides.forEach((slug) => {
-    routes.push(`/guides/${slug}`);
-  });
-
-  // 2. Add static docs sub-routes
-  staticDocs.forEach((slug) => {
-    routes.push(`/docs/${slug}`);
-  });
-
-  // 3. Fetch dynamic blog post slugs
+  // Fetch dynamic blog post slugs
   try {
     const blogSlugs = await sanityClient.fetch<string[]>(blogSlugsQuery);
     if (blogSlugs && blogSlugs.length > 0) {
@@ -91,19 +67,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     console.error("Failed to fetch blog slugs for sitemap:", error);
   }
 
-  // 4. Fetch dynamic case study slugs
-  try {
-    const caseStudySlugs = await sanityClient.fetch<string[]>(caseStudySlugsQuery);
-    if (caseStudySlugs && caseStudySlugs.length > 0) {
-      caseStudySlugs.forEach((slug) => {
-        routes.push(`/customers/${slug}`);
-      });
-    }
-  } catch (error) {
-    console.error("Failed to fetch case study slugs for sitemap:", error);
-  }
-
-  const lastModified = new Date("2026-06-08");
+  const lastModified = new Date();
 
   return routes.map((route) => ({
     url: `${BASE_URL}${route}`,

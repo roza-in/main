@@ -4,41 +4,41 @@ import { generateMetadata } from "@/lib/seo/metadata";
 import { Comparison } from "@/components/sections/comparison/comparison";
 
 export const metadata: Metadata = generateMetadata({
-  title: "Rozx vs Mindbody: Compare Enterprise Features",
-  description: "Compare Rozx and Mindbody features for wellness spas, clinics, and multi-branch service operations.",
+  title: "Rozx vs Mindbody: Feature & Pricing Comparison",
+  description: "Compare Rozx and Mindbody for salons, spas, and wellness clinics in India. Transparent pricing and local GST invoicing.",
   path: "/compare/mindbody",
 });
 
 const features = [
   {
-    name: "Consolidated Multi-Location Controls",
-    desc: "Franchise panels to synchronize inventory, services, and staffing levels across 100+ branches instantly.",
+    name: "Transparent SaaS Pricing",
+    desc: "Flat pricing starting at ₹999/month with no hidden setup fees or complex contracts.",
+    rozx: true,
+    competitor: "Variable / High Tiers",
+  },
+  {
+    name: "Custom Website Domain Mapping",
+    desc: "Host your custom domain booking site (e.g. www.yourbrand.com) with SSL included.",
+    rozx: true,
+    competitor: false,
+  },
+  {
+    name: "WhatsApp Campaign Integration",
+    desc: "Send broadcast campaigns and booking reminders via official WhatsApp Cloud API.",
+    rozx: true,
+    competitor: false,
+  },
+  {
+    name: "GST-Compliant Invoicing & Thermal Printing",
+    desc: "Itemize CGST and SGST with support for A4 PDFs and thermal receipt printers.",
+    rozx: true,
+    competitor: "US-Centric Tax Models",
+  },
+  {
+    name: "Digital Intake Forms & Waivers",
+    desc: "Collect signed disclaimers and progress notes with timestamped audit trails.",
     rozx: true,
     competitor: true,
-  },
-  {
-    name: "API Access & Webhook Integrations",
-    desc: "Develop custom booking features and sync databases using our open API and real-time webhook triggers.",
-    rozx: true,
-    competitor: "Extra Fee Charged",
-  },
-  {
-    name: "Custom Booking Website",
-    desc: "Map your own website domain (e.g. yourbusiness.com). Mindbody primarily links to their consumer directory app.",
-    rozx: true,
-    competitor: false,
-  },
-  {
-    name: "Official WhatsApp Cloud API Campaigning",
-    desc: "Deploy verified WhatsApp marketing campaigns. Mindbody relies on standard email and SMS automation.",
-    rozx: true,
-    competitor: false,
-  },
-  {
-    name: "Flat Predictable Subscription",
-    desc: "Subscriptions starting at ₹1,999/mo. Mindbody contracts frequently exceed ₹25,000/mo.",
-    rozx: true,
-    competitor: false,
   }
 ];
 
@@ -46,8 +46,8 @@ export default function MindbodyComparePage() {
   return (
     <Comparison
       competitorName="Mindbody"
-      tagline="Enterprise power. Zero complexity."
-      description="Mindbody is an industry standard for wellness centers but is notorious for complex interfaces, contract lock-ins, and high costs. Rozx delivers the same multi-branch capabilities, APIs, and analytics at flat, reasonable subscription rates."
+      tagline="Streamlined operations tailored for Indian service businesses."
+      description="Compare how Rozx offers a clean, affordable platform for appointment scheduling, GST billing, and custom domain booking tailored specifically for Indian salons, spas, and clinics."
       features={features}
     />
   );

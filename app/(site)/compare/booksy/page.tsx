@@ -4,41 +4,41 @@ import { generateMetadata } from "@/lib/seo/metadata";
 import { Comparison } from "@/components/sections/comparison/comparison";
 
 export const metadata: Metadata = generateMetadata({
-  title: "Rozx vs Booksy: Compare Booking Features & Subscriptions",
-  description: "Find out why barbershops and nail studios choose Rozx over Booksy to reduce commission cuts on bookings.",
+  title: "Rozx vs Booksy: Feature & Pricing Comparison",
+  description: "Compare Rozx and Booksy for salons, barbershops, and studios. Flat SaaS subscription pricing and custom domain website.",
   path: "/compare/booksy",
 });
 
 const features = [
   {
-    name: "0% Commission Cuts on New Clients",
-    desc: "Booksy charges commission fees on first bookings made by new clients through their directory. Rozx is 100% commission-free.",
+    name: "0% Booking Commission Model",
+    desc: "Rozx operates strictly as a subscription platform with ₹0 booking commission fees.",
+    rozx: true,
+    competitor: "First Booking Commission",
+  },
+  {
+    name: "Custom Website Domain Mapping",
+    desc: "Map your custom website domain (e.g. www.yourbrand.com) with automated SSL included.",
     rozx: true,
     competitor: false,
   },
   {
-    name: "Custom Booking Website",
-    desc: "Map your own website domain (e.g. yourbusiness.com). Booksy primarily directs clients to their platform directory.",
+    name: "Official WhatsApp Cloud API Campaigning",
+    desc: "Dispatch official broadcast campaigns and appointment reminders via Meta WhatsApp API.",
     rozx: true,
     competitor: false,
   },
   {
-    name: "Automated Marketing & WhatsApp Campaigns",
-    desc: "Run retention automation campaigns and WhatsApp confirmations. Booksy is restricted to standard app notifications.",
+    name: "GST Invoicing & Thermal Printing",
+    desc: "Itemize CGST/SGST, SAC codes, and print directly on 80mm/58mm thermal printers.",
     rozx: true,
-    competitor: false,
+    competitor: "Standard Tax Tools",
   },
   {
-    name: "Advanced Client History CRM",
-    desc: "Maintain detailed formula files, style tags, and lifetime visit tracking values on profiles.",
+    name: "Digital Intake Forms & Progress Notes",
+    desc: "Attach disclaimers, waivers, and progress notes to client visits.",
     rozx: true,
-    competitor: true,
-  },
-  {
-    name: "Flat Subscription Model",
-    desc: "One transparent subscription. No extra marketing fees or client acquisition commissions.",
-    rozx: true,
-    competitor: false,
+    competitor: "Basic Notes",
   }
 ];
 
@@ -46,8 +46,8 @@ export default function BooksyComparePage() {
   return (
     <Comparison
       competitorName="Booksy"
-      tagline="Your clients. Your brand. 0% marketplace commissions."
-      description="Booksy functions primarily as a marketplace aggregator, which means they acquire new clients but charge commission cuts on those bookings. Rozx gives you a dedicated client portal under your own domain name with flat SUBSCRIPTION terms."
+      tagline="Flat subscription terms and custom domain booking for your brand."
+      description="Compare how Rozx delivers dedicated software for your business with flat subscription pricing, custom domain website publishing, and GST billing."
       features={features}
     />
   );
