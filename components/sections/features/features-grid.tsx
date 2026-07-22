@@ -107,10 +107,9 @@ export function FeaturesGrid() {
 
                   {/* Micro Visuals for Standard Cards */}
                   {!isFeatured && item.label === "Customer CRM" && (
-                    <div className="hidden sm:flex gap-1.5 overflow-hidden mt-3">
-                      <span className="text-[9px] font-mono px-2 py-0.5 border border-border/40 rounded bg-background/45 text-muted-foreground/90">Priya S.</span>
-                      <span className="text-[9px] font-mono px-2 py-0.5 border border-border/40 rounded bg-background/45 text-muted-foreground/90">Amit K.</span>
-                      <span className="text-[9px] font-mono px-2 py-0.5 border border-border/40 rounded bg-background/45 text-muted-foreground/90">Sunita R.</span>
+                    <div className="hidden sm:flex items-center justify-between border border-border/45 rounded p-1.5 bg-background/45 text-[9px] font-mono mt-3">
+                      <span className="text-muted-foreground/90">Lapsed Clients (30+ Days)</span>
+                      <span className="font-bold text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded text-[8px]">1-CLICK WA</span>
                     </div>
                   )}
 
