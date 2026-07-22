@@ -29,7 +29,7 @@ export function Hero() {
           className="inline-flex items-center gap-2 rounded-full border border-border bg-surface-1 px-3 py-1 text-xs font-semibold text-muted-foreground mb-6"
         >
           <span className="flex h-1.5 w-1.5 rounded-full bg-primary" />
-          Booking, Billing & Custom Website Platform
+          0% Commission Booking, GST POS &amp; Rebooking Tools
         </motion.div>
 
         {/* Headline */}
@@ -39,7 +39,7 @@ export function Hero() {
           transition={{ duration: 0.4, delay: 0.05 }}
           className="text-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl max-w-4xl mx-auto tracking-tight"
         >
-          Booking & billing software for <span className="text-primary font-bold">salons, spas & clinics</span>.
+          Booking &amp; billing software for <span className="text-primary font-bold">salons, spas &amp; clinics</span>.
         </motion.h1>
 
         {/* Sub-headline */}
@@ -49,7 +49,7 @@ export function Hero() {
           transition={{ duration: 0.4, delay: 0.1 }}
           className="mt-5 text-body-lg text-muted-foreground max-w-2xl mx-auto max-measure"
         >
-          Manage appointments, staff schedules, customer records, GST invoicing, and your custom domain booking website in one simple dashboard.
+          Manage appointments, staff schedules, customer CRM records, GST invoicing, and your custom domain booking website with 1-click WhatsApp rebooking tools.
         </motion.p>
 
         {/* CTA Buttons */}
