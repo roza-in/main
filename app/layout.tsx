@@ -1,9 +1,22 @@
 import type { Metadata, Viewport } from "next";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import { AnalyticsTracker } from "@/components/shared/analytics-tracker";
 import { CookieConsent } from "@/components/shared/cookie-consent";
 import { StructuredData } from "@/components/shared/structured-data";
 import { siteConfig } from "@/config/site";
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: {
@@ -67,6 +80,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      className={`${inter.variable} ${plusJakarta.variable}`}
       suppressHydrationWarning
     >
       <head>
