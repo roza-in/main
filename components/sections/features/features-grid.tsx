@@ -134,6 +134,20 @@ export function FeaturesGrid() {
                     </div>
                   )}
 
+                  {!isFeatured && item.label === "Inventory & Retail POS" && (
+                    <div className="hidden sm:flex items-center justify-between border border-border/45 rounded p-1.5 bg-background/45 text-[9px] font-mono mt-3">
+                      <span className="text-muted-foreground/90">Barcode Scanner &amp; HSN/GST</span>
+                      <span className="font-bold text-emerald-500 bg-emerald-500/10 px-1.5 py-0.5 rounded text-[8px]">STOCK LOGGED</span>
+                    </div>
+                  )}
+
+                  {!isFeatured && item.label === "5-Star Review Booster" && (
+                    <div className="hidden sm:flex items-center justify-between border border-border/45 rounded p-1.5 bg-background/45 text-[9px] font-mono mt-3">
+                      <span className="text-amber-500 font-bold flex items-center gap-1">★ ★ ★ ★ ★ (5.0)</span>
+                      <span className="font-bold text-sky-500 bg-sky-500/10 px-1.5 py-0.5 rounded text-[8px]">GOOGLE BOOSTED</span>
+                    </div>
+                  )}
+
                   {!isFeatured && item.label === "Analytics & Reporting" && (
                     <div className="hidden sm:flex items-center justify-between border border-border/45 rounded p-1.5 bg-background/45 text-[9px] font-mono mt-3">
                       <span className="text-muted-foreground/90">Owner Overview</span>
