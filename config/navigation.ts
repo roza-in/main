@@ -18,6 +18,8 @@ import {
   Dog,
   Car,
   Wrench,
+  Package,
+  Star,
   GraduationCap,
   type LucideIcon,
 } from "lucide-react";
@@ -65,6 +67,18 @@ export const featureItems: NavItem[] = [
     href: "/features/marketing",
     description: "WhatsApp Cloud API & SMS promotional campaigns",
     icon: Megaphone,
+  },
+  {
+    label: "Inventory & Retail POS",
+    href: "/features/inventory",
+    description: "Barcode scanning, stock audit logs, HSN/GST rates & low-stock alerts",
+    icon: Package,
+  },
+  {
+    label: "5-Star Review Booster",
+    href: "/features/appointments",
+    description: "Automated post-appointment feedback & 5-star Google Review booster",
+    icon: Star,
   },
   {
     label: "Memberships & Packages",

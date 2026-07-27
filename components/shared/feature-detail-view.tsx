@@ -13,6 +13,7 @@ import {
   Megaphone, 
   Gift, 
   BarChart3,
+  Package,
   ShieldCheck,
   Activity,
   HelpCircle
@@ -35,6 +36,7 @@ export function FeatureDetailView({ feature }: FeatureDetailViewProps) {
       case "marketing": return <Megaphone className={iconClass} />;
       case "loyalty": return <Gift className={iconClass} />;
       case "analytics": return <BarChart3 className={iconClass} />;
+      case "inventory": return <Package className={iconClass} />;
       default: return <Zap className={iconClass} />;
     }
   };

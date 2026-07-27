@@ -22,7 +22,7 @@ export interface FeatureDetail {
   faqs: { q: string; a: string }[];
   highlightMetric: string;
   highlightLabel: string;
-  iconName: "appointments" | "crm" | "payments" | "website-builder" | "marketing" | "loyalty" | "analytics";
+  iconName: "appointments" | "crm" | "payments" | "website-builder" | "marketing" | "loyalty" | "analytics" | "inventory";
   preview: FeaturePreviewData;
 }
 
@@ -295,6 +295,44 @@ export const FEATURE_DETAILS: Record<string, FeatureDetail> = {
         { title: "Daily Sales Register", meta: "32 Tickets Processed (Cash: ₹8.2k • UPI: ₹16.6k)", status: "Reconciled ✓", statusColor: "emerald" },
         { title: "Staff Revenue Matrix", meta: "Rahul M: ₹9.4k • Neha K: ₹8.8k • Priya S: ₹6.6k", status: "Updated", statusColor: "indigo" },
         { title: "Accounting Export Package", meta: "Monthly GST & Sales Register ready for download", status: "Download CSV", statusColor: "emerald" },
+      ],
+    },
+  },
+  inventory: {
+    slug: "inventory",
+    name: "Inventory & Retail POS",
+    tagline: "Track product stock, scan barcodes, auto-calculate HSN/GST rates, and sell retail products effortlessly.",
+    fullDesc: "Rozx Inventory & Retail POS gives salons, spas, and clinics complete control over retail product stock, consumption tracking, barcode scanning, and multi-category management. Audit stock movements (IN/OUT/ADJUST), set low-stock reorder thresholds, and issue GST-compliant retail invoices in seconds.",
+    capabilities: [
+      { title: "Barcode Scanner Integration", desc: "Scan product barcodes directly at front desk POS for instant checkout and rapid stock lookup.", tag: "Instant POS" },
+      { title: "Stock Audit Logs (IN/OUT/ADJUST)", desc: "Maintain strict audit trails for stock additions, professional consumption, damage write-offs, and sale deductions.", tag: "Full Audit Trail" },
+      { title: "HSN & Custom GST Rates", desc: "Assign 5%, 12%, 18%, or 28% GST rates with HSN code categorization for 100% tax compliance.", tag: "GST Compliant" },
+      { title: "Low-Stock Reorder Alerts", desc: "Automated alerts when product quantities drop below reorder thresholds so you never run out of inventory.", tag: "Automated Alerts" },
+      { title: "Retail Product POS Checkout", desc: "Combine client service appointments and retail product sales into a single itemized GST invoice.", tag: "Unified Billing" },
+      { title: "Category & Brand Hierarchy", desc: "Organize inventory by product categories, suppliers, batch numbers, and expiry dates.", tag: "Multi-Brand" },
+    ],
+    faqs: [
+      { q: "Can we sell retail products and services on the same invoice?", a: "Yes. Rozx allows front desk staff to add retail products and salon/spa services into a single itemized invoice with automatic HSN/SAC GST splits." },
+      { q: "Does the system support handheld barcode scanners?", a: "Yes. Rozx works seamlessly with standard USB or Bluetooth handheld barcode scanners." },
+      { q: "How are stock adjustments tracked for internal salon consumption?", a: "Staff can log product consumption (e.g. shampoo or hair color used during a treatment) as an internal usage log, automatically deducting stock and recording the responsible staff member." },
+    ],
+    highlightMetric: "Real-Time",
+    highlightLabel: "Stock Audit & POS",
+    iconName: "inventory",
+    preview: {
+      badge: "Real-Time Stock & Barcode POS",
+      title: "Inventory Control & Audit Register",
+      subtitle: "Branch: Central Outlet • Live Product Status",
+      stats: [
+        { label: "Products Tracked", value: "142 Items" },
+        { label: "Low-Stock Alerts", value: "3 Items" },
+        { label: "GST Tax Rate", value: "18% HSN 3305" },
+      ],
+      snippetTitle: "Recent Stock Movement & Retail Register",
+      snippetItems: [
+        { title: "L'Oréal Professionnel Hair Spa 500ml", meta: "Barcode: 8901234567890 • Quantity: 24 Units (Min: 5)", status: "In Stock ✓", statusColor: "emerald" },
+        { title: "O3+ Radiant Oxygen Facial Kit", meta: "Stock Audit LOG-IN: +10 Units received from Distributor", status: "Stock Added", statusColor: "indigo" },
+        { title: "Schwarzkopf Hair Color Shade 4.0", meta: "Quantity: 2 Units remaining (Reorder Alert Triggered)", status: "Reorder Low", statusColor: "indigo" },
       ],
     },
   },
