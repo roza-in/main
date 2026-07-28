@@ -23,6 +23,7 @@ function TrackerComponent() {
         ph.init(posthogKey, {
           api_host: process.env.NEXT_PUBLIC_POSTHOG_HOST || "https://us.i.posthog.com",
           capture_pageview: false, // Track pageviews manually on route changes
+          capture_pageleave: true, // Track pageleave for accurate bounce rate & session duration
           person_profiles: "identified_only",
         });
       });
