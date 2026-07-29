@@ -39,34 +39,34 @@ export const INDUSTRY_DETAILS: Record<string, IndustryDetail> = {
   salon: {
     slug: "salon",
     name: "Salons & Parlours",
-    tagline: "Manage stylist rosters, service durations, and GST thermal receipt checkouts.",
-    description: "Running a busy hair or beauty salon requires coordinating multiple stylists, managing service buffer times, and keeping chairs filled. Rozx provides a color-coded calendar grid, WhatsApp appointment reminders, customer color formula notes, and fast GST thermal billing.",
+    tagline: "Manage stylist rosters, split-time color processing, and instant walk-in appointments.",
+    description: "Running a busy hair or beauty salon requires coordinating multiple stylists, split-time color processing, and keeping chairs filled. Rozx provides a live Multi-Staff Calendar, instant walk-in booking, split-time dye-setting windows, and GST thermal billing.",
     workflows: [
-      "Track stylist shift schedules, break slots, and working hours across branches.",
-      "Automatically calculate staff commissions based on completed services and retail product sales.",
-      "Store client hair color formula notes and past service preferences in CRM profiles."
+      "Track stylist shift schedules, break slots, and multi-professional calendar columns.",
+      "Schedule split-time services with idle dye-processing windows for double-booking efficiency.",
+      "Add walk-in clients instantly into the live calendar with automated WhatsApp confirmations."
     ],
     featuresList: [
-      { title: "Stylist Shift Roster", desc: "Manage individual working hours, breaks, and assigned service categories per stylist." },
-      { title: "Service Buffer Times", desc: "Set mandatory cleanup and buffer intervals between appointments to prevent schedule overruns." },
+      { title: "Instant Walk-in Booking", desc: "Add walk-in clients directly to available calendar slots with one tap from the reception dashboard." },
+      { title: "Split-Time Hair Processing", desc: "Configure dye-setting idle windows so stylists can accept short appointments during processing times." },
       { title: "GST POS & Thermal Billing", desc: "Print 80mm/58mm thermal receipts or send A4 PDF invoices with itemized GST." }
     ],
-    metric: "Multi-Stylist",
-    metricLabel: "Shift & Calendar Roster",
+    metric: "Live Calendar",
+    metricLabel: "Multi-Staff & Split-Time POS",
     iconName: "salon",
     preview: {
-      badge: "Salon Operations Grid",
+      badge: "Salon Calendar & POS Grid",
       title: "Glow Hair Salon (Main Outlet)",
-      subtitle: "8 Stylists On Duty • 24 Appointments Today",
+      subtitle: "8 Stylists On Duty • Live Calendar Active",
       stats: [
         { label: "Bookings Today", value: "24 Slots" },
-        { label: "Chair Occupancy", value: "92%" },
+        { label: "Walk-ins Today", value: "6 Added" },
         { label: "GST Thermal POS", value: "Ready ✓" }
       ],
-      snippetTitle: "Live Salon Ticket Activity",
+      snippetTitle: "Live Salon Schedule & Processing Log",
       snippetItems: [
-        { title: "Keratin Treatment & Haircut", meta: "Stylist: Rahul M. • Client: Ananya S.", status: "In Chair", statusColor: "emerald" },
-        { title: "Color Touch-Up (Formula #7B)", meta: "Stylist: Neha K. • Notes Recorded", status: "Completed", statusColor: "indigo" },
+        { title: "Global Hair Color & Highlights", meta: "Stylist: Neha K. • 45m Processing Idle Window Active", status: "Idle Dye", statusColor: "indigo" },
+        { title: "Walk-in → Barber Alex", meta: "Instant appointment created at 2:15 PM", status: "Now Serving", statusColor: "emerald" },
         { title: "Thermal Receipt #INV-0892", meta: "₹2,850.00 • GST 18% Included", status: "Paid ✓", statusColor: "emerald" }
       ]
     }
@@ -109,35 +109,35 @@ export const INDUSTRY_DETAILS: Record<string, IndustryDetail> = {
   barbershop: {
     slug: "barbershop",
     name: "Barbershops & Male Grooming",
-    tagline: "Quick appointment scheduling, walk-in logging, and WhatsApp reminders.",
-    description: "Keep your barber chairs full and eliminate long waiting lines. Rozx provides quick booking links, front desk walk-in registration, automated SMS/WhatsApp alerts, and multi-payment checkouts.",
+    tagline: "Instant walk-in appointments, smart staff assignment, and automated client notifications.",
+    description: "Keep your barber chairs full and eliminate waiting frustration. Rozx provides instant walk-in booking into the live calendar, smart auto-assignment to available barbers, and automated WhatsApp appointment confirmations.",
     workflows: [
-      "Manage pre-booked slots and walk-in queues on a unified front desk screen.",
-      "Dispatch WhatsApp reminders to reduce appointment no-shows.",
-      "Track barber commissions based on daily cuts and grooming product sales."
+      "Manage pre-booked slots and walk-in clients with smart staff routing (Requested vs. First Available).",
+      "Add walk-in clients to the calendar instantly from the reception dashboard.",
+      "Send WhatsApp appointment confirmations and reminders automatically."
     ],
     featuresList: [
-      { title: "Walk-in & Queue POS", desc: "Log walk-in customers instantly and assign them to the next available barber chair." },
-      { title: "No-Show Prevention", desc: "Send automated WhatsApp appointment reminders 24 hours and 2 hours prior." },
+      { title: "Instant Walk-in Booking", desc: "Add walk-in clients to the next available slot with one tap, auto-assigned to the first free barber." },
+      { title: "Smart Staff Assignment", desc: "Automatically assign walk-in clients to the barber with the earliest available slot." },
       { title: "Barber Commission Logs", desc: "Track daily sales and calculate commission payouts per barber automatically." }
     ],
-    metric: "Fast Queue",
-    metricLabel: "Walk-in & Appointment POS",
+    metric: "Smart Scheduling",
+    metricLabel: "Walk-in & Appointment Calendar",
     iconName: "barbershop",
     preview: {
-      badge: "Barbershop POS Terminal",
+      badge: "Barbershop Calendar View",
       title: "The Heritage Barbershop",
-      subtitle: "5 Barber Chairs • Live Walk-in Queue",
+      subtitle: "5 Barber Chairs • Live Calendar & Walk-ins",
       stats: [
-        { label: "Cuts Today", value: "38 Clients" },
-        { label: "Wait Time", value: "12 Mins" },
-        { label: "No-Show Rate", value: "< 1.5%" }
+        { label: "Appointments", value: "38 Today" },
+        { label: "Avg Wait Time", value: "12 Mins" },
+        { label: "Walk-ins", value: "14 Added" }
       ],
-      snippetTitle: "Live Barber Queue & POS",
+      snippetTitle: "Live Barber Schedule",
       snippetItems: [
-        { title: "Beard Trim & Royal Shave", meta: "Barber: Vikram • Walk-in Client", status: "In Chair", statusColor: "emerald" },
-        { title: "Fade Cut & Head Massage", meta: "Barber: Karan • Pre-Booked (App)", status: "Next Up", statusColor: "indigo" },
-        { title: "Grooming Wax Sale", meta: "Retail Product Add-on • Ticket #089", status: "Sold ✓", statusColor: "emerald" }
+        { title: "Beard Trim & Cut — Vikram", meta: "Barber: Vikram • Chair 2 • 2:30 PM", status: "Now Serving", statusColor: "emerald" },
+        { title: "Walk-in → Barber Sam", meta: "Auto-assigned to next available slot at 2:45 PM", status: "Up Next", statusColor: "amber" },
+        { title: "Appointment Confirmed", meta: "WhatsApp sent to Client Rahul for 3:15 PM", status: "Confirmed", statusColor: "indigo" }
       ]
     }
   },
@@ -283,36 +283,36 @@ export const INDUSTRY_DETAILS: Record<string, IndustryDetail> = {
   },
   clinic: {
     slug: "clinic",
-    name: "Aesthetic Clinics & Skin Care",
-    tagline: "Doctor & practitioner rosters, treatment consent forms, and GST-compliant invoices.",
-    description: "Operate a compliant, high-end aesthetic or dermatology clinic. Rozx coordinates doctor consultation slots, digital treatment consent waivers, patient visit histories, and SAC-coded GST invoices.",
+    name: "Aesthetic Clinics & Dermatology",
+    tagline: "Clinical EMR workspace, SOAP notes, ICD-10 codes, and printable Doctor Prescriptions.",
+    description: "Operate a compliant, high-end dermatology or dental clinic. Rozx provides an EMR workspace with SOAP medical encounter notes, ICD-10 diagnosis codes, multi-step treatment plans with cost estimates, and NMC/DCI doctor registration prescriptions.",
     workflows: [
-      "Schedule doctor consultation slots, treatment follow-ups, and laser room availability.",
-      "Capture patient consent waivers and treatment progress notes before medical aesthetic procedures.",
-      "Issue GST-compliant medical invoices with itemized procedure codes and tax splits."
+      "Record structured SOAP clinical notes (Subjective, Objective, Assessment, Plan) with ICD-10 diagnosis codes.",
+      "Build multi-step procedure treatment plans with estimated session costs and progress tracking.",
+      "Generate and print digital prescriptions with NMC/DCI registration numbers, dosage schedules, and PDF sharing."
     ],
     featuresList: [
-      { title: "Doctor Slot Management", desc: "Coordinate doctor availability, consultation durations, and follow-up visit slots." },
-      { title: "Treatment Consent & Notes", desc: "Store digital consent records, procedure logs, and skin assessment notes in patient files." },
-      { title: "Medical GST Invoicing", desc: "Generate compliant invoices with SAC service codes, CGST/SGST itemization, and patient records." }
+      { title: "Clinical SOAP Notes & ICD-10", desc: "Document chief complaints, vitals, assessment notes, and ICD-10 diagnostic codes seamlessly." },
+      { title: "Multi-Step Treatment Plans", desc: "Sequence multi-visit procedures with estimated cost breakdowns and completion tracking." },
+      { title: "Doctor Prescription (Rx) Engine", desc: "Issue official Rx slips with doctor registration numbers, dosage instructions, and follow-up dates." }
     ],
-    metric: "Clinical POS",
-    metricLabel: "Doctor Slots & Consent Forms",
+    metric: "Clinical EMR",
+    metricLabel: "SOAP Notes & Doctor Prescriptions",
     iconName: "clinic",
     preview: {
-      badge: "Clinical Operations Engine",
+      badge: "Clinical EMR & Rx Engine",
       title: "DermaGlow Aesthetic Clinic",
-      subtitle: "Dr. Meera Vasudevan • Laser & Dermatology",
+      subtitle: "Dr. Meera Vasudevan • NMC Reg #2026/04/10928",
       stats: [
-        { label: "Doctor Slots", value: "16 Today" },
-        { label: "Consent Status", value: "Verified 🔒" },
-        { label: "GST SAC Invoice", value: "Automated" }
+        { label: "EMR Notes", value: "16 Encounter" },
+        { label: "ICD-10 Sync", value: "Verified 🔒" },
+        { label: "Rx Generator", value: "Print PDF ℞" }
       ],
-      snippetTitle: "Live Clinical Patient Queue",
+      snippetTitle: "Live Clinical Patient Workspace",
       snippetItems: [
-        { title: "Laser Skin Resurfacing", meta: "Dr. Meera • Laser Suite 1 • Consent Signed", status: "In Procedure", statusColor: "amber" },
-        { title: "Dermatology Consultation", meta: "Patient: Rohit V. • SAC Code 999312", status: "Completed", statusColor: "emerald" },
-        { title: "Clinical Tax Invoice #INV-109", meta: "₹4,500.00 • Itemized GST Included", status: "Paid ✓", statusColor: "emerald" }
+        { title: "SOAP Note: Acne Vulgaris (ICD-10 L70.0)", meta: "Dr. Meera • Subjective/Objective Assessment Recorded", status: "Saved 🩺", statusColor: "emerald" },
+        { title: "Prescription ℞ Generated", meta: "Tab Doxycycline 100mg (1-0-1) • NMC #2026/04/10928", status: "Issued Rx", statusColor: "indigo" },
+        { title: "3-Step Chemical Peel Plan", meta: "Session 2/3 Completed • Est. ₹12,500 Total", status: "In Progress", statusColor: "amber" }
       ]
     }
   },
@@ -424,35 +424,35 @@ export const INDUSTRY_DETAILS: Record<string, IndustryDetail> = {
   "pet-services": {
     slug: "pet-services",
     name: "Pet Grooming & Veterinary Care",
-    tagline: "Pet parent CRM profiles, grooming schedules, and vaccine tracking.",
-    description: "Deliver loving care to furry companions while keeping your business organized. Rozx tracks pet profile details, grooming specifications, vaccine records, and service reminders.",
+    tagline: "Pet parent CRM profiles, breed & weight tracking, and aggression alert flags.",
+    description: "Deliver loving care to furry companions while keeping your studio safe and organized. Rozx tracks pet profiles, species, breeds, weight, medical notes, vaccination dates, and aggression red alert warning banners.",
     workflows: [
-      "Maintain detailed pet profiles (breed, weight, temperament, vaccine dates).",
-      "Schedule grooming appointments and vet consultation slots with groomer rosters.",
-      "Send WhatsApp reminders for upcoming grooming sessions and annual vaccinations."
+      "Maintain pet CRM profiles (species, breed, weight, medical history, vaccination dates).",
+      "Display aggression red alert banners on appointment cards to ensure groomer safety.",
+      "Send WhatsApp reminders for upcoming grooming sessions and annual vaccination boosters."
     ],
     featuresList: [
-      { title: "Pet Parent CRM Profiles", desc: "Store pet name, breed, medical history, temperaments, and owner contact info." },
-      { title: "Grooming & Vet Slots", desc: "Manage bath, haircut, and consultation appointment slots with groomer allocations." },
+      { title: "Pet CRM & Breed Profiles", desc: "Store pet name, species, breed, weight, medical history, and vaccination status." },
+      { title: "Aggression Warning Alerts", desc: "Flag aggressive temperaments with prominent red warning banners on booking cards." },
       { title: "Vaccine & Refill Alerts", desc: "Dispatch automated WhatsApp reminders for recurring grooming and booster shots." }
     ],
     metric: "Pet CRM",
-    metricLabel: "Breed Profiles & Grooming POS",
+    metricLabel: "Breed Profiles & Aggression Alerts",
     iconName: "pet-services",
     preview: {
-      badge: "Pet Care & Grooming POS",
+      badge: "Pet Care & Grooming Hub",
       title: "Paws & Whiskers Pet Spa",
-      subtitle: "3 Grooming Stations • Pet CRM Active",
+      subtitle: "3 Grooming Stations • Pet CRM & Aggression Flags Active",
       stats: [
-        { label: "Pets Groomed", value: "16 Today" },
+        { label: "Pets Registered", value: "142 Profiles" },
         { label: "Vaccine Verified", value: "100%" },
-        { label: "Repeat Parent", value: "88%" }
+        { label: "Safety Alert", value: "Active ⚠️" }
       ],
       snippetTitle: "Live Grooming Station Log",
       snippetItems: [
-        { title: "Full Grooming & Bath (Golden Retriever)", meta: "Pet: Bruno • Owner: Ankit S. • Groomer: Vijay", status: "In Grooming", statusColor: "emerald" },
-        { title: "Vaccine Record Checked", meta: "Rabies Booster Up to Date (Exp: 2027)", status: "Verified ✓", statusColor: "indigo" },
-        { title: "Pet Shampoo Sale", meta: "Retail Product Add-on at Checkout", status: "Paid", statusColor: "emerald" }
+        { title: "Golden Retriever Full Grooming", meta: "Pet: Bruno (32kg) • Owner: Ankit S. • Vaccinated", status: "In Grooming", statusColor: "emerald" },
+        { title: "German Shepherd Bath & Nail Clip", meta: "Pet: Rocky • Aggression Flag: Requires Muzzle", status: "Alert ⚠️", statusColor: "amber" },
+        { title: "WhatsApp Vaccine Reminder", meta: "Sent to Owner for Annual Booster", status: "Dispatched", statusColor: "indigo" }
       ]
     }
   },
