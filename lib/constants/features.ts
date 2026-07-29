@@ -37,7 +37,7 @@ export const FEATURE_DETAILS: Record<string, FeatureDetail> = {
       { title: "Multi-Staff & Shift Roster", desc: "Visual color-coded grid sheet calendar helping branch managers schedule staff shifts, assign client blocks, and track working hours.", tag: "Multi-Branch" },
       { title: "Resource & Room Allocation", desc: "Assign specific treatment rooms, styling chairs, or specialized equipment to services to prevent physical resource double-allocations.", tag: "Smart Routing" },
       { title: "Automated Buffer Times", desc: "Set automatic cleanup or prep buffers (5 to 30 mins) between appointments so staff never feel rushed.", tag: "Automation" },
-      { title: "Walk-in & Queue Management", desc: "Seamlessly integrate walk-in clients into the live calendar grid without disrupting pre-booked appointments.", tag: "Front Desk POS" },
+      { title: "Walk-in & Instant Booking", desc: "Add walk-in clients directly into the live calendar as instant appointments without disrupting pre-booked slots.", tag: "Front Desk" },
       { title: "Automated WhatsApp Alerts", desc: "Send automated booking confirmations, 24-hour reminders, and instant rescheduling alerts via official WhatsApp.", tag: "Instant Notifications" },
     ],
     faqs: [
