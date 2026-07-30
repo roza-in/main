@@ -1,46 +1,24 @@
-# Project Overview
+# Project Overview — Rozx Marketing Website (`rozx.in`)
 
 ## About the Project
 
-**Rozx Marketing Website** (`rozx.in`) is the public marketing site for the Rozx platform. It introduces the product, features, integrations, and pricing packages to potential merchant signups.
-
-- **Stack**: Next.js 16 (App Router), Tailwind CSS v4, Motion (Framer Motion v12), and Lucide React.
-- **Content Management**: Powered by Sanity CMS (Studio accessible under `/studio` route segment).
-- **Analytics & Telemetry**: Integrates PostHog for site traffic audit trails and Sentry for error tracking.
-- **Form Actions**: Employs client-side forms validated via React Hook Form and Zod schema validation, submitting emails to a localized backend route for newsletter registrations.
+**Rozx Main** (`rozx.in`) is the public-facing marketing website built with Next.js 16 (Turbopack) showcasing the Rozx SaaS platform across **15 industry domain verticals** (salons, spas, barbershops, nail studios, makeup studios, wellness centers, tattoo studios, aesthetic clinics, consulting, fitness coaching, photo studios, pet services, auto detailing, device repair, group classes).
 
 ---
 
-## Site Segment Structure
+## Technical Stack & Integrations
 
-```
-/                             → Landing page (Hero, Features, Testimonials, CTA)
-/features                     → Multi-tab product capability breakdown
-/pricing                      → Pricing options with starter/growth highlights
-/pricing/starter-monthly      → Plan intent registration bridge redirections
-/blog                         → List of CMS-driven articles
-/blog/[slug]                  → Blog detail pages
-/about                        → Foundational rules, company mission, team
-/contact                      → Customer support request form
-/studio                       → Sanity Studio editing suite (auth restricted)
-```
+- **CMS**: Sanity v5 (`/studio`) — manages dynamic content, landing pages, blog posts, and feature announcements.
+- **Analytics**: PostHog product analytics and feature flag evaluation.
+- **Error Tracking**: Sentry v10.
+- **Animations**: Motion (Framer Motion v12) for smooth scroll reveals, 0.2s cubic-bezier ease transitions, and interactive industry previews.
+- **Forms & Validation**: `react-hook-form` + `zod` for email subscription and contact forms.
 
 ---
 
-## Dynamic CMS Schema Configurations
+## Mandatory Design System & SEO Directives
 
-The site utilizes Sanity CMS to manage the following document definitions:
-
-- **Post (`post`)**: Title, slug, author ref, mainImage, categories, publishedAt, body rich text.
-- **Feature (`feature`)**: Title, description, icon identifier, displayOrder, category link.
-- **Plan pricing mappings**: Starter, Growth, Enterprise. Prices represent Rupee integers mapped against Razorpay subscription plans.
-- **Legal texts**: Privacy policy, merchant terms and conditions.
-
----
-
-## SEO Guidelines
-
-- **Metadata generation**: Utilizes standard App Router metadata formats with Open Graph dynamic image rendering.
-- **Sitemap & Robots**: Standardized sitemap generation routing via `sitemap.ts` and crawler indexing definitions in `robots.ts`.
-- **Semantic structure**: Every page must enforce a single `<h1>` tag with structured `<h2>` to `<h4>` headings.
-- **Alt tags**: Enforced on all image objects fetched from Sanity CDN.
+- **Design System Tokens**: Strictly adhere to `context/design-system.md` using Tailwind v4 `@theme` design tokens (`bg-brand`, `bg-surface`, `text-text-primary`). Raw hex codes or un-themed Tailwind color classes are strictly forbidden.
+- **Motion Standards**: Scroll-triggered reveals (`opacity: 0, y: 20` $\rightarrow$ `opacity: 1, y: 0`), subtle hover transitions, and responsive tab previews.
+- **Zero CLS Image Optimization**: Render Sanity images (`cdn.sanity.io`) using Next.js `Image` components with explicit width/height dimensions.
+- **SEO Accessibility**: High contrast typography, descriptive Title tags, Open Graph meta tags, canonical URLs, and structured JSON-LD data on all marketing pages.
