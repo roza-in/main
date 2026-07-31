@@ -1,4 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
+import { POST } from "@/app/api/careers/route";
 
 // Mock Resend and global fetch
 global.fetch = vi.fn().mockImplementation(() =>
@@ -11,8 +12,6 @@ global.fetch = vi.fn().mockImplementation(() =>
 
 describe("/api/careers", () => {
   it("should reject invalid payload (missing required fields)", async () => {
-    const { POST } = await import("@/app/api/careers/route");
-
     const request = new Request("http://localhost:3000/api/careers", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -24,8 +23,6 @@ describe("/api/careers", () => {
   });
 
   it("should accept valid payload", async () => {
-    const { POST } = await import("@/app/api/careers/route");
-
     const request = new Request("http://localhost:3000/api/careers", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -48,8 +45,6 @@ describe("/api/careers", () => {
   });
 
   it("should reject invalid urls", async () => {
-    const { POST } = await import("@/app/api/careers/route");
-
     const request = new Request("http://localhost:3000/api/careers", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -58,7 +53,7 @@ describe("/api/careers", () => {
         email: "aarav@example.in",
         phone: "9876543210",
         jobSlug: "senior-frontend-engineer",
-        resumeUrl: "not-a-url",
+        resumeUrl: "not-a-valid-url",
         coverLetter: "I want to build the booking and billing platform for local commerce at Rozx.",
       }),
     });
