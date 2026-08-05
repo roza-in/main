@@ -188,8 +188,9 @@ export const industryItems: NavItem[] = [
 ];
 
 export const mainNavItems: NavGroup[] = [
-  { label: "Features", children: featureItems },
-  { label: "Industries", children: industryItems },
+  { label: "Features", href: "/features", children: featureItems },
+  { label: "Industries", href: "/industries", children: industryItems },
+  { label: "Compare", href: "/compare" },
   { label: "Pricing", href: "/pricing" },
   { label: "Platform", href: "/platform" },
 ];
@@ -207,6 +208,7 @@ export const footerNavItems = {
       { label: "vs Mindbody", href: "/compare/mindbody" },
       { label: "vs Booksy", href: "/compare/booksy" },
       { label: "vs Vagaro", href: "/compare/vagaro" },
+      { label: "vs Zenoti", href: "/compare/zenoti" },
     ],
   },
   solutions: {
